@@ -1,0 +1,7 @@
+#Tue Jun 16 21:26:44 ICT 2026
+base.1=/Users/mth2610/Desktop/c_games/little_witch/android/app/build/intermediates/dex/release/mergeDexRelease/classes2.dex
+path.1=classes2.dex
+base.0=/Users/mth2610/Desktop/c_games/little_witch/android/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex

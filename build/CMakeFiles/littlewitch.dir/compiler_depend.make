@@ -36,6 +36,9 @@ CMakeFiles/littlewitch.dir/src/admob_bridge.c.o: /Users/mth2610/Desktop/c_games/
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_va_list.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/stdio.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdarg.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdbool.h \
+  _deps/raylib-src/src/raylib.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/admob_bridge.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/config.h
 
@@ -909,6 +912,8 @@ _deps/raylib-src/src/raymath.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h:
 
+/Users/mth2610/Desktop/c_games/little_witch/include/config.h:
+
 /Users/mth2610/Desktop/c_games/little_witch/src/enemy.c:
 
 /Users/mth2610/Desktop/c_games/little_witch/include/enemy_boss.h:
@@ -920,8 +925,6 @@ _deps/raylib-src/src/raymath.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdbool.h:
-
-/Users/mth2610/Desktop/c_games/little_witch/include/config.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_off_t.h:
 

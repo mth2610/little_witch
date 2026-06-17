@@ -50,6 +50,32 @@ typedef struct GameState {
     float               shakeIntensity;
     float               shakeDuration;
     
+    // Shader hiệu ứng kỹ năng Ngũ hành (5 hệ)
+    Shader              fireballShader;
+    bool                fireballShaderLoaded;
+    Shader              iceBlastShader;
+    bool                iceBlastShaderLoaded;
+    Shader              poisonCloudShader;
+    bool                poisonCloudShaderLoaded;
+    Shader              shurikenShader;
+    bool                shurikenShaderLoaded;
+    Shader              tornadoShader;
+    bool                tornadoShaderLoaded;
+    
+    // Hệ thống Bloom Pipeline & Screen copy cho Distortion
+    RenderTexture2D     screenCopyTex;
+    RenderTexture2D     bloomCanvas;
+    RenderTexture2D     blurCanvas;
+    Shader              bloomExtractShader;
+    bool                bloomExtractShaderLoaded;
+    Shader              bloomBlurShader;
+    bool                bloomBlurShaderLoaded;
+    
+    // Shader hạt sương giá và texture ảo 2x2 để map tọa độ UV cho các hiệu ứng
+    Shader              vaporShader;
+    bool                vaporShaderLoaded;
+    Texture2D           dummyWhiteTex;
+    
     // Cache dữ liệu save tránh đọc file I/O mỗi frame trong hàm render
     SaveData            cachedSave;
     // Điểm số khi bắt đầu biome hiện tại (tính boss threshold tránh boss sinh tức thì)

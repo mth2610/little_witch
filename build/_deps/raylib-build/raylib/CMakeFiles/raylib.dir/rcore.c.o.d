@@ -108,6 +108,7 @@ _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/_limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/syslimits.h \
+  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/external/rprand.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach-o/dyld.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach-o/loader.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/machine.h \
@@ -161,6 +162,6 @@ _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_select.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uuid_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/gethostuuid.h \
-  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/platforms/rcore_desktop.c \
+  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/platforms/rcore_desktop_glfw.c \
   /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
   /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h

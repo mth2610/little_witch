@@ -90,5 +90,5 @@ _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_wint_t.h \
   /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/external/stb_rect_pack.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h \
-  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/external/stb_truetype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h \
+  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/external/stb_truetype.h

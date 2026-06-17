@@ -13,6 +13,7 @@
 // Âm thanh được load ở main.c
 extern Sound collectStarSound;
 extern Sound shootSound;
+extern Texture2D shieldBackgroundTexture;
 
 // ----------------------------------------------------------------
 // QUẢN LÝ POOL ĐẠN (PROJECTILES)
@@ -56,6 +57,7 @@ int SpawnProjectile(ProjectilePool *pool, Vector2 position, Vector2 velocity,
     p->damageTimer = 0.0f;
     p->isUltimate = false;
     p->rotation = 0.0f;
+    p->isWeak = false;
     
     return freeIdx;
 }
@@ -99,20 +101,24 @@ void UpdateProjectiles(ProjectilePool *pool, float deltaTime, ParticlePool *part
             p->rotation += 850.0f * deltaTime;
         } else if (p->type == PROJ_TORNADO) {
             p->rotation += 400.0f * deltaTime;
-            p->timer -= deltaTime;
-            if (p->timer <= 0.0f) {
-                p->active = false;
-                continue;
+            if (!p->isWeak) {
+                p->timer -= deltaTime;
+                if (p->timer <= 0.0f) {
+                    p->active = false;
+                    continue;
+                }
+                p->position.y += sinf(GetTime() * 12.0f + i) * 60.0f * deltaTime;
             }
-            p->position.y += sinf(GetTime() * 12.0f + i) * 60.0f * deltaTime;
         } else if (p->type == PROJ_POISON) {
-            p->timer -= deltaTime;
-            if (p->timer <= 0.0f) {
-                p->active = false;
-                continue;
-            }
-            if (p->damageTimer > 0.0f) {
-                p->damageTimer -= deltaTime;
+            if (!p->isWeak) {
+                p->timer -= deltaTime;
+                if (p->timer <= 0.0f) {
+                    p->active = false;
+                    continue;
+                }
+                if (p->damageTimer > 0.0f) {
+                    p->damageTimer -= deltaTime;
+                }
             }
         } else if (p->type == PROJ_ICE) {
             p->rotation = atan2f(p->velocity.y, p->velocity.x) * RAD2DEG;
@@ -128,6 +134,7 @@ void UpdateProjectiles(ProjectilePool *pool, float deltaTime, ParticlePool *part
             float chance = 0.35f;
             if (p->type == PROJ_POISON) chance = 0.65f;
             else if (p->type == PROJ_TORNADO) chance = 0.70f;
+            else if (p->type == PROJ_ICE) chance = 0.85f; // Tỉ lệ sinh hơi sương cao
             
             if (roll < chance) {
                 float size = p->radius * 0.3f + ((float)rand() / RAND_MAX) * 2.0f;
@@ -142,6 +149,18 @@ void UpdateProjectiles(ProjectilePool *pool, float deltaTime, ParticlePool *part
                     Vector2 partPos = Vector2Add(p->position, offset);
                     SpawnParticle(partPool, partPos, (Vector2){ 0, -50.0f }, 0.5f, 2.0f, p->color);
                     continue;
+                } else if (p->type == PROJ_ICE) {
+                    // Hơi sương bay lùi nhẹ và tán rộng ra 2 bên
+                    float randAng = ((float)rand() / RAND_MAX) * 2.0f * PI;
+                    float spread = 15.0f + ((float)rand() / RAND_MAX) * 30.0f;
+                    trailVel.x = -p->velocity.x * 0.12f + cosf(randAng) * spread;
+                    trailVel.y = -p->velocity.y * 0.12f + sinf(randAng) * spread;
+                    
+                    size = p->radius * 0.35f + ((float)rand() / RAND_MAX) * 2.5f;
+                    float lifetime = 0.4f + ((float)rand() / RAND_MAX) * 0.4f;
+                    
+                    SpawnParticleEx(partPool, p->position, trailVel, lifetime, size, p->color, PARTICLE_FROST_VAPOR);
+                    continue;
                 }
                 
                 float lifetime = 0.3f + ((float)rand() / RAND_MAX) * 0.3f;
@@ -152,7 +171,7 @@ void UpdateProjectiles(ProjectilePool *pool, float deltaTime, ParticlePool *part
         }
         
         // Hủy đạn nếu bay quá xa ngoài vùng hiển thị
-        if (p->type != PROJ_POISON) {
+        if (p->type != PROJ_POISON || p->isWeak) {
             if (p->position.x < -100 || p->position.x > VIRTUAL_WIDTH + 100 ||
                 p->position.y < -100 || p->position.y > VIRTUAL_HEIGHT + 100) {
                 p->active = false;
@@ -162,7 +181,7 @@ void UpdateProjectiles(ProjectilePool *pool, float deltaTime, ParticlePool *part
 }
 
 // Vẽ toàn bộ các viên đạn đang hoạt động
-void DrawProjectiles(const ProjectilePool *pool) {
+void DrawProjectiles(const ProjectilePool *pool, const struct GameState *gs) {
     if (pool == NULL) return;
     
     BeginBlendMode(BLEND_ADDITIVE);
@@ -183,51 +202,122 @@ void DrawProjectiles(const ProjectilePool *pool) {
         
         // 2. Vẽ theo loại đạn
         if (p->type == PROJ_SHURIKEN) {
-            float rotRad = p->rotation * DEG2RAD;
-            for (int j = 0; j < 4; j++) {
-                float angle = rotRad + j * (PI / 2.0f);
-                Vector2 tip = { p->position.x + cosf(angle) * p->radius * 1.5f, p->position.y + sinf(angle) * p->radius * 1.5f };
-                Vector2 side1 = { p->position.x + cosf(angle + 0.25f) * p->radius * 0.4f, p->position.y + sinf(angle + 0.25f) * p->radius * 0.4f };
-                Vector2 side2 = { p->position.x + cosf(angle - 0.25f) * p->radius * 0.4f, p->position.y - sinf(angle - 0.25f) * p->radius * 0.4f };
-                // Sửa nhẹ cosf/sinf cho side2 để đối xứng
-                side2 = (Vector2){ p->position.x + cosf(angle - 0.25f) * p->radius * 0.4f, p->position.y + sinf(angle - 0.25f) * p->radius * 0.4f };
-                DrawTriangle(tip, side1, side2, p->color);
-                DrawTriangle(tip, side2, side1, p->color);
+            if (gs != NULL && gs->shurikenShaderLoaded && !p->isEnemy) {
+                BeginShaderMode(gs->shurikenShader);
+                float timeVal = GetTime();
+                float rotVal = p->rotation * DEG2RAD;
+                SetShaderValue(gs->shurikenShader, GetShaderLocation(gs->shurikenShader, "time"), &timeVal, SHADER_UNIFORM_FLOAT);
+                SetShaderValue(gs->shurikenShader, GetShaderLocation(gs->shurikenShader, "center"), &p->position, SHADER_UNIFORM_VEC2);
+                SetShaderValue(gs->shurikenShader, GetShaderLocation(gs->shurikenShader, "radius"), &p->radius, SHADER_UNIFORM_FLOAT);
+                SetShaderValue(gs->shurikenShader, GetShaderLocation(gs->shurikenShader, "rotation"), &rotVal, SHADER_UNIFORM_FLOAT);
+                DrawRectangle((int)(p->position.x - p->radius * 3.0f), (int)(p->position.y - p->radius * 3.0f),
+                              (int)(p->radius * 6.0f), (int)(p->radius * 6.0f), WHITE);
+                EndShaderMode();
+            } else {
+                float rotRad = p->rotation * DEG2RAD;
+                for (int j = 0; j < 4; j++) {
+                    float angle = rotRad + j * (PI / 2.0f);
+                    Vector2 tip = { p->position.x + cosf(angle) * p->radius * 1.5f, p->position.y + sinf(angle) * p->radius * 1.5f };
+                    Vector2 side1 = { p->position.x + cosf(angle + 0.25f) * p->radius * 0.4f, p->position.y + sinf(angle + 0.25f) * p->radius * 0.4f };
+                    Vector2 side2 = { p->position.x + cosf(angle - 0.25f) * p->radius * 0.4f, p->position.y - sinf(angle - 0.25f) * p->radius * 0.4f };
+                    // Sửa nhẹ cosf/sinf cho side2 để đối xứng
+                    side2 = (Vector2){ p->position.x + cosf(angle - 0.25f) * p->radius * 0.4f, p->position.y + sinf(angle - 0.25f) * p->radius * 0.4f };
+                    DrawTriangle(tip, side1, side2, p->color);
+                    DrawTriangle(tip, side2, side1, p->color);
+                }
+                DrawCircleV(p->position, p->radius * 0.35f, WHITE);
+                DrawCircleLines(p->position.x, p->position.y, p->radius * 0.4f, YELLOW);
             }
-            DrawCircleV(p->position, p->radius * 0.35f, WHITE);
-            DrawCircleLines(p->position.x, p->position.y, p->radius * 0.4f, YELLOW);
         } else if (p->type == PROJ_POISON) {
-            float pulse = 1.0f + sinf(GetTime() * 6.0f + i) * 0.12f;
-            DrawCircleGradient(p->position.x, p->position.y, p->radius * pulse, ColorAlpha(p->color, 0.28f), ColorAlpha(p->color, 0.0f));
-            DrawCircleGradient(p->position.x, p->position.y, p->radius * 0.5f * pulse, ColorAlpha(WHITE, 0.15f), ColorAlpha(p->color, 0.0f));
+            if (gs != NULL && gs->poisonCloudShaderLoaded && !p->isEnemy) {
+                BeginShaderMode(gs->poisonCloudShader);
+                float timeVal = GetTime();
+                SetShaderValue(gs->poisonCloudShader, GetShaderLocation(gs->poisonCloudShader, "time"), &timeVal, SHADER_UNIFORM_FLOAT);
+                SetShaderValue(gs->poisonCloudShader, GetShaderLocation(gs->poisonCloudShader, "center"), &p->position, SHADER_UNIFORM_VEC2);
+                SetShaderValue(gs->poisonCloudShader, GetShaderLocation(gs->poisonCloudShader, "radius"), &p->radius, SHADER_UNIFORM_FLOAT);
+                DrawRectangle((int)(p->position.x - p->radius * 2.0f), (int)(p->position.y - p->radius * 2.0f),
+                              (int)(p->radius * 4.0f), (int)(p->radius * 4.0f), WHITE);
+                EndShaderMode();
+            } else {
+                float pulse = 1.0f + sinf(GetTime() * 6.0f + i) * 0.12f;
+                DrawCircleGradient(p->position.x, p->position.y, p->radius * pulse, ColorAlpha(p->color, 0.28f), ColorAlpha(p->color, 0.0f));
+                DrawCircleGradient(p->position.x, p->position.y, p->radius * 0.5f * pulse, ColorAlpha(WHITE, 0.15f), ColorAlpha(p->color, 0.0f));
+            }
         } else if (p->type == PROJ_TORNADO) {
-            float tRot = p->rotation * DEG2RAD;
-            for (int ring = 0; ring < 6; ring++) {
-                float offsetOffset = ring * 9.0f;
-                float ringRadX = p->radius * (1.1f - ring * 0.13f);
-                float ringRadY = ringRadX * 0.35f;
-                Vector2 ringCenter = { p->position.x, p->position.y - offsetOffset + 20.0f };
-                
-                float angleShift = tRot + ring * 0.4f;
-                Vector2 pt1 = { ringCenter.x + cosf(angleShift) * ringRadX, ringCenter.y + sinf(angleShift) * ringRadY };
-                Vector2 pt2 = { ringCenter.x + cosf(angleShift + PI) * ringRadX, ringCenter.y + sinf(angleShift + PI) * ringRadY };
-                
-                DrawLineEx(pt1, pt2, 4.0f - ring * 0.5f, ColorAlpha(p->color, 0.45f));
-                DrawCircleV(pt1, 2.8f, WHITE);
+            if (gs != NULL && gs->tornadoShaderLoaded && !p->isEnemy) {
+                BeginShaderMode(gs->tornadoShader);
+                float timeVal = GetTime();
+                float heightVal = p->radius * 3.5f;
+                SetShaderValue(gs->tornadoShader, GetShaderLocation(gs->tornadoShader, "time"), &timeVal, SHADER_UNIFORM_FLOAT);
+                SetShaderValue(gs->tornadoShader, GetShaderLocation(gs->tornadoShader, "center"), &p->position, SHADER_UNIFORM_VEC2);
+                SetShaderValue(gs->tornadoShader, GetShaderLocation(gs->tornadoShader, "radius"), &p->radius, SHADER_UNIFORM_FLOAT);
+                SetShaderValue(gs->tornadoShader, GetShaderLocation(gs->tornadoShader, "height"), &heightVal, SHADER_UNIFORM_FLOAT);
+                DrawRectangle((int)(p->position.x - p->radius * 1.5f), (int)(p->position.y - heightVal * 1.2f),
+                              (int)(p->radius * 3.0f), (int)(heightVal * 1.4f), WHITE);
+                EndShaderMode();
+            } else {
+                float tRot = p->rotation * DEG2RAD;
+                for (int ring = 0; ring < 6; ring++) {
+                    float offsetOffset = ring * 9.0f;
+                    float ringRadX = p->radius * (1.1f - ring * 0.13f);
+                    float ringRadY = ringRadX * 0.35f;
+                    Vector2 ringCenter = { p->position.x, p->position.y - offsetOffset + 20.0f };
+                    
+                    float angleShift = tRot + ring * 0.4f;
+                    Vector2 pt1 = { ringCenter.x + cosf(angleShift) * ringRadX, ringCenter.y + sinf(angleShift) * ringRadY };
+                    Vector2 pt2 = { ringCenter.x + cosf(angleShift + PI) * ringRadX, ringCenter.y + sinf(angleShift + PI) * ringRadY };
+                    
+                    DrawLineEx(pt1, pt2, 4.0f - ring * 0.5f, ColorAlpha(p->color, 0.45f));
+                    DrawCircleV(pt1, 2.8f, WHITE);
+                }
             }
         } else if (p->type == PROJ_ICE) {
-            float rotRad = p->rotation * DEG2RAD;
-            Vector2 p1 = { p->position.x + cosf(rotRad) * p->radius * 1.7f, p->position.y + sinf(rotRad) * p->radius * 1.7f };
-            Vector2 p2 = { p->position.x + cosf(rotRad + PI/2.0f) * p->radius * 0.5f, p->position.y + sinf(rotRad + PI/2.0f) * p->radius * 0.5f };
-            Vector2 p3 = { p->position.x - cosf(rotRad) * p->radius * 0.6f, p->position.y - sinf(rotRad) * p->radius * 0.6f };
-            Vector2 p4 = { p->position.x - cosf(rotRad + PI/2.0f) * p->radius * 0.5f, p->position.y - sinf(rotRad + PI/2.0f) * p->radius * 0.5f };
-            DrawTriangle(p1, p2, p4, p->color);
-            DrawTriangle(p3, p4, p2, p->color);
-            DrawTriangle(p1, p4, p2, WHITE);
+            if (gs != NULL && gs->iceBlastShaderLoaded && !p->isEnemy) {
+                BeginShaderMode(gs->iceBlastShader);
+                float timeVal = GetTime();
+                float rotVal = p->rotation * DEG2RAD;
+                SetShaderValue(gs->iceBlastShader, GetShaderLocation(gs->iceBlastShader, "time"), &timeVal, SHADER_UNIFORM_FLOAT);
+                SetShaderValue(gs->iceBlastShader, GetShaderLocation(gs->iceBlastShader, "center"), &p->position, SHADER_UNIFORM_VEC2);
+                SetShaderValue(gs->iceBlastShader, GetShaderLocation(gs->iceBlastShader, "radius"), &p->radius, SHADER_UNIFORM_FLOAT);
+                SetShaderValue(gs->iceBlastShader, GetShaderLocation(gs->iceBlastShader, "rotation"), &rotVal, SHADER_UNIFORM_FLOAT);
+                
+                int screenTexLoc = GetShaderLocation(gs->iceBlastShader, "screenTexture");
+                SetShaderValueTexture(gs->iceBlastShader, screenTexLoc, shieldBackgroundTexture);
+                
+                // Sử dụng DrawTexturePro với texture dummy trắng để đưa fragTexCoord (0->1) vào shader
+                DrawTexturePro(gs->dummyWhiteTex,
+                               (Rectangle){ 0.0f, 0.0f, 2.0f, 2.0f },
+                               (Rectangle){ p->position.x, p->position.y, p->radius * 5.0f, p->radius * 5.0f },
+                               (Vector2){ p->radius * 2.5f, p->radius * 2.5f },
+                               p->rotation, WHITE);
+                EndShaderMode();
+            } else {
+                float rotRad = p->rotation * DEG2RAD;
+                Vector2 p1 = { p->position.x + cosf(rotRad) * p->radius * 1.7f, p->position.y + sinf(rotRad) * p->radius * 1.7f };
+                Vector2 p2 = { p->position.x + cosf(rotRad + PI/2.0f) * p->radius * 0.5f, p->position.y + sinf(rotRad + PI/2.0f) * p->radius * 0.5f };
+                Vector2 p3 = { p->position.x - cosf(rotRad) * p->radius * 0.6f, p->position.y - sinf(rotRad) * p->radius * 0.6f };
+                Vector2 p4 = { p->position.x - cosf(rotRad + PI/2.0f) * p->radius * 0.5f, p->position.y - sinf(rotRad + PI/2.0f) * p->radius * 0.5f };
+                DrawTriangle(p1, p2, p4, p->color);
+                DrawTriangle(p3, p4, p2, p->color);
+                DrawTriangle(p1, p4, p2, WHITE);
+            }
         } else {
-            DrawCircleV(p->position, p->radius * 1.8f, ColorAlpha(p->color, 0.35f));
-            DrawCircleV(p->position, p->radius, p->color);
-            DrawCircleV(p->position, p->radius * 0.4f, WHITE);
+            if (p->type == PROJ_FIREBALL && gs != NULL && gs->fireballShaderLoaded && !p->isEnemy) {
+                BeginShaderMode(gs->fireballShader);
+                float timeVal = GetTime();
+                float intensityVal = 0.5f + 0.1f * gs->witch.skillLevels[SKILL_FIREBALL];
+                SetShaderValue(gs->fireballShader, GetShaderLocation(gs->fireballShader, "time"), &timeVal, SHADER_UNIFORM_FLOAT);
+                SetShaderValue(gs->fireballShader, GetShaderLocation(gs->fireballShader, "center"), &p->position, SHADER_UNIFORM_VEC2);
+                SetShaderValue(gs->fireballShader, GetShaderLocation(gs->fireballShader, "radius"), &p->radius, SHADER_UNIFORM_FLOAT);
+                SetShaderValue(gs->fireballShader, GetShaderLocation(gs->fireballShader, "intensity"), &intensityVal, SHADER_UNIFORM_FLOAT);
+                DrawRectangle((int)(p->position.x - p->radius * 11.5f), (int)(p->position.y - p->radius * 3.0f),
+                              (int)(p->radius * 15.0f), (int)(p->radius * 6.0f), WHITE);
+                EndShaderMode();
+            } else {
+                DrawCircleV(p->position, p->radius * 1.8f, ColorAlpha(p->color, 0.35f));
+                DrawCircleV(p->position, p->radius, p->color);
+                DrawCircleV(p->position, p->radius * 0.4f, WHITE);
+            }
         }
     }
     EndBlendMode();
@@ -237,69 +327,174 @@ void DrawProjectiles(const ProjectilePool *pool) {
 // QUẢN LÝ KÍCH HOẠT VÀ TÁC ĐỘNG KỸ NĂNG (ACTIVE RPG SKILLS)
 // ----------------------------------------------------------------
 
+// Thực hiện bắn đòn đánh thường (Spacebar hoặc Touch)
+// Tách biệt logic đòn đánh thường cơ bản tùy theo số lượng sao người chơi sở hữu
+void CastNormalAttack(struct GameState *gs) {
+    if (gs == NULL) return;
+    
+    // Tính tổng số sao ngũ hành mà Phù Thủy đang sở hữu (effective stars)
+    int totalStars = gs->witch.effectiveKimStars +
+                     gs->witch.effectiveMocStars +
+                     gs->witch.effectiveThuyStars +
+                     gs->witch.effectiveHoaStars +
+                     gs->witch.effectiveThoStars;
+                     
+    if (totalStars == 0) {
+        // Bắn đòn đánh thường yếu (weak normal attack) khi không có bất kỳ sao nào
+        // Lý do: Hạn chế sức mạnh tấn công khi chưa có sao để tạo tính cân bằng và khuyến khích nhặt sao
+        Vector2 projVel = { 500.0f, 0.0f }; // Tốc độ bay chậm hơn đòn thường một chút
+        SpawnProjectile(&gs->projectilePool, gs->witch.position, projVel, 4.0f, 4, false, LIGHTGRAY, PROJ_FIREBALL);
+        
+        // Tạo một vài hạt nhỏ màu xám nhạt tượng trưng cho năng lượng yếu
+        for (int i = 0; i < 3; i++) {
+            float vx = (float)GetRandomValue(-30, 30);
+            float vy = (float)GetRandomValue(-30, 30);
+            SpawnParticle(&gs->particlePool, gs->witch.position, (Vector2){ vx, vy }, 0.25f, 1.2f, LIGHTGRAY);
+        }
+    } else {
+        // Bắn đòn đánh thường bình thường khi có ít nhất 1 sao
+        // Lý do: Duy trì cơ chế đánh thường tiêu chuẩn của game khi người chơi đã bắt đầu thu thập sao
+        Vector2 projVel = { 550.0f, 0.0f };
+        SpawnProjectile(&gs->projectilePool, gs->witch.position, projVel, 6.0f, 8, false, ORANGE, PROJ_FIREBALL);
+        
+        // Hạt lửa màu cam bình thường
+        for (int i = 0; i < 5; i++) {
+            float vx = (float)GetRandomValue(-50, 50);
+            float vy = (float)GetRandomValue(-50, 50);
+            SpawnParticle(&gs->particlePool, gs->witch.position, (Vector2){ vx, vy }, 0.35f, 1.8f, ORANGE);
+        }
+    }
+    
+    // Kích hoạt hoạt ảnh tấn công sử dụng sáo/vũ khí
+    gs->witch.animState = WITCH_STATE_ATTACK_WEAPON;
+    gs->witch.stateTimer = 0.25f;
+    
+    if (IsSoundReady(shootSound)) PlaySound(shootSound);
+}
+
 // Kích hoạt kỹ năng chủ động khi nhấn phím hoặc click HUD
 void CastActiveSkill(struct GameState *gs, SkillType skill) {
     if (gs == NULL) return;
     
+    // Kiểm tra xem hệ kỹ năng chủ động tương ứng có sao nào không
+    // Lý do: Theo Target_Architecture_2.0, khi cast kỹ năng của hệ có 0 sao, nhân vật sẽ bắn đòn đánh thường yếu để tự vệ
+    bool hasStars = false;
+    if (skill == SKILL_SHURIKEN && gs->witch.effectiveKimStars > 0) hasStars = true;
+    else if (skill == SKILL_POISON_CLOUD && gs->witch.effectiveMocStars > 0) hasStars = true;
+    else if (skill == SKILL_ICE_BLAST && gs->witch.effectiveThuyStars > 0) hasStars = true;
+    else if (skill == SKILL_FIREBALL && gs->witch.effectiveHoaStars > 0) hasStars = true;
+    else if (skill == SKILL_LIGHTNING && gs->witch.effectiveThoStars > 0) hasStars = true;
+    // MAGNET và SHIELD là kỹ năng buff bổ trợ, hoạt động độc lập không bắn đạn trực tiếp nên luôn có thể cast
+    else if (skill == SKILL_MAGNET || skill == SKILL_SHIELD) hasStars = true;
+    
+    if (!hasStars) {
+        // Bắn đòn đánh thường yếu
+        Vector2 projVel = { 500.0f, 0.0f };
+        SpawnProjectile(&gs->projectilePool, gs->witch.position, projVel, 4.0f, 4, false, LIGHTGRAY, PROJ_FIREBALL);
+        
+        // Thiết lập hồi chiêu ngắn hơn cho đòn đánh thường yếu từ phím skill
+        int lvl = gs->witch.skillLevels[skill];
+        gs->witch.skillCooldown[skill] = fmaxf(0.5f, 1.0f - 0.1f * (lvl - 1));
+        
+        // Kích hoạt hoạt ảnh tấn công bằng tay
+        gs->witch.animState = WITCH_STATE_ATTACK_HAND;
+        gs->witch.stateTimer = 0.2f;
+        
+        if (IsSoundReady(shootSound)) PlaySound(shootSound);
+        
+        // Hiệu ứng hạt nhỏ màu xám
+        for (int i = 0; i < 4; i++) {
+            float vx = (float)GetRandomValue(-40, 40);
+            float vy = (float)GetRandomValue(-40, 40);
+            SpawnParticle(&gs->particlePool, gs->witch.position, (Vector2){ vx, vy }, 0.3f, 1.5f, LIGHTGRAY);
+        }
+        return;
+    }
+    
     switch (skill) {
         case SKILL_SHURIKEN: {
-            // Hệ KIM: Phi tiêu vàng lấp lánh xuyên thấu
             int lvl = gs->witch.skillLevels[SKILL_SHURIKEN];
-            int count = 1 + (gs->witch.effectiveKimStars / 2) + (lvl - 1);
-            if (count > 6) count = 6;
-            
-            float baseAngle = 0.0f;
-            float spread = 15.0f * DEG2RAD;
-            for (int j = 0; j < count; j++) {
-                float angle = baseAngle + (j - (count - 1) / 2.0f) * spread;
-                Vector2 vel = { cosf(angle) * 550.0f, sinf(angle) * 550.0f };
-                float radius = (11.0f + 1.5f * gs->witch.effectiveKimStars) * (1.0f + 0.08f * (lvl - 1));
-                int dmg = (20 + 8 * gs->witch.effectiveKimStars) * (1.0f + 0.15f * (lvl - 1));
+            if (gs->witch.effectiveKimStars == 0) {
+                // Weak normal-like shuriken (single, straight, small, low dmg, non-piercing)
+                Vector2 vel = { 550.0f, 0.0f };
+                int idx = SpawnProjectile(&gs->projectilePool, gs->witch.position, vel, 6.0f, 8, false, GOLD, PROJ_SHURIKEN);
+                if (idx != -1) {
+                    gs->projectilePool.projectiles[idx].isWeak = true;
+                }
                 
-                SpawnProjectile(&gs->projectilePool, gs->witch.position, vel, radius, dmg, false, GOLD, PROJ_SHURIKEN);
+                // Fewer particles
+                for (int i = 0; i < 3; i++) {
+                    float vx = (float)GetRandomValue(-40, 40);
+                    float vy = (float)GetRandomValue(-40, 40);
+                    SpawnParticle(&gs->particlePool, gs->witch.position, (Vector2){ vx, vy }, 0.3f, 1.5f, GOLD);
+                }
+            } else {
+                // Hệ KIM: Phi tiêu vàng lấp lánh xuyên thấu
+                int count = 1 + (gs->witch.effectiveKimStars / 2) + (lvl - 1);
+                if (count > 6) count = 6;
+                
+                float baseAngle = 0.0f;
+                float spread = 15.0f * DEG2RAD;
+                for (int j = 0; j < count; j++) {
+                    float angle = baseAngle + (j - (count - 1) / 2.0f) * spread;
+                    Vector2 vel = { cosf(angle) * 550.0f, sinf(angle) * 550.0f };
+                    float radius = (11.0f + 1.5f * gs->witch.effectiveKimStars) * (1.0f + 0.08f * (lvl - 1));
+                    int dmg = (20 + 8 * gs->witch.effectiveKimStars) * (1.0f + 0.15f * (lvl - 1));
+                    
+                    SpawnProjectile(&gs->projectilePool, gs->witch.position, vel, radius, dmg, false, GOLD, PROJ_SHURIKEN);
+                }
+                
+                // Hiệu ứng hạt đầy đủ
+                for (int i = 0; i < 10; i++) {
+                    float vx = (float)GetRandomValue(-80, 80);
+                    float vy = (float)GetRandomValue(-80, 80);
+                    SpawnParticle(&gs->particlePool, gs->witch.position, (Vector2){ vx, vy }, 0.4f, 2.5f, GOLD);
+                }
             }
             gs->witch.skillCooldown[SKILL_SHURIKEN] = fmaxf(1.0f, 2.0f - 0.15f * (lvl - 1));
             gs->witch.animState = WITCH_STATE_ATTACK_HAND;
             gs->witch.stateTimer = 0.3f;
             if (IsSoundReady(shootSound)) PlaySound(shootSound);
-            
-            // Hiệu ứng hạt
-            for (int i = 0; i < 10; i++) {
-                float vx = (float)GetRandomValue(-80, 80);
-                float vy = (float)GetRandomValue(-80, 80);
-                SpawnParticle(&gs->particlePool, gs->witch.position, (Vector2){ vx, vy }, 0.4f, 2.5f, GOLD);
-            }
             break;
         }
         
         case SKILL_POISON_CLOUD: {
-            // Hệ MỘC: Làn hơi độc màu xanh lá
             int lvl = gs->witch.skillLevels[SKILL_POISON_CLOUD];
-            int targetIdx = -1;
-            float minDist = 999999.0f;
-            for (int e = 0; e < MAX_ENEMIES; e++) {
-                if (gs->enemyPool.enemies[e].active) {
-                    if (gs->enemyPool.enemies[e].type == ENEMY_GHOST && !gs->enemyPool.enemies[e].isVisible) continue;
-                    float dist = Vector2Distance(gs->witch.position, gs->enemyPool.enemies[e].position);
-                    if (dist < minDist) {
-                        minDist = dist;
-                        targetIdx = e;
+            if (gs->witch.effectiveMocStars == 0) {
+                // Weak poison spit (single, straight, small, low dmg, non-lingering)
+                Vector2 vel = { 550.0f, 0.0f };
+                int idx = SpawnProjectile(&gs->projectilePool, gs->witch.position, vel, 6.0f, 8, false, LIME, PROJ_POISON);
+                if (idx != -1) {
+                    gs->projectilePool.projectiles[idx].isWeak = true;
+                }
+            } else {
+                // Hệ MỘC: Làn hơi độc màu xanh lá
+                int targetIdx = -1;
+                float minDist = 999999.0f;
+                for (int e = 0; e < MAX_ENEMIES; e++) {
+                    if (gs->enemyPool.enemies[e].active) {
+                        if (gs->enemyPool.enemies[e].type == ENEMY_GHOST && !gs->enemyPool.enemies[e].isVisible) continue;
+                        float dist = Vector2Distance(gs->witch.position, gs->enemyPool.enemies[e].position);
+                        if (dist < minDist) {
+                            minDist = dist;
+                            targetIdx = e;
+                        }
                     }
                 }
-            }
-            
-            Vector2 spawnPos = { gs->witch.position.x + 180.0f, gs->witch.position.y };
-            if (targetIdx != -1) {
-                spawnPos = gs->enemyPool.enemies[targetIdx].position;
-            }
-            
-            float radius = (60.0f + 12.0f * gs->witch.effectiveMocStars) * (1.0f + 0.12f * (lvl - 1));
-            int dmg = (5 + 2 * gs->witch.effectiveMocStars) * (1.0f + 0.25f * (lvl - 1));
-            
-            int idx = SpawnProjectile(&gs->projectilePool, spawnPos, (Vector2){ -20.0f, 0.0f }, radius, dmg, false, (Color){ 0, 230, 100, 255 }, PROJ_POISON);
-            if (idx != -1) {
-                gs->projectilePool.projectiles[idx].timer = 4.0f + 0.5f * (lvl - 1); // Tồn tại lâu hơn
-                gs->projectilePool.projectiles[idx].damageTimer = 0.0f;
+                
+                Vector2 spawnPos = { gs->witch.position.x + 180.0f, gs->witch.position.y };
+                if (targetIdx != -1) {
+                    spawnPos = gs->enemyPool.enemies[targetIdx].position;
+                }
+                
+                float radius = (60.0f + 12.0f * gs->witch.effectiveMocStars) * (1.0f + 0.12f * (lvl - 1));
+                int dmg = (5 + 2 * gs->witch.effectiveMocStars) * (1.0f + 0.25f * (lvl - 1));
+                
+                int idx = SpawnProjectile(&gs->projectilePool, spawnPos, (Vector2){ -20.0f, 0.0f }, radius, dmg, false, (Color){ 0, 230, 100, 255 }, PROJ_POISON);
+                if (idx != -1) {
+                    gs->projectilePool.projectiles[idx].timer = 4.0f + 0.5f * (lvl - 1); // Tồn tại lâu hơn
+                    gs->projectilePool.projectiles[idx].damageTimer = 0.0f;
+                }
             }
             
             gs->witch.skillCooldown[SKILL_POISON_CLOUD] = fmaxf(1.5f, 3.5f - 0.25f * (lvl - 1));
@@ -310,62 +505,87 @@ void CastActiveSkill(struct GameState *gs, SkillType skill) {
         }
         
         case SKILL_ICE_BLAST: {
-            // Hệ THỦY: Chưởng lực băng đóng băng kẻ địch
             int lvl = gs->witch.skillLevels[SKILL_ICE_BLAST];
-            Vector2 vel = { 650.0f, 0.0f };
-            float radius = (18.0f + 2.0f * gs->witch.effectiveThuyStars) * (1.0f + 0.08f * (lvl - 1));
-            int dmg = (25 + 10 * gs->witch.effectiveThuyStars) * (1.0f + 0.20f * (lvl - 1));
-            
-            SpawnProjectile(&gs->projectilePool, gs->witch.position, vel, radius, dmg, false, SKYBLUE, PROJ_ICE);
+            if (gs->witch.effectiveThuyStars == 0) {
+                // Weak ice spit (single, straight, small, low dmg, non-freezing)
+                Vector2 vel = { 550.0f, 0.0f };
+                int idx = SpawnProjectile(&gs->projectilePool, gs->witch.position, vel, 6.0f, 8, false, SKYBLUE, PROJ_ICE);
+                if (idx != -1) {
+                    gs->projectilePool.projectiles[idx].isWeak = true;
+                }
+                
+                // Fewer particles
+                for (int i = 0; i < 3; i++) {
+                    float vx = (float)GetRandomValue(50, 120);
+                    float vy = (float)GetRandomValue(-25, 25);
+                    SpawnParticle(&gs->particlePool, gs->witch.position, (Vector2){ vx, vy }, 0.3f, 1.5f, CYAN);
+                }
+            } else {
+                // Hệ THỦY: Chưởng lực băng đóng băng kẻ địch
+                Vector2 vel = { 650.0f, 0.0f };
+                float radius = (18.0f + 2.0f * gs->witch.effectiveThuyStars) * (1.0f + 0.08f * (lvl - 1));
+                int dmg = (25 + 10 * gs->witch.effectiveThuyStars) * (1.0f + 0.20f * (lvl - 1));
+                
+                SpawnProjectile(&gs->projectilePool, gs->witch.position, vel, radius, dmg, false, SKYBLUE, PROJ_ICE);
+                
+                // Hạt sương giá đầy đủ
+                for (int i = 0; i < 12; i++) {
+                    float vx = (float)GetRandomValue(100, 250);
+                    float vy = (float)GetRandomValue(-50, 50);
+                    SpawnParticle(&gs->particlePool, gs->witch.position, (Vector2){ vx, vy }, 0.5f, 3.0f, CYAN);
+                }
+            }
             
             gs->witch.skillCooldown[SKILL_ICE_BLAST] = fmaxf(2.0f, 4.5f - 0.3f * (lvl - 1));
             gs->witch.animState = WITCH_STATE_ATTACK_WEAPON;
             gs->witch.stateTimer = 0.35f;
             if (IsSoundReady(shootSound)) PlaySound(shootSound);
-            
-            // Hạt sương giá
-            for (int i = 0; i < 12; i++) {
-                float vx = (float)GetRandomValue(100, 250);
-                float vy = (float)GetRandomValue(-50, 50);
-                SpawnParticle(&gs->particlePool, gs->witch.position, (Vector2){ vx, vy }, 0.5f, 3.0f, CYAN);
-            }
             break;
         }
         
         case SKILL_FIREBALL: {
-            // Hệ HỎA: Cầu lửa nổ diện rộng (AOE)
             int lvl = gs->witch.skillLevels[SKILL_FIREBALL];
-            int dmg = (20 + 10 * gs->witch.effectiveHoaStars) * (1.0f + 0.20f * (lvl - 1));
-            float radius = (10.0f + 1.5f * gs->witch.effectiveHoaStars) * (1.0f + 0.1f * (lvl - 1));
-            
-            int targetIdx = -1;
-            float minDist = 999999.0f;
-            for (int e = 0; e < MAX_ENEMIES; e++) {
-                if (gs->enemyPool.enemies[e].active) {
-                    if (gs->enemyPool.enemies[e].type == ENEMY_GHOST && !gs->enemyPool.enemies[e].isVisible) continue;
-                    float dist = Vector2Distance(gs->witch.position, gs->enemyPool.enemies[e].position);
-                    if (dist < minDist) {
-                        minDist = dist;
-                        targetIdx = e;
+            if (gs->witch.effectiveHoaStars == 0) {
+                // Weak fireball spit (single, straight, small, low dmg, non-explosive)
+                Vector2 vel = { 550.0f, 0.0f };
+                int idx = SpawnProjectile(&gs->projectilePool, gs->witch.position, vel, 6.0f, 8, false, ORANGE, PROJ_FIREBALL);
+                if (idx != -1) {
+                    gs->projectilePool.projectiles[idx].isWeak = true;
+                }
+            } else {
+                // Hệ HỎA: Cầu lửa nổ diện rộng (AOE)
+                int dmg = (20 + 10 * gs->witch.effectiveHoaStars) * (1.0f + 0.20f * (lvl - 1));
+                float radius = (10.0f + 1.5f * gs->witch.effectiveHoaStars) * (1.0f + 0.1f * (lvl - 1));
+                
+                int targetIdx = -1;
+                float minDist = 999999.0f;
+                for (int e = 0; e < MAX_ENEMIES; e++) {
+                    if (gs->enemyPool.enemies[e].active) {
+                        if (gs->enemyPool.enemies[e].type == ENEMY_GHOST && !gs->enemyPool.enemies[e].isVisible) continue;
+                        float dist = Vector2Distance(gs->witch.position, gs->enemyPool.enemies[e].position);
+                        if (dist < minDist) {
+                            minDist = dist;
+                            targetIdx = e;
+                        }
                     }
                 }
+                
+                Vector2 projVel;
+                if (targetIdx != -1) {
+                    Vector2 targetPos = gs->enemyPool.enemies[targetIdx].position;
+                    Vector2 dir = Vector2Normalize(Vector2Subtract(targetPos, gs->witch.position));
+                    projVel = Vector2Scale(dir, 440.0f);
+                } else {
+                    projVel = (Vector2){ 440.0f, 0.0f };
+                }
+                
+                Color ballColor = ORANGE;
+                if (gs->witch.effectiveHoaStars >= 3 || lvl >= 3) {
+                    ballColor = RED;
+                }
+                
+                SpawnProjectile(&gs->projectilePool, gs->witch.position, projVel, radius, dmg, false, ballColor, PROJ_FIREBALL);
             }
-            
-            Vector2 projVel;
-            if (targetIdx != -1) {
-                Vector2 targetPos = gs->enemyPool.enemies[targetIdx].position;
-                Vector2 dir = Vector2Normalize(Vector2Subtract(targetPos, gs->witch.position));
-                projVel = Vector2Scale(dir, 440.0f);
-            } else {
-                projVel = (Vector2){ 440.0f, 0.0f };
-            }
-            
-            Color ballColor = ORANGE;
-            if (gs->witch.effectiveHoaStars >= 3 || lvl >= 3) {
-                ballColor = RED;
-            }
-            
-            SpawnProjectile(&gs->projectilePool, gs->witch.position, projVel, radius, dmg, false, ballColor, PROJ_FIREBALL);
             gs->witch.skillCooldown[SKILL_FIREBALL] = fmaxf(0.5f, 1.0f - 0.07f * (lvl - 1));
             gs->witch.animState = WITCH_STATE_ATTACK_WEAPON;
             gs->witch.stateTimer = 0.4f;
@@ -374,99 +594,109 @@ void CastActiveSkill(struct GameState *gs, SkillType skill) {
         }
         
         case SKILL_LIGHTNING: {
-            // Hệ THỔ: Sấm sét & Lốc xoáy cuồng phong
             int lvl = gs->witch.skillLevels[SKILL_LIGHTNING];
-            gs->lightningPointCount = 1;
-            gs->lightningPoints[0] = gs->witch.position;
-            
-            gs->lightningTargets[0] = -1;
-            gs->lightningTargets[1] = -1;
-            gs->lightningTargets[2] = -1;
-            
-            gs->lightningDamageApplied[0] = false;
-            gs->lightningDamageApplied[1] = false;
-            gs->lightningDamageApplied[2] = false;
-            
-            Vector2 currentSource = gs->witch.position;
-            
-            int e1 = -1;
-            float minDist = 999999.0f;
-            for (int e = 0; e < MAX_ENEMIES; e++) {
-                if (!gs->enemyPool.enemies[e].active) continue;
-                if (gs->enemyPool.enemies[e].type == ENEMY_GHOST && !gs->enemyPool.enemies[e].isVisible) continue;
-                float dist = Vector2Distance(currentSource, gs->enemyPool.enemies[e].position);
-                if (dist < minDist) {
-                    minDist = dist;
-                    e1 = e;
+            if (gs->witch.effectiveThoStars == 0) {
+                // Weak electric spark (single, straight, small, low dmg, no chaining/tornado)
+                Vector2 vel = { 550.0f, 0.0f };
+                int idx = SpawnProjectile(&gs->projectilePool, gs->witch.position, vel, 6.0f, 8, false, YELLOW, PROJ_TORNADO);
+                if (idx != -1) {
+                    gs->projectilePool.projectiles[idx].isWeak = true;
                 }
-            }
-            
-            if (e1 != -1) {
-                gs->lightningTargets[0] = e1;
-                gs->lightningTargetLastPos[0] = gs->enemyPool.enemies[e1].position;
-                gs->lightningPoints[1] = gs->enemyPool.enemies[e1].position;
-                gs->lightningPointCount = 2;
-                currentSource = gs->enemyPool.enemies[e1].position;
+            } else {
+                // Hệ THỔ: Sấm sét & Lốc xoáy cuồng phong
+                gs->lightningPointCount = 1;
+                gs->lightningPoints[0] = gs->witch.position;
                 
-                int e2 = -1;
-                minDist = 250.0f + 50.0f * (lvl - 1);
+                gs->lightningTargets[0] = -1;
+                gs->lightningTargets[1] = -1;
+                gs->lightningTargets[2] = -1;
+                
+                gs->lightningDamageApplied[0] = false;
+                gs->lightningDamageApplied[1] = false;
+                gs->lightningDamageApplied[2] = false;
+                
+                Vector2 currentSource = gs->witch.position;
+                
+                int e1 = -1;
+                float minDist = 999999.0f;
                 for (int e = 0; e < MAX_ENEMIES; e++) {
-                    if (e == e1) continue;
                     if (!gs->enemyPool.enemies[e].active) continue;
                     if (gs->enemyPool.enemies[e].type == ENEMY_GHOST && !gs->enemyPool.enemies[e].isVisible) continue;
                     float dist = Vector2Distance(currentSource, gs->enemyPool.enemies[e].position);
                     if (dist < minDist) {
                         minDist = dist;
-                        e2 = e;
+                        e1 = e;
                     }
                 }
                 
-                if (e2 != -1) {
-                    gs->lightningTargets[1] = e2;
-                    gs->lightningTargetLastPos[1] = gs->enemyPool.enemies[e2].position;
-                    gs->lightningPoints[2] = gs->enemyPool.enemies[e2].position;
-                    gs->lightningPointCount = 3;
-                    currentSource = gs->enemyPool.enemies[e2].position;
+                if (e1 != -1) {
+                    gs->lightningTargets[0] = e1;
+                    gs->lightningTargetLastPos[0] = gs->enemyPool.enemies[e1].position;
+                    gs->lightningPoints[1] = gs->enemyPool.enemies[e1].position;
+                    gs->lightningPointCount = 2;
+                    currentSource = gs->enemyPool.enemies[e1].position;
                     
-                    int e3 = -1;
+                    int e2 = -1;
                     minDist = 250.0f + 50.0f * (lvl - 1);
                     for (int e = 0; e < MAX_ENEMIES; e++) {
-                        if (e == e1 || e == e2) continue;
+                        if (e == e1) continue;
                         if (!gs->enemyPool.enemies[e].active) continue;
                         if (gs->enemyPool.enemies[e].type == ENEMY_GHOST && !gs->enemyPool.enemies[e].isVisible) continue;
                         float dist = Vector2Distance(currentSource, gs->enemyPool.enemies[e].position);
                         if (dist < minDist) {
                             minDist = dist;
-                            e3 = e;
+                            e2 = e;
                         }
                     }
                     
-                    if (e3 != -1) {
-                        gs->lightningTargets[2] = e3;
-                        gs->lightningTargetLastPos[2] = gs->enemyPool.enemies[e3].position;
-                        gs->lightningPoints[3] = gs->enemyPool.enemies[e3].position;
-                        gs->lightningPointCount = 4;
+                    if (e2 != -1) {
+                        gs->lightningTargets[1] = e2;
+                        gs->lightningTargetLastPos[1] = gs->enemyPool.enemies[e2].position;
+                        gs->lightningPoints[2] = gs->enemyPool.enemies[e2].position;
+                        gs->lightningPointCount = 3;
+                        currentSource = gs->enemyPool.enemies[e2].position;
+                        
+                        int e3 = -1;
+                        minDist = 250.0f + 50.0f * (lvl - 1);
+                        for (int e = 0; e < MAX_ENEMIES; e++) {
+                            if (e == e1 || e == e2) continue;
+                            if (!gs->enemyPool.enemies[e].active) continue;
+                            if (gs->enemyPool.enemies[e].type == ENEMY_GHOST && !gs->enemyPool.enemies[e].isVisible) continue;
+                            float dist = Vector2Distance(currentSource, gs->enemyPool.enemies[e].position);
+                            if (dist < minDist) {
+                                minDist = dist;
+                                e3 = e;
+                            }
+                        }
+                        
+                        if (e3 != -1) {
+                            gs->lightningTargets[2] = e3;
+                            gs->lightningTargetLastPos[2] = gs->enemyPool.enemies[e3].position;
+                            gs->lightningPoints[3] = gs->enemyPool.enemies[e3].position;
+                            gs->lightningPointCount = 4;
+                        }
                     }
                 }
+                
+                // Spawn Tornado alongside Chain Lightning when stars >= 1
+                float tRadius = (40.0f + 8.0f * gs->witch.effectiveThoStars) * (1.0f + 0.1f * (lvl - 1));
+                int tDmg = (15 + 5 * gs->witch.effectiveThoStars) * (1.0f + 0.15f * (lvl - 1));
+                Vector2 tVel = { 300.0f, 0.0f };
+                int tIdx = SpawnProjectile(&gs->projectilePool, gs->witch.position, tVel, tRadius, tDmg, false, YELLOW, PROJ_TORNADO);
+                if (tIdx != -1) {
+                    gs->projectilePool.projectiles[tIdx].timer = 3.5f + 0.5f * (lvl - 1);
+                    gs->projectilePool.projectiles[tIdx].damageTimer = 0.0f;
+                }
+                
+                gs->witch.skillActiveTimer[SKILL_LIGHTNING] = 0.5f;
+                gs->shakeIntensity = 6.0f;
+                gs->shakeDuration = 0.25f;
             }
             
-            gs->witch.skillActiveTimer[SKILL_LIGHTNING] = 0.5f;
             gs->witch.skillCooldown[SKILL_LIGHTNING] = fmaxf(3.0f, 6.0f - 0.4f * (lvl - 1));
             gs->witch.animState = WITCH_STATE_ATTACK_HAND;
             gs->witch.stateTimer = 0.3f;
             if (IsSoundReady(shootSound)) PlaySound(shootSound);
-            
-            // Sinh thêm Lốc xoáy điện hệ Thổ
-            float tornRadius = (50.0f + 6.0f * gs->witch.effectiveThoStars) * (1.0f + 0.12f * (lvl - 1));
-            int tornDmg = (8 + 3 * gs->witch.effectiveThoStars) * (1.0f + 0.20f * (lvl - 1));
-            int idx = SpawnProjectile(&gs->projectilePool, gs->witch.position, (Vector2){ 150.0f, 0.0f }, tornRadius, tornDmg, false, (Color){ 240, 180, 50, 255 }, PROJ_TORNADO);
-            if (idx != -1) {
-                gs->projectilePool.projectiles[idx].timer = 5.0f + 0.5f * (lvl - 1); // Tồn tại lâu hơn
-                gs->projectilePool.projectiles[idx].damageTimer = 0.0f;
-            }
-            
-            gs->shakeIntensity = 6.0f;
-            gs->shakeDuration = 0.25f;
             break;
         }
         

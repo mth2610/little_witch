@@ -52,13 +52,13 @@ endif()
 
 execute_process(
   COMMAND "/usr/bin/git"
-          checkout "5.0" --
+          checkout "5.5" --
   WORKING_DIRECTORY "/Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src"
   RESULT_VARIABLE error_code
   ${maybe_show_command}
 )
 if(error_code)
-  message(FATAL_ERROR "Failed to checkout tag: '5.0'")
+  message(FATAL_ERROR "Failed to checkout tag: '5.5'")
 endif()
 
 set(init_submodules TRUE)

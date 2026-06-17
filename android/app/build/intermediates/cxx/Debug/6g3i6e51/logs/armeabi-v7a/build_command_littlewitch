@@ -1,0 +1,4 @@
+/Users/mth2610/Library/Android/sdk/cmake/3.22.1/bin/ninja \
+  -C \
+  /Users/mth2610/Desktop/c_games/little_witch/android/app/.cxx/Debug/6g3i6e51/armeabi-v7a \
+  littlewitch

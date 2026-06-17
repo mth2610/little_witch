@@ -1370,4 +1370,5 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/pthread/sched.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/pthread/pthread_impl.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/pthread/qos.h \
-  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/external/glfw/src/cocoa_time.h
+  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/external/glfw/src/cocoa_time.h \
+  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/external/glfw/src/../include/GLFW/glfw3native.h

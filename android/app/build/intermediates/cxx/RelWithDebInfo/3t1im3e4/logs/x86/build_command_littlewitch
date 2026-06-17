@@ -1,0 +1,4 @@
+/Users/mth2610/Library/Android/sdk/cmake/3.22.1/bin/ninja \
+  -C \
+  /Users/mth2610/Desktop/c_games/little_witch/android/app/.cxx/RelWithDebInfo/3t1im3e4/x86 \
+  littlewitch

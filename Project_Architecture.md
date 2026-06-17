@@ -86,17 +86,26 @@
 ### 3.9 Android AdMob JNI Bridge (`admob_bridge.c` / `AdMobBridge.java`)
 - Cho phép hồi sinh 1 lần duy nhất bằng cách xem quảng cáo Rewarded Video ở màn hình GameOver.
 - Java-side (`AdMobBridge.java`) gọi JNI callbacks (`onRewardedAdCompleted`, `onRewardedAdFailed`) để cập nhật trạng thái `AdState` về phía C.
+- C-side (`admob_bridge.c`) tự động lưu JVM pointer tại `JNI_OnLoad` và cache class reference toàn cục để JNI hoạt động đa luồng. Cung cấp hàm cầu nối (`callStaticVoidMethod`) tự động `Attach`/`Detach` thread JVM của Game Loop để gọi Java (`loadRewardedAd`, `showRewardedAd`).
 
 ---
 
 ## 🛠️ 4. HƯỚNG DẪN BUILD NHANH
-- **Yêu cầu:** CMake 3.12+, GCC/Clang hỗ trợ C99.
+- **Yêu cầu:** CMake 3.12+, GCC/Clang hỗ trợ C99, Android SDK/NDK r27+ (nếu build Android).
 - **Lệnh biên dịch trên PC:**
   ```bash
   cmake -B build
   cmake --build build
   ```
   File thực thi xuất ra tại `build/bin/littlewitch`.
+
+- **Lệnh biên dịch cho Android (APK):**
+  Yêu cầu cài đặt Gradle (hoặc có sẵn cache Wrapper). Cấu hình file `android/local.properties` chỉ đúng đường dẫn SDK và NDK, sau đó chạy lệnh ở thư mục `android/`:
+  ```bash
+  cd android
+  ./gradlew assembleDebug
+  ```
+  File APK đầu ra nằm tại `android/app/build/outputs/apk/debug/app-debug.apk`.
 
 ---
 

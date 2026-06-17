@@ -1,0 +1,231 @@
+ninja: Entering directory `/Users/mth2610/Desktop/c_games/little_witch/android/app/.cxx/RelWithDebInfo/3t1im3e4/arm64-v8a'
+[1/25] Building C object CMakeFiles/littlewitch.dir/src/biome.c.o
+[2/25] Building C object CMakeFiles/littlewitch.dir/src/admob_bridge.c.o
+[3/25] Building C object CMakeFiles/littlewitch.dir/src/enemy_boss.c.o
+/Users/mth2610/Desktop/c_games/little_witch/src/enemy_boss.c:35:58: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+   35 |                 float spawnX = 100.0f + ((float)rand() / RAND_MAX) * (VIRTUAL_WIDTH - 200.0f);
+      |                                                        ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+1 warning generated.
+[4/25] Building C object CMakeFiles/littlewitch.dir/src/enemy_normal.c.o
+[5/25] Building C object CMakeFiles/littlewitch.dir/src/save.c.o
+[6/25] Building C object CMakeFiles/littlewitch.dir/src/particle.c.o
+/Users/mth2610/Desktop/c_games/little_witch/src/particle.c:56:40: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+   56 |         float angle = ((float)rand() / RAND_MAX) * 2.0f * PI;
+      |                                      ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/particle.c:57:48: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+   57 |         float speed = 80.0f + ((float)rand() / RAND_MAX) * 120.0f; // Tốc độ từ 80 đến 200
+      |                                              ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/particle.c:60:50: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+   60 |         float lifetime = 0.4f + ((float)rand() / RAND_MAX) * 0.4f; // Thời gian sống 0.4 - 0.8s
+      |                                                ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/particle.c:61:48: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+   61 |         float radius = 2.0f + ((float)rand() / RAND_MAX) * 4.0f;    // Bán kính hạt 2 - 6px
+      |                                              ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+4 warnings generated.
+[7/25] Building C object CMakeFiles/littlewitch.dir/src/enemy.c.o
+/Users/mth2610/Desktop/c_games/little_witch/src/enemy.c:72:48: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+   72 |     e->shootCooldown = 1.0f + ((float)rand() / RAND_MAX) * 1.5f; // Tránh bắn đồng loạt ngay khi xuất hiện
+      |                                              ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+1 warning generated.
+[8/25] Building C object CMakeFiles/littlewitch.dir/src/biome_procedural.c.o
+[9/25] Building C object CMakeFiles/littlewitch.dir/src/trail.c.o
+[10/25] Building C object CMakeFiles/littlewitch.dir/src/star.c.o
+/Users/mth2610/Desktop/c_games/little_witch/src/star.c:60:36: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+   60 |     s->bobTimer = ((float)rand() / RAND_MAX) * 10.0f; // Bắt đầu lệch pha nhịp lắc lư
+      |                                  ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/star.c:103:50: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  103 |             float size = 1.2f + ((float)rand() / RAND_MAX) * 2.0f;
+      |                                                ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/star.c:112:54: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  112 |             float lifetime = 0.3f + ((float)rand() / RAND_MAX) * 0.3f;
+      |                                                    ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/star.c:170:63: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  170 |                 s->orbitTiltAlpha = (30.0f + ((float)rand() / RAND_MAX) * 30.0f) * DEG2RAD;
+      |                                                             ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/star.c:172:54: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  172 |                 s->orbitTiltBeta = (((float)rand() / RAND_MAX) * 360.0f) * DEG2RAD;
+      |                                                    ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/star.c:184:73: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  184 |                 s->orbitRadius = baseRadius * (0.75f + ((float)rand() / RAND_MAX) * 0.45f);
+      |                                                                       ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/star.c:187:70: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  187 |                 s->orbitSpeed = baseSpeed * (0.8f + ((float)rand() / RAND_MAX) * 0.4f);
+      |                                                                    ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/star.c:188:38: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  188 |                 if (((float)rand() / RAND_MAX) > 0.5f) {
+      |                                    ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+8 warnings generated.
+[11/25] Building C object CMakeFiles/littlewitch.dir/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/sources/android/native_app_glue/android_native_app_glue.c.o
+[12/25] Building C object CMakeFiles/littlewitch.dir/src/witch.c.o
+[13/25] Building C object CMakeFiles/littlewitch.dir/src/skill.c.o
+/Users/mth2610/Desktop/c_games/little_witch/src/skill.c:133:66: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  133 |                 float size = p->radius * 0.3f + ((float)rand() / RAND_MAX) * 2.0f;
+      |                                                                ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/skill.c:138:52: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  138 |                     size = 2.0f + ((float)rand() / RAND_MAX) * 3.5f;
+      |                                                  ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/skill.c:140:52: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  140 |                     float angle = ((float)rand() / RAND_MAX) * 2.0f * PI;
+      |                                                  ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/skill.c:147:58: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  147 |                 float lifetime = 0.3f + ((float)rand() / RAND_MAX) * 0.3f;
+      |                                                        ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/skill.c:148:80: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  148 |                 if (p->type == PROJ_POISON) lifetime = 0.5f + ((float)rand() / RAND_MAX) * 0.6f;
+      |                                                                              ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/skill.c:721:49: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  721 |         float speed = 200.0f + ((float)rand() / RAND_MAX) * 260.0f;
+      |                                               ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+6 warnings generated.
+[14/25] Building C object CMakeFiles/littlewitch.dir/src/ui.c.o
+[15/25] Building C object CMakeFiles/littlewitch.dir/src/main.c.o
+/Users/mth2610/Desktop/c_games/little_witch/src/main.c:716:50: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  716 |         float lifetime = 5.0f + ((float)rand() / RAND_MAX) * 3.0f;
+      |                                                ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+/Users/mth2610/Desktop/c_games/little_witch/src/main.c:717:46: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  717 |         float size = 1.2f + ((float)rand() / RAND_MAX) * 1.8f;
+      |                                            ~ ^~~~~~~~
+/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/stdlib.h:132:18: note: expanded from macro 'RAND_MAX'
+  132 | #define RAND_MAX 0x7fffffff
+      |                  ^~~~~~~~~~
+2 warnings generated.
+[16/25] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.o
+In file included from <built-in>:399:
+<command line>:20:9: warning: 'MAX_MESH_VERTEX_BUFFERS' macro redefined [-Wmacro-redefined]
+   20 | #define MAX_MESH_VERTEX_BUFFERS 9
+      |         ^
+<command line>:19:9: note: previous definition is here
+   19 | #define MAX_MESH_VERTEX_BUFFERS 7
+      |         ^
+1 warning generated.
+[17/25] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.o
+In file included from <built-in>:399:
+<command line>:20:9: warning: 'MAX_MESH_VERTEX_BUFFERS' macro redefined [-Wmacro-redefined]
+   20 | #define MAX_MESH_VERTEX_BUFFERS 9
+      |         ^
+<command line>:19:9: note: previous definition is here
+   19 | #define MAX_MESH_VERTEX_BUFFERS 7
+      |         ^
+1 warning generated.
+[18/25] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/sources/android/native_app_glue/android_native_app_glue.c.o
+In file included from <built-in>:399:
+<command line>:20:9: warning: 'MAX_MESH_VERTEX_BUFFERS' macro redefined [-Wmacro-redefined]
+   20 | #define MAX_MESH_VERTEX_BUFFERS 9
+      |         ^
+<command line>:19:9: note: previous definition is here
+   19 | #define MAX_MESH_VERTEX_BUFFERS 7
+      |         ^
+1 warning generated.
+[19/25] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.o
+In file included from <built-in>:399:
+<command line>:20:9: warning: 'MAX_MESH_VERTEX_BUFFERS' macro redefined [-Wmacro-redefined]
+   20 | #define MAX_MESH_VERTEX_BUFFERS 9
+      |         ^
+<command line>:19:9: note: previous definition is here
+   19 | #define MAX_MESH_VERTEX_BUFFERS 7
+      |         ^
+1 warning generated.
+[20/25] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o
+In file included from <built-in>:399:
+<command line>:20:9: warning: 'MAX_MESH_VERTEX_BUFFERS' macro redefined [-Wmacro-redefined]
+   20 | #define MAX_MESH_VERTEX_BUFFERS 9
+      |         ^
+<command line>:19:9: note: previous definition is here
+   19 | #define MAX_MESH_VERTEX_BUFFERS 7
+      |         ^
+/Users/mth2610/Desktop/c_games/little_witch/android/app/.cxx/RelWithDebInfo/3t1im3e4/arm64-v8a/_deps/raylib-src/src/rcore.c:528:17: warning: Warning: Getting image from the clipboard might not work without SUPPORT_FILEFORMAT_PNG or SUPPORT_FILEFORMAT_JPG [-W#pragma-messages]
+  528 |         #pragma message ("Warning: Getting image from the clipboard might not work without SUPPORT_FILEFORMAT_PNG or SUPPORT_FILEFORMAT_JPG")
+      |                 ^
+2 warnings generated.
+[21/25] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.o
+In file included from <built-in>:399:
+<command line>:20:9: warning: 'MAX_MESH_VERTEX_BUFFERS' macro redefined [-Wmacro-redefined]
+   20 | #define MAX_MESH_VERTEX_BUFFERS 9
+      |         ^
+<command line>:19:9: note: previous definition is here
+   19 | #define MAX_MESH_VERTEX_BUFFERS 7
+      |         ^
+1 warning generated.
+[22/25] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.o
+In file included from <built-in>:399:
+<command line>:20:9: warning: 'MAX_MESH_VERTEX_BUFFERS' macro redefined [-Wmacro-redefined]
+   20 | #define MAX_MESH_VERTEX_BUFFERS 9
+      |         ^
+<command line>:19:9: note: previous definition is here
+   19 | #define MAX_MESH_VERTEX_BUFFERS 7
+      |         ^
+1 warning generated.
+[23/25] Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o
+In file included from <built-in>:399:
+<command line>:20:9: warning: 'MAX_MESH_VERTEX_BUFFERS' macro redefined [-Wmacro-redefined]
+   20 | #define MAX_MESH_VERTEX_BUFFERS 9
+      |         ^
+<command line>:19:9: note: previous definition is here
+   19 | #define MAX_MESH_VERTEX_BUFFERS 7
+      |         ^
+1 warning generated.
+[24/25] Linking C static library _deps/raylib-build/raylib/libraylib.a
+[25/25] Linking C shared library ../../../../build/intermediates/cxx/RelWithDebInfo/3t1im3e4/obj/arm64-v8a/liblittlewitch.so

@@ -1,6 +1,8 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#include "raylib.h"
+
 // ============================================================
 // config.h — Hằng số và cấu hình toàn cục
 // ============================================================
@@ -61,6 +63,35 @@ typedef enum Language {
 // Định nghĩa thêm màu CYAN không có sẵn trong Raylib
 #ifndef CYAN
 #define CYAN CLITERAL(Color){ 0, 255, 255, 255 }
+#endif
+
+// Thư viện Raylib 5.5 đổi tên các hàm IsXReady thành IsXValid.
+// Định nghĩa các macro tương thích nếu biên dịch với phiên bản Raylib >= 5.5.
+#if defined(RAYLIB_VERSION_MAJOR) && (RAYLIB_VERSION_MAJOR >= 5) && defined(RAYLIB_VERSION_MINOR) && (RAYLIB_VERSION_MINOR >= 5)
+  #define IsTextureReady(x)       IsTextureValid(x)
+  #define IsSoundReady(x)         IsSoundValid(x)
+  #define IsMusicReady(x)         IsMusicValid(x)
+  #define IsShaderReady(x)        IsShaderValid(x)
+  #define IsFontReady(x)          IsFontValid(x)
+  #define IsRenderTextureReady(x) IsRenderTextureValid(x)
+#endif
+
+// Hỗ trợ Android: tự động loại bỏ tiền tố "assets/" vì tài nguyên trong APK 
+// được quản lý trực tiếp tại thư mục gốc của AssetManager.
+#ifdef __ANDROID__
+  #include <string.h>
+  static inline const char* stripAssetsPrefix(const char* path) {
+      if (path && strncmp(path, "assets/", 7) == 0) {
+          return path + 7;
+      }
+      return path;
+  }
+  #define FileExists(path)          FileExists(stripAssetsPrefix(path))
+  #define LoadTexture(path)         LoadTexture(stripAssetsPrefix(path))
+  #define LoadShader(vs, fs)        LoadShader(stripAssetsPrefix(vs), stripAssetsPrefix(fs))
+  #define LoadFontEx(path, s, c, n)  LoadFontEx(stripAssetsPrefix(path), s, c, n)
+  #define LoadSound(path)           LoadSound(stripAssetsPrefix(path))
+  #define LoadMusicStream(path)     LoadMusicStream(stripAssetsPrefix(path))
 #endif
 
 #endif // CONFIG_H

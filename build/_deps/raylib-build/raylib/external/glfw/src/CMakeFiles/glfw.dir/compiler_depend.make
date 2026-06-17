@@ -1366,6 +1366,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o: 
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -2740,6 +2741,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -4120,6 +4122,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -4919,6 +4922,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o: 
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -6292,6 +6296,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -7090,6 +7095,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.o: _de
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -7888,6 +7894,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o:
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -8686,6 +8693,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.o: _deps/
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -9484,6 +9492,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.o: _deps
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -10283,6 +10292,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.o: _de
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -11656,6 +11666,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -12454,6 +12465,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.o: _
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -13252,6 +13264,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -14050,6 +14063,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -14848,6 +14862,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.o:
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -15646,6 +15661,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -16444,6 +16460,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.o: _d
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -17243,6 +17260,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -18041,6 +18059,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -18839,6 +18858,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o: _dep
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -19637,6 +19657,7 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.o: _dep
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/xmmintrin.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
+  _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_platform.h \
   _deps/raylib-src/src/external/glfw/src/cocoa_time.h \
@@ -19676,6 +19697,8 @@ _deps/raylib-src/src/external/glfw/src/null_platform.h:
 _deps/raylib-src/src/external/glfw/src/cocoa_time.h:
 
 _deps/raylib-src/src/external/glfw/src/cocoa_joystick.h:
+
+_deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdarg.h:
 

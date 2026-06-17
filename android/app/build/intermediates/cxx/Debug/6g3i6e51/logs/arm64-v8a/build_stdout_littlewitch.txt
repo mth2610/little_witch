@@ -1,0 +1,2 @@
+ninja: Entering directory `/Users/mth2610/Desktop/c_games/little_witch/android/app/.cxx/Debug/6g3i6e51/arm64-v8a'
+ninja: no work to do.

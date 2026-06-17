@@ -17,6 +17,7 @@ extern Texture2D fluteTexture;
 extern bool witchSpritesheetLoaded;
 extern Shader shieldShader;
 extern bool shieldShaderLoaded;
+extern Texture2D shieldBackgroundTexture;
 
 // ----------------------------------------------------------------
 // HÀM CÔNG KHAI
@@ -42,7 +43,7 @@ void InitWitch(Witch *witch, PermanentUpgrades upgrades) {
     // Bật tất cả các kỹ năng chủ động sẵn sàng từ đầu và đặt cấp ban đầu = 1
     for (int i = 0; i < SKILL_COUNT; i++) {
         witch->activeSkills[i] = true;
-        witch->skillLevels[i] = 1;
+        witch->skillLevels[i] = 2;
     }
     
     // Khởi tạo cooldown và active timer
@@ -187,6 +188,15 @@ void UpdateWitch(Witch *witch, float deltaTime) {
         }
     }
     
+    // Cập nhật hồi chiêu đòn đánh thường bàn phím/touch (Space)
+    // Lý do: Đồng bộ hóa toàn bộ các biến cooldown của nhân vật trong một hàm Update duy nhất để tránh phân mảnh logic ở main.c
+    if (witch->keyboardAttackCooldown > 0.0f) {
+        witch->keyboardAttackCooldown -= deltaTime;
+        if (witch->keyboardAttackCooldown < 0.0f) {
+            witch->keyboardAttackCooldown = 0.0f;
+        }
+    }
+    
     // Cập nhật khiên ma thuật hệ Thủy tự kích hoạt
     if (witch->manaShieldHealth > 0.0f) {
         witch->manaShieldHealth -= deltaTime / 3.0f; // Khiên tồn tại trong 3 giây
@@ -261,7 +271,7 @@ void DrawWitch(const Witch *witch) {
                         frameHeight 
                     };
                     
-                    float drawSize = 112.0f;
+                    float drawSize = 90.0f;
                     Rectangle destRec = { histPos.x, histPos.y, drawSize, drawSize };
                     Vector2 origin = { drawSize / 2.0f, drawSize / 2.0f };
                     
@@ -328,6 +338,9 @@ void DrawWitch(const Witch *witch) {
                 SetShaderValue(shieldShader, centerLoc, &centerVal, SHADER_UNIFORM_VEC2);
                 SetShaderValue(shieldShader, radiusLoc, &radiusVal, SHADER_UNIFORM_FLOAT);
                 
+                int screenTexLoc = GetShaderLocation(shieldShader, "screenTexture");
+                SetShaderValueTexture(shieldShader, screenTexLoc, shieldBackgroundTexture);
+                
                 DrawRectangleRec((Rectangle){ witch->position.x - radiusVal, witch->position.y - radiusVal, radiusVal * 2.0f, radiusVal * 2.0f }, WHITE);
                 EndShaderMode();
             } else {
@@ -381,7 +394,7 @@ void DrawWitch(const Witch *witch) {
             Rectangle sourceRec = { witch->animFrame * frameWidth, 0.0f, sourceWidth, frameHeight };
             
             // Tỷ lệ hiển thị tối ưu
-            float drawH = 120.0f;
+            float drawH = 96.0f;
             float drawW = drawH * (frameWidth / frameHeight);
             
             Rectangle destRec = { drawPos.x, drawPos.y, drawW, drawH };
@@ -401,7 +414,7 @@ void DrawWitch(const Witch *witch) {
                 frameHeight 
             };
             
-            float drawSize = 112.0f;
+            float drawSize = 90.0f;
             Rectangle destRec = { drawPos.x, drawPos.y, drawSize, drawSize };
             Vector2 origin = { drawSize / 2.0f, drawSize / 2.0f };
             
@@ -568,6 +581,9 @@ void DrawWitch(const Witch *witch) {
                 SetShaderValue(shieldShader, glowColorLoc, &glowCol, SHADER_UNIFORM_VEC4);
                 SetShaderValue(shieldShader, centerLoc, &centerVal, SHADER_UNIFORM_VEC2);
                 SetShaderValue(shieldShader, radiusLoc, &radiusVal, SHADER_UNIFORM_FLOAT);
+                
+                int screenTexLoc = GetShaderLocation(shieldShader, "screenTexture");
+                SetShaderValueTexture(shieldShader, screenTexLoc, shieldBackgroundTexture);
                 
                 DrawRectangleRec((Rectangle){ pos.x - radiusVal, pos.y - radiusVal, radiusVal * 2.0f, radiusVal * 2.0f }, WHITE);
                 EndShaderMode();

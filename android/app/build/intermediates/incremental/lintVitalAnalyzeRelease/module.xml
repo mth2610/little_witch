@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="/Users/mth2610/Desktop/c_games/little_witch/android/app"
+    name=":app"
+    type="APP"
+    maven="android:app:"
+    agpVersion="8.2.2"
+    buildFolder="build"
+    bootClassPath="/Users/mth2610/Library/Android/sdk/platforms/android-34/android.jar:/Users/mth2610/Library/Android/sdk/build-tools/34.0.0/core-lambda-stubs.jar"
+    javaSourceLevel="1.8"
+    compileTarget="android-34"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>

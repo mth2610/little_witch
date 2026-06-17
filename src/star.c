@@ -414,9 +414,10 @@ void UpdateEffectiveStarCounts(StarPool *pool, Witch *witch) {
     }
     
     // Sao ngũ sắc (Rainbow) được tính cộng thêm vào cho tất cả các hệ
-    witch->effectiveKimStars = kim + rainbow;
-    witch->effectiveMocStars = moc + rainbow;
-    witch->effectiveThuyStars = thuy + rainbow;
-    witch->effectiveHoaStars = hoa + rainbow;
-    witch->effectiveThoStars = tho + rainbow;
+    // Thêm +2 sao cơ sở cho tất cả các hệ để test ngay các chiêu thức mạnh cấp 2 từ đầu (yêu cầu của user)
+    witch->effectiveKimStars = kim + rainbow + 2;
+    witch->effectiveMocStars = moc + rainbow + 2;
+    witch->effectiveThuyStars = thuy + rainbow + 2;
+    witch->effectiveHoaStars = hoa + rainbow + 2;
+    witch->effectiveThoStars = tho + rainbow + 2;
 }

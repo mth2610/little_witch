@@ -3,7 +3,17 @@
 // ============================================================
 
 #include "save.h"
+#include "raylib.h"
 #include <stdio.h>
+
+// Lấy đường dẫn lưu file phù hợp cho từng nền tảng (Android cần lưu ở App Directory)
+static const char* GetSaveFilePath(void) {
+#ifdef __ANDROID__
+    return TextFormat("%s/%s", GetApplicationDirectory(), SAVE_FILE_PATH);
+#else
+    return SAVE_FILE_PATH;
+#endif
+}
 
 // ----------------------------------------------------------------
 // HÀM CÔNG KHAI
@@ -31,7 +41,7 @@ SaveData LoadSaveData(void) {
         data.upgrades.level[i] = 0;
     }
     
-    FILE *file = fopen(SAVE_FILE_PATH, "rb");
+    FILE *file = fopen(GetSaveFilePath(), "rb");
     if (file == NULL) {
         // File không tồn tại (chạy lần đầu)
         return data;
@@ -65,7 +75,7 @@ SaveData LoadSaveData(void) {
 void WriteSaveData(const SaveData *data) {
     if (data == NULL) return;
     
-    FILE *file = fopen(SAVE_FILE_PATH, "wb");
+    FILE *file = fopen(GetSaveFilePath(), "wb");
     if (file == NULL) {
         // Không thể mở file ghi (ví dụ không có quyền ghi)
         return;
@@ -77,5 +87,5 @@ void WriteSaveData(const SaveData *data) {
 
 // Xóa file save vật lý trên đĩa
 void ResetSaveData(void) {
-    remove(SAVE_FILE_PATH);
+    remove(GetSaveFilePath());
 }

@@ -2,6 +2,9 @@ CMakeFiles/littlewitch.dir/src/admob_bridge.c.o: \
   /Users/mth2610/Desktop/c_games/little_witch/src/admob_bridge.c \
   /Users/mth2610/Desktop/c_games/little_witch/include/admob_bridge.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/config.h \
+  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raylib.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdarg.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdbool.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h \

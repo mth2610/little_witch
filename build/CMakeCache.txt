@@ -20,7 +20,7 @@ BUILD_EXAMPLES:BOOL=OFF
 //Build raylib games
 BUILD_GAMES:BOOL=OFF
 
-// 
+//Build shared libraries
 BUILD_SHARED_LIBS:BOOL=OFF
 
 //Path to a program.
@@ -363,9 +363,7 @@ GLFW_INSTALL:BOOL=OFF
 //Value Computed by CMake
 GLFW_IS_TOP_LEVEL:STATIC=OFF
 
-//Library type override for GLFW (SHARED, STATIC, OBJECT, or empty
-// to follow BUILD_SHARED_LIBS)
-GLFW_LIBRARY_TYPE:STRING=
+GLFW_LIBRARY_TYPE:STRING=OBJECT
 
 //Value Computed by CMake
 GLFW_SOURCE_DIR:STATIC=/Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/external/glfw
@@ -387,24 +385,20 @@ OPENGL_VERSION:STRING=OFF
 //Platform to build for.
 PLATFORM:STRING=Desktop
 
-//Use busy wait loop for timing sync instead of a high-resolution
-// timer
+RL_SUPPORT_MESH_GPU_SKINNING:BOOL=ON
+
+SUPPORT_AUTOMATION_EVENTS:BOOL=ON
+
 SUPPORT_BUSY_WAIT_LOOP:BOOL=OFF
 
-//Provide camera module (rcamera.h) with multiple predefined cameras:
-// free, 1st/3rd person, orbital
 SUPPORT_CAMERA_SYSTEM:BOOL=ON
 
-//Support for compression API
+SUPPORT_CLIPBOARD_IMAGE:BOOL=ON
+
 SUPPORT_COMPRESSION_API:BOOL=ON
 
-//Enabling this flag allows manual control of the frame processes,
-// use at your own risk
 SUPPORT_CUSTOM_FRAME_CONTROL:BOOL=OFF
 
-//Default font is loaded on window initialization to be available
-// for the user to render simple text. If enabled, uses external
-// module functions to load default raylib font (module: text)
 SUPPORT_DEFAULT_FONT:BOOL=ON
 
 //Support automatic generated events, loading and recording of
@@ -415,175 +409,116 @@ SUPPORT_EVENTS_AUTOMATION:BOOL=OFF
 // of polling them actively every frame
 SUPPORT_EVENTS_WAITING:BOOL=OFF
 
-//Support loading ASTC as textures
 SUPPORT_FILEFORMAT_ASTC:BOOL=OFF
 
-//Support loading BMP as textures
+SUPPORT_FILEFORMAT_BDF:BOOL=OFF
+
 SUPPORT_FILEFORMAT_BMP:BOOL=OFF
 
-//Support loading DDS as textures
 SUPPORT_FILEFORMAT_DDS:BOOL=ON
 
-//Support loading FLAC for sound
 SUPPORT_FILEFORMAT_FLAC:BOOL=OFF
 
-//Support loading fonts in FNT format
 SUPPORT_FILEFORMAT_FNT:BOOL=ON
 
-//Support loading GIF as textures
 SUPPORT_FILEFORMAT_GIF:BOOL=ON
 
-//Support loading GLTF file format
 SUPPORT_FILEFORMAT_GLTF:BOOL=ON
 
-//Support loading HDR as textures
 SUPPORT_FILEFORMAT_HDR:BOOL=ON
 
-//Support loading IQM file format
 SUPPORT_FILEFORMAT_IQM:BOOL=ON
 
-//Support loading JPG as textures
 SUPPORT_FILEFORMAT_JPG:BOOL=OFF
 
-//Support loading KTX as textures
 SUPPORT_FILEFORMAT_KTX:BOOL=OFF
 
-//Support loading M3D file format
 SUPPORT_FILEFORMAT_M3D:BOOL=ON
 
-//Support loading MOD for sound
 SUPPORT_FILEFORMAT_MOD:BOOL=ON
 
-//Support loading MP3 for sound
 SUPPORT_FILEFORMAT_MP3:BOOL=ON
 
-//Support loading MTL file format
 SUPPORT_FILEFORMAT_MTL:BOOL=ON
 
-//Support loading OBJ file format
 SUPPORT_FILEFORMAT_OBJ:BOOL=ON
 
-//Support loading OGG for sound
 SUPPORT_FILEFORMAT_OGG:BOOL=ON
 
-//Support loading PIC as textures
 SUPPORT_FILEFORMAT_PIC:BOOL=OFF
 
-//Support loading PKM as textures
 SUPPORT_FILEFORMAT_PKM:BOOL=OFF
 
-//Support loading PNG as textures
 SUPPORT_FILEFORMAT_PNG:BOOL=ON
 
 //Support loading PNM as textures
 SUPPORT_FILEFORMAT_PNM:BOOL=OFF
 
-//Support loading PSD as textures
 SUPPORT_FILEFORMAT_PSD:BOOL=OFF
 
-//Support loading PVR as textures
 SUPPORT_FILEFORMAT_PVR:BOOL=OFF
 
-//Support loading QOA for sound
 SUPPORT_FILEFORMAT_QOA:BOOL=ON
 
-//Support loading QOI as textures
 SUPPORT_FILEFORMAT_QOI:BOOL=ON
 
 //Support loading SVG as textures
 SUPPORT_FILEFORMAT_SVG:BOOL=OFF
 
-//Support loading TGA as textures
 SUPPORT_FILEFORMAT_TGA:BOOL=OFF
 
-//Support loading font in TTF/OTF format
 SUPPORT_FILEFORMAT_TTF:BOOL=ON
 
-//Support loading VOX file format
 SUPPORT_FILEFORMAT_VOX:BOOL=ON
 
-//Support loading WAV for sound
 SUPPORT_FILEFORMAT_WAV:BOOL=ON
 
-//Support loading XM for sound
 SUPPORT_FILEFORMAT_XM:BOOL=ON
 
-//Support white rec on font atlas bottom-right corner
 SUPPORT_FONT_ATLAS_WHITE_REC:BOOL=ON
 
-//Gestures module is included (rgestures.h) to support gestures
-// detection: tap, hold, swipe, drag
 SUPPORT_GESTURES_SYSTEM:BOOL=ON
 
-//Allow automatic gif recording of current screen pressing CTRL+F12,
-// defined in KeyCallback()
 SUPPORT_GIF_RECORDING:BOOL=ON
 
-//Support image exporting to file
 SUPPORT_IMAGE_EXPORT:BOOL=ON
 
-//Support procedural image generation functionality (gradient,
-// spot, perlin-noise, cellular)
 SUPPORT_IMAGE_GENERATION:BOOL=ON
 
-//Support multiple image editing functions to scale, adjust colors,
-// flip, draw on images, crop... If not defined only three image
-// editing functions supported: ImageFormat(), ImageAlphaMask(),
-// ImageToPOT()
 SUPPORT_IMAGE_MANIPULATION:BOOL=ON
 
-//Support procedural mesh generation functions, uses external par_shapes.h
-// library. NOTE: Some generated meshes DO NOT include generated
-// texture coordinates
 SUPPORT_MESH_GENERATION:BOOL=ON
 
-//Include module: raudio
 SUPPORT_MODULE_RAUDIO:BOOL=ON
 
-//Include module: rmodels
 SUPPORT_MODULE_RMODELS:BOOL=ON
 
-//Include module: rshapes
 SUPPORT_MODULE_RSHAPES:BOOL=ON
 
-//Include module: rtext
 SUPPORT_MODULE_RTEXT:BOOL=ON
 
-//Include module: rtextures
 SUPPORT_MODULE_RTEXTURES:BOOL=ON
 
-//Mouse gestures are directly mapped like touches and processed
-// by gestures system
 SUPPORT_MOUSE_GESTURES:BOOL=ON
 
-//Use QUADS instead of TRIANGLES for drawing when possible. Some
-// lines-based shapes could still use lines
+SUPPORT_PARTIALBUSY_WAIT_LOOP:BOOL=ON
+
 SUPPORT_QUADS_DRAW_MODE:BOOL=ON
 
-//Include pseudo-random numbers generator (rprand.h), based on
-// Xoshiro128** and SplitMix64
 SUPPORT_RPRAND_GENERATOR:BOOL=ON
 
-//Allow automatic screen capture of current screen pressing F12,
-// defined in KeyCallback()
 SUPPORT_SCREEN_CAPTURE:BOOL=ON
 
-//Reconfigure standard input to receive key inputs, works with
-// SSH connection
 SUPPORT_SSH_KEYBOARD_RPI:BOOL=ON
 
-//Support standard file io library (stdio.h)
 SUPPORT_STANDARD_FILEIO:BOOL=ON
 
-//Support text manipulation functions
 SUPPORT_TEXT_MANIPULATION:BOOL=ON
 
-//Show TraceLog() output messages. NOTE: By default LOG_DEBUG traces
-// not shown
 SUPPORT_TRACELOG:BOOL=ON
 
-//Setting a higher resolution can improve the accuracy of time-out
-// intervals in wait functions
+SUPPORT_TRACELOG_DEBUG:BOOL=OFF
+
 SUPPORT_WINMM_HIGHRES_TIMER:BOOL=ON
 
 //Build raylib with audio module
@@ -814,6 +749,10 @@ CPACK_SOURCE_ZIP-ADVANCED:INTERNAL=1
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //ADVANCED property for variable: GIT_EXECUTABLE
 GIT_EXECUTABLE-ADVANCED:INTERNAL=1
+//Build support for Wayland
+GLFW_BUILD_WAYLAND:INTERNAL=OFF
+//Build support for X11
+GLFW_BUILD_X11:INTERNAL=ON
 //GLFW pkg-config Libs.private
 GLFW_PKG_CONFIG_LIBS_PRIVATE:INTERNAL= -framework Cocoa -framework IOKit -framework CoreFoundation
 //GLFW pkg-config Requires.private
@@ -824,7 +763,7 @@ OFF:INTERNAL=OFF
 //STRINGS property for variable: OPENGL_VERSION
 OPENGL_VERSION-STRINGS:INTERNAL=OFF;4.3;3.3;2.1;1.1;ES 2.0;ES 3.0
 //STRINGS property for variable: PLATFORM
-PLATFORM-STRINGS:INTERNAL=Desktop;Web;Android;Raspberry Pi;DRM
+PLATFORM-STRINGS:INTERNAL=Desktop;Web;Android;Raspberry Pi;DRM;SDL
 //STRINGS property for variable: USE_EXTERNAL_GLFW
 USE_EXTERNAL_GLFW-STRINGS:INTERNAL=OFF;IF_POSSIBLE;ON
 //CMAKE_INSTALL_PREFIX during last run

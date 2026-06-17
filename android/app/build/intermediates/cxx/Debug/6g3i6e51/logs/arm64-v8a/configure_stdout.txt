@@ -1,0 +1,80 @@
+-- The C compiler identification is Clang 18.0.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- The CXX compiler identification is Clang 18.0.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Users/mth2610/Library/Android/sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test COMPILER_HAS_THOSE_TOGGLES
+-- Performing Test COMPILER_HAS_THOSE_TOGGLES - Success
+-- Testing if -Werror=pointer-arith can be used -- compiles
+-- Testing if -Werror=implicit-function-declaration can be used -- compiles
+-- Testing if -fno-strict-aliasing can be used -- compiles
+-- Testing if -ffunction-sections can be used -- compiles
+-- Testing if -funwind-tables can be used -- compiles
+-- Testing if -fstack-protector-strong can be used -- compiles
+-- Testing if -Wa,--noexecstack can be used -- compiles
+-- Testing if -no-canonical-prefixes can be used -- compiles
+-- Using external GLFW
+-- Audio Backend: miniaudio
+-- Building raylib static library
+-- SUPPORT_MODULE_RSHAPES=ON
+-- SUPPORT_MODULE_RTEXTURES=ON
+-- SUPPORT_MODULE_RTEXT=ON
+-- SUPPORT_MODULE_RMODELS=ON
+-- SUPPORT_MODULE_RAUDIO=ON
+-- SUPPORT_CAMERA_SYSTEM=ON
+-- SUPPORT_GESTURES_SYSTEM=ON
+-- SUPPORT_RPRAND_GENERATOR=ON
+-- SUPPORT_MOUSE_GESTURES=ON
+-- SUPPORT_SSH_KEYBOARD_RPI=ON
+-- SUPPORT_WINMM_HIGHRES_TIMER=ON
+-- SUPPORT_PARTIALBUSY_WAIT_LOOP=ON
+-- SUPPORT_SCREEN_CAPTURE=ON
+-- SUPPORT_GIF_RECORDING=ON
+-- SUPPORT_COMPRESSION_API=ON
+-- SUPPORT_AUTOMATION_EVENTS=ON
+-- RL_SUPPORT_MESH_GPU_SKINNING=ON
+-- SUPPORT_QUADS_DRAW_MODE=ON
+-- SUPPORT_FILEFORMAT_PNG=ON
+-- SUPPORT_FILEFORMAT_GIF=ON
+-- SUPPORT_FILEFORMAT_QOI=ON
+-- SUPPORT_FILEFORMAT_DDS=ON
+-- SUPPORT_IMAGE_EXPORT=ON
+-- SUPPORT_IMAGE_GENERATION=ON
+-- SUPPORT_IMAGE_MANIPULATION=ON
+-- SUPPORT_DEFAULT_FONT=ON
+-- SUPPORT_FILEFORMAT_TTF=ON
+-- SUPPORT_FILEFORMAT_FNT=ON
+-- SUPPORT_TEXT_MANIPULATION=ON
+-- SUPPORT_FONT_ATLAS_WHITE_REC=ON
+-- SUPPORT_FILEFORMAT_OBJ=ON
+-- SUPPORT_FILEFORMAT_MTL=ON
+-- SUPPORT_FILEFORMAT_IQM=ON
+-- SUPPORT_FILEFORMAT_GLTF=ON
+-- SUPPORT_FILEFORMAT_VOX=ON
+-- SUPPORT_FILEFORMAT_M3D=ON
+-- SUPPORT_MESH_GENERATION=ON
+-- SUPPORT_FILEFORMAT_WAV=ON
+-- SUPPORT_FILEFORMAT_OGG=ON
+-- SUPPORT_FILEFORMAT_MP3=ON
+-- SUPPORT_FILEFORMAT_QOA=ON
+-- SUPPORT_FILEFORMAT_XM=ON
+-- SUPPORT_FILEFORMAT_MOD=ON
+-- SUPPORT_STANDARD_FILEIO=ON
+-- SUPPORT_TRACELOG=ON
+-- SUPPORT_CLIPBOARD_IMAGE=ON
+-- SUPPORT_FILEFORMAT_PNG=ON
+-- SUPPORT_MODULE_RTEXTURES=ON
+-- Generated build type: Debug
+-- Compiling with the flags:
+--   PLATFORM=PLATFORM_ANDROID
+--   GRAPHICS=GRAPHICS_API_OPENGL_ES2
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/mth2610/Desktop/c_games/little_witch/android/app/.cxx/Debug/6g3i6e51/arm64-v8a

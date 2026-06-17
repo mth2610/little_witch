@@ -304,7 +304,6 @@ bin/littlewitch: CMakeFiles/littlewitch.dir/src/ui.c.o
 bin/littlewitch: CMakeFiles/littlewitch.dir/src/witch.c.o
 bin/littlewitch: CMakeFiles/littlewitch.dir/build.make
 bin/littlewitch: _deps/raylib-build/raylib/libraylib.a
-bin/littlewitch: _deps/raylib-build/raylib/external/glfw/src/libglfw3.a
 bin/littlewitch: CMakeFiles/littlewitch.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking C executable bin/littlewitch"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/littlewitch.dir/link.txt --verbose=$(VERBOSE)

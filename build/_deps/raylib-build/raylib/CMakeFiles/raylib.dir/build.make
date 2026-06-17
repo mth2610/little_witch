@@ -72,10 +72,24 @@ include _deps/raylib-build/raylib/CMakeFiles/raylib.dir/flags.make
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/codegen:
 .PHONY : _deps/raylib-build/raylib/CMakeFiles/raylib.dir/codegen
 
+_deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/flags.make
+_deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o: _deps/raylib-src/src/raudio.c
+_deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o"
+	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o -MF CMakeFiles/raylib.dir/raudio.c.o.d -o CMakeFiles/raylib.dir/raudio.c.o -c /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raudio.c
+
+_deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/raylib.dir/raudio.c.i"
+	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raudio.c > CMakeFiles/raylib.dir/raudio.c.i
+
+_deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/raylib.dir/raudio.c.s"
+	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raudio.c -o CMakeFiles/raylib.dir/raudio.c.s
+
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/flags.make
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o: _deps/raylib-src/src/rcore.c
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o"
 	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o -MF CMakeFiles/raylib.dir/rcore.c.o.d -o CMakeFiles/raylib.dir/rcore.c.o -c /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/rcore.c
 
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.i: cmake_force
@@ -89,7 +103,7 @@ _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.s: cmake_force
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/flags.make
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.o: _deps/raylib-src/src/rmodels.c
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.o"
 	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.o -MF CMakeFiles/raylib.dir/rmodels.c.o.d -o CMakeFiles/raylib.dir/rmodels.c.o -c /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/rmodels.c
 
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.i: cmake_force
@@ -103,7 +117,7 @@ _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.s: cmake_force
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/flags.make
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.o: _deps/raylib-src/src/rshapes.c
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.o"
 	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.o -MF CMakeFiles/raylib.dir/rshapes.c.o.d -o CMakeFiles/raylib.dir/rshapes.c.o -c /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/rshapes.c
 
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.i: cmake_force
@@ -117,7 +131,7 @@ _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.s: cmake_force
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/flags.make
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.o: _deps/raylib-src/src/rtext.c
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.o"
 	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.o -MF CMakeFiles/raylib.dir/rtext.c.o.d -o CMakeFiles/raylib.dir/rtext.c.o -c /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/rtext.c
 
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.i: cmake_force
@@ -131,7 +145,7 @@ _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.s: cmake_force
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/flags.make
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.o: _deps/raylib-src/src/rtextures.c
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.o"
 	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.o -MF CMakeFiles/raylib.dir/rtextures.c.o.d -o CMakeFiles/raylib.dir/rtextures.c.o -c /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/rtextures.c
 
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.i: cmake_force
@@ -145,7 +159,7 @@ _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.s: cmake_force
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/flags.make
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.o: _deps/raylib-src/src/utils.c
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.o"
 	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.o -MF CMakeFiles/raylib.dir/utils.c.o.d -o CMakeFiles/raylib.dir/utils.c.o -c /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/utils.c
 
 _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.i: cmake_force
@@ -156,29 +170,15 @@ _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/raylib.dir/utils.c.s"
 	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/utils.c -o CMakeFiles/raylib.dir/utils.c.s
 
-_deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/flags.make
-_deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o: _deps/raylib-src/src/raudio.c
-_deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o"
-	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o -MF CMakeFiles/raylib.dir/raudio.c.o.d -o CMakeFiles/raylib.dir/raudio.c.o -c /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raudio.c
-
-_deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/raylib.dir/raudio.c.i"
-	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raudio.c > CMakeFiles/raylib.dir/raudio.c.i
-
-_deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/raylib.dir/raudio.c.s"
-	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raudio.c -o CMakeFiles/raylib.dir/raudio.c.s
-
 # Object files for target raylib
 raylib_OBJECTS = \
+"CMakeFiles/raylib.dir/raudio.c.o" \
 "CMakeFiles/raylib.dir/rcore.c.o" \
 "CMakeFiles/raylib.dir/rmodels.c.o" \
 "CMakeFiles/raylib.dir/rshapes.c.o" \
 "CMakeFiles/raylib.dir/rtext.c.o" \
 "CMakeFiles/raylib.dir/rtextures.c.o" \
-"CMakeFiles/raylib.dir/utils.c.o" \
-"CMakeFiles/raylib.dir/raudio.c.o"
+"CMakeFiles/raylib.dir/utils.c.o"
 
 # External object files for target raylib
 raylib_EXTERNAL_OBJECTS = \
@@ -204,13 +204,13 @@ raylib_EXTERNAL_OBJECTS = \
 "/Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o" \
 "/Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o"
 
+_deps/raylib-build/raylib/libraylib.a: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o
 _deps/raylib-build/raylib/libraylib.a: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o
 _deps/raylib-build/raylib/libraylib.a: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rmodels.c.o
 _deps/raylib-build/raylib/libraylib.a: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rshapes.c.o
 _deps/raylib-build/raylib/libraylib.a: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtext.c.o
 _deps/raylib-build/raylib/libraylib.a: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rtextures.c.o
 _deps/raylib-build/raylib/libraylib.a: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/utils.c.o
-_deps/raylib-build/raylib/libraylib.a: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/raudio.c.o
 _deps/raylib-build/raylib/libraylib.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.o
 _deps/raylib-build/raylib/libraylib.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.o
 _deps/raylib-build/raylib/libraylib.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.o

@@ -477,9 +477,10 @@ _deps/raylib-build/raylib/CMakeFiles/raylib.dir/rcore.c.o: _deps/raylib-src/src/
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3.h \
   _deps/raylib-src/src/external/glfw/include/GLFW/glfw3native.h \
   _deps/raylib-src/src/external/msf_gif.h \
+  _deps/raylib-src/src/external/rprand.h \
   _deps/raylib-src/src/external/sdefl.h \
   _deps/raylib-src/src/external/sinfl.h \
-  _deps/raylib-src/src/platforms/rcore_desktop.c \
+  _deps/raylib-src/src/platforms/rcore_desktop_glfw.c \
   _deps/raylib-src/src/raylib.h \
   _deps/raylib-src/src/raymath.h \
   _deps/raylib-src/src/rcamera.h \
@@ -993,9 +994,13 @@ _deps/raylib-src/src/external/cgltf.h:
 
 _deps/raylib-src/src/raymath.h:
 
-_deps/raylib-src/src/external/sinfl.h:
+_deps/raylib-src/src/platforms/rcore_desktop_glfw.c:
 
 _deps/raylib-src/src/external/sdefl.h:
+
+_deps/raylib-src/src/external/sinfl.h:
+
+_deps/raylib-src/src/external/rprand.h:
 
 _deps/raylib-src/src/external/msf_gif.h:
 
@@ -1652,8 +1657,6 @@ _deps/raylib-src/src/external/stb_image.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers/AudioToolbox.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_wctype_t.h:
-
-_deps/raylib-src/src/platforms/rcore_desktop.c:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h:
 

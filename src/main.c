@@ -56,6 +56,7 @@ Font gameFont;
 // Shader khiên bảo vệ toàn cục
 Shader shieldShader;
 bool shieldShaderLoaded = false;
+Texture2D shieldBackgroundTexture;
 
 // Biến tỷ lệ và căn lề cho màn hình ảo (Letterbox)
 static float s_scale = 1.0f;
@@ -279,6 +280,7 @@ static void checkCollisions(GameState *gs) {
         
         Projectile *proj = &gs->projectilePool.projectiles[p];
         if (proj->type != PROJ_POISON && proj->type != PROJ_TORNADO) continue;
+        if (proj->isWeak) continue; // Đạn yếu ớt bay thẳng, va chạm trực tiếp ở 2.2
         
         if (proj->damageTimer <= 0.0f) {
             bool dealtDamage = false;
@@ -328,7 +330,9 @@ static void checkCollisions(GameState *gs) {
         if (!gs->projectilePool.projectiles[p].active || gs->projectilePool.projectiles[p].isEnemy) continue;
         
         Projectile *proj = &gs->projectilePool.projectiles[p];
-        if (proj->type == PROJ_POISON || proj->type == PROJ_TORNADO) continue;
+        if (!proj->isWeak) {
+            if (proj->type == PROJ_POISON || proj->type == PROJ_TORNADO) continue;
+        }
         
         for (int e = 0; e < MAX_ENEMIES; e++) {
             if (!gs->enemyPool.enemies[e].active) continue;
@@ -338,7 +342,23 @@ static void checkCollisions(GameState *gs) {
             
             float dist = Vector2Distance(proj->position, enemy->position);
             if (dist < proj->radius + enemy->collisionRadius) {
-                if (proj->type == PROJ_SHURIKEN) {
+                if (proj->isWeak) {
+                    // Đạn yếu: va chạm trực tiếp, gây sát thương thường, nổ nhỏ và biến mất
+                    bool killed = DamageEnemy(&gs->enemyPool, e, proj->damage);
+                    SpawnExplosion(&gs->particlePool, proj->position, 6, proj->color);
+                    proj->active = false;
+                    
+                    if (killed) {
+                        gs->witch.score += (enemy->type >= ENEMY_BOSS_FOREST) ? 200 : 25;
+                        gs->witch.gold += GetEnemyGoldDrop(enemy->type);
+                        SpawnExplosion(&gs->particlePool, enemy->position, 14, RED);
+                        if (enemy->type >= ENEMY_BOSS_FOREST) {
+                            AdvanceToNextBiome(gs);
+                        }
+                    }
+                    break; // Phá hủy đạn nên dừng check quái khác
+                }
+                else if (proj->type == PROJ_SHURIKEN) {
                     // Phi tiêu vàng xuyên thấu hệ Kim
                     if (enemy->rainbowCooldown <= 0.0f) {
                         bool killed = DamageEnemy(&gs->enemyPool, e, proj->damage);
@@ -675,26 +695,17 @@ static void UpdateGameplay(GameState *gs, float deltaTime) {
     }
     
     // 5.5 TẤN CÔNG ĐÁNH THƯỜNG (PC: SPACEBAR, MOBILE: NÚT BẤM TRÒN LỚN)
-    if (gs->witch.keyboardAttackCooldown > 0.0f) {
-        gs->witch.keyboardAttackCooldown -= deltaTime;
-    }
-    
     Vector2 attackCenter = { 1150.0f, 600.0f };
     bool normalAttackBtnPressed = IsCircleButtonClicked(attackCenter, 48.0f);
     
     if (IsKeyPressed(KEY_SPACE) || IsKeyDown(KEY_SPACE) || normalAttackBtnPressed) {
         if (gs->witch.keyboardAttackCooldown <= 0.0f) {
-            // Nữ pháp sư phóng bùa chú/lửa thẳng về phía trước (sang phải) để tự vệ
-            Vector2 projVel = { 550.0f, 0.0f }; // Tốc độ bay nhanh
-            SpawnProjectile(&gs->projectilePool, gs->witch.position, projVel, 6.0f, 8, false, ORANGE, PROJ_FIREBALL);
+            // Gọi hàm tấn công thường đã được module hóa
+            // Lý do: Đảm bảo đòn đánh thường yếu hoạt động chính xác khi có 0 sao và đòn đánh chuẩn hoạt động khi có >= 1 sao
+            CastNormalAttack(gs);
             
             // Thiết lập hồi chiêu đánh thường bằng phím cách (0.35s)
             gs->witch.keyboardAttackCooldown = 0.35f;
-            
-            // Kích hoạt hoạt ảnh tấn công
-            gs->witch.animState = WITCH_STATE_ATTACK_WEAPON;
-            gs->witch.stateTimer = 0.25f;
-            if (IsSoundReady(shootSound)) PlaySound(shootSound);
         }
     }
     
@@ -776,6 +787,7 @@ static void UpdateGameplay(GameState *gs, float deltaTime) {
 // CHƯƠNG TRÌNH CHÍNH (main)
 // ----------------------------------------------------------------
 int main(void) {
+#ifndef __ANDROID__
     // Tự động tìm và chuyển đổi thư mục làm việc về thư mục gốc chứa tài nguyên
     // nếu chạy từ thư mục con (ví dụ: build/ hay build/bin/)
     if (!DirectoryExists("assets")) {
@@ -785,6 +797,7 @@ int main(void) {
             ChangeDirectory("../..");
         }
     }
+#endif
 
     // Khởi tạo hạt giống ngẫu nhiên thời gian thực
     srand((unsigned int)time(NULL));
@@ -835,21 +848,98 @@ int main(void) {
     gs.lightmap = LoadRenderTexture(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
     SetTextureFilter(gs.lightmap.texture, TEXTURE_FILTER_BILINEAR);
     
+    // Khởi tạo Screen Copy Canvas kích thước cố định 1280x720 cho hiệu ứng Distortion
+    gs.screenCopyTex = LoadRenderTexture(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+    SetTextureFilter(gs.screenCopyTex.texture, TEXTURE_FILTER_BILINEAR);
+    
+    // Khởi tạo texture ảo 2x2 màu trắng để map UV cho shader
+    Image dummyImg = GenImageColor(2, 2, WHITE);
+    gs.dummyWhiteTex = LoadTextureFromImage(dummyImg);
+    UnloadImage(dummyImg);
+    
+    // Khởi tạo Bloom Canvases (320x180 để tối ưu hóa hiệu năng)
+    gs.bloomCanvas = LoadRenderTexture(320, 180);
+    SetTextureFilter(gs.bloomCanvas.texture, TEXTURE_FILTER_BILINEAR);
+    gs.blurCanvas = LoadRenderTexture(320, 180);
+    SetTextureFilter(gs.blurCanvas.texture, TEXTURE_FILTER_BILINEAR);
+
+#ifdef __ANDROID__
+#define SHADER_PATH(name) "assets/shaders/gles/" name
+#else
+#define SHADER_PATH(name) "assets/shaders/glsl330/" name
+#endif
+    
     // Nạp Shader xích sét (Chain Lightning)
-    if (FileExists("assets/shaders/lightning.fs")) {
-        gs.lightningShader = LoadShader(NULL, "assets/shaders/lightning.fs");
+    if (FileExists(SHADER_PATH("lightning.fs"))) {
+        gs.lightningShader = LoadShader(NULL, SHADER_PATH("lightning.fs"));
         gs.lightningShaderLoaded = true;
     } else {
         gs.lightningShaderLoaded = false;
     }
     
     // Nạp Shader khiên ma thuật (Mana Shield)
-    if (FileExists("assets/shaders/shield.fs")) {
-        shieldShader = LoadShader(NULL, "assets/shaders/shield.fs");
+    if (FileExists(SHADER_PATH("shield.fs"))) {
+        shieldShader = LoadShader(NULL, SHADER_PATH("shield.fs"));
         shieldShaderLoaded = true;
     } else {
         shieldShaderLoaded = false;
     }
+    
+    // Nạp Shader hiệu ứng kỹ năng Ngũ hành (5 hệ)
+    if (FileExists(SHADER_PATH("fireball.fs"))) {
+        gs.fireballShader = LoadShader(NULL, SHADER_PATH("fireball.fs"));
+        gs.fireballShaderLoaded = true;
+    } else {
+        gs.fireballShaderLoaded = false;
+    }
+    if (FileExists(SHADER_PATH("ice_blast.fs"))) {
+        gs.iceBlastShader = LoadShader(NULL, SHADER_PATH("ice_blast.fs"));
+        gs.iceBlastShaderLoaded = true;
+    } else {
+        gs.iceBlastShaderLoaded = false;
+    }
+    if (FileExists(SHADER_PATH("poison_cloud.fs"))) {
+        gs.poisonCloudShader = LoadShader(NULL, SHADER_PATH("poison_cloud.fs"));
+        gs.poisonCloudShaderLoaded = true;
+    } else {
+        gs.poisonCloudShaderLoaded = false;
+    }
+    if (FileExists(SHADER_PATH("shuriken.fs"))) {
+        gs.shurikenShader = LoadShader(NULL, SHADER_PATH("shuriken.fs"));
+        gs.shurikenShaderLoaded = true;
+    } else {
+        gs.shurikenShaderLoaded = false;
+    }
+    if (FileExists(SHADER_PATH("tornado.fs"))) {
+        gs.tornadoShader = LoadShader(NULL, SHADER_PATH("tornado.fs"));
+        gs.tornadoShaderLoaded = true;
+    } else {
+        gs.tornadoShaderLoaded = false;
+    }
+
+    // Nạp Bloom Shaders cho hiệu ứng Ori-glow
+    if (FileExists(SHADER_PATH("bloom_extract.fs"))) {
+        gs.bloomExtractShader = LoadShader(NULL, SHADER_PATH("bloom_extract.fs"));
+        gs.bloomExtractShaderLoaded = true;
+    } else {
+        gs.bloomExtractShaderLoaded = false;
+    }
+    if (FileExists(SHADER_PATH("bloom_blur.fs"))) {
+        gs.bloomBlurShader = LoadShader(NULL, SHADER_PATH("bloom_blur.fs"));
+        gs.bloomBlurShaderLoaded = true;
+    } else {
+        gs.bloomBlurShaderLoaded = false;
+    }
+    
+    // Nạp Shader hạt sương giá (Frost Vapor)
+    if (FileExists(SHADER_PATH("vapor.fs"))) {
+        gs.vaporShader = LoadShader(NULL, SHADER_PATH("vapor.fs"));
+        gs.vaporShaderLoaded = true;
+    } else {
+        gs.vaporShaderLoaded = false;
+    }
+
+#undef SHADER_PATH
     
     // ----------------------------------------------------------------
     // NẠP TÀI NGUYÊN GAME (LOAD TEXTURE & SOUNDS)
@@ -996,8 +1086,19 @@ int main(void) {
                 DrawBackground(&gs, bgDt);
                 DrawStars(&gs.starPool, gs.witch.position);
                 DrawEnemies(&gs.enemyPool);
-                DrawProjectiles(&gs.projectilePool);
-                DrawParticles(&gs.particlePool);
+                
+                // Chụp màn hình hiện tại (background, stars, enemies) để truyền làm screenTexture cho Distortion
+                EndTextureMode();
+                BeginTextureMode(gs.screenCopyTex);
+                    ClearBackground(BLACK);
+                    DrawTextureRec(gs.virtualCanvas.texture, (Rectangle){ 0.0f, 0.0f, (float)VIRTUAL_WIDTH, -(float)VIRTUAL_HEIGHT }, (Vector2){ 0, 0 }, WHITE);
+                EndTextureMode();
+                BeginTextureMode(gs.virtualCanvas);
+                
+                shieldBackgroundTexture = gs.screenCopyTex.texture;
+                
+                DrawProjectiles(&gs.projectilePool, &gs);
+                DrawParticlesEx(&gs.particlePool, &gs);
                 DrawWitchTrail(&gs.trail);
                 DrawWitch(&gs.witch);
                 
@@ -1067,12 +1168,61 @@ int main(void) {
                         // C. Ánh sáng phát ra từ đạn phép thuật (Projectiles)
                         for (int i = 0; i < MAX_PROJECTILES; i++) {
                             if (gs.projectilePool.projectiles[i].active) {
-                                Vector2 projPos = gs.projectilePool.projectiles[i].position;
-                                Color projColor = gs.projectilePool.projectiles[i].color;
-                                // Vầng sáng màu
-                                DrawCircleGradient(projPos.x, projPos.y, 55.0f, ColorAlpha(projColor, 0.75f), ColorAlpha(projColor, 0.0f));
-                                // Lõi sáng trắng cực mạnh ở tâm
-                                DrawCircleGradient(projPos.x, projPos.y, 18.0f, ColorAlpha(WHITE, 1.0f), ColorAlpha(WHITE, 0.0f));
+                                const Projectile *p = &gs.projectilePool.projectiles[i];
+                                if (p->isEnemy) {
+                                    // Đạn của quái giữ nguyên vẽ thông thường
+                                    DrawCircleGradient(p->position.x, p->position.y, 55.0f, ColorAlpha(p->color, 0.75f), ColorAlpha(p->color, 0.0f));
+                                    DrawCircleGradient(p->position.x, p->position.y, 18.0f, ColorAlpha(WHITE, 1.0f), ColorAlpha(WHITE, 0.0f));
+                                } else {
+                                    // Đạn của người chơi: Tỏa sáng theo hệ Ngũ hành
+                                    if (p->type == PROJ_FIREBALL) {
+                                        // Vầng sáng cam/đỏ rộng 80px, lõi vàng trắng, nhấp nháy nhanh giống ngọn lửa
+                                        float flicker = 1.0f + sinf(GetTime() * 25.0f + i) * 0.15f;
+                                        float size = 80.0f * flicker;
+                                        DrawCircleGradient(p->position.x, p->position.y, size, ColorAlpha(ORANGE, 0.75f), ColorAlpha(ORANGE, 0.0f));
+                                        DrawCircleGradient(p->position.x, p->position.y, size * 0.4f, ColorAlpha(YELLOW, 0.9f), ColorAlpha(YELLOW, 0.0f));
+                                        DrawCircleGradient(p->position.x, p->position.y, size * 0.15f, ColorAlpha(WHITE, 1.0f), ColorAlpha(WHITE, 0.0f));
+                                    } else if (p->type == PROJ_ICE) {
+                                        // Vầng sáng cyan nhạt 60px, tĩnh lặng, hơi sương trắng mỏng xung quanh
+                                        float size = 60.0f;
+                                        DrawCircleGradient(p->position.x, p->position.y, size * 1.5f, ColorAlpha(WHITE, 0.25f), ColorAlpha(WHITE, 0.0f)); // Sương trắng mỏng
+                                        DrawCircleGradient(p->position.x, p->position.y, size, ColorAlpha(CYAN, 0.8f), ColorAlpha(CYAN, 0.0f));
+                                        DrawCircleGradient(p->position.x, p->position.y, size * 0.3f, ColorAlpha(WHITE, 1.0f), ColorAlpha(WHITE, 0.0f));
+                                    } else if (p->type == PROJ_POISON) {
+                                        // Vầng sáng xanh lá pulsating chậm 100px
+                                        float pulse = 1.0f + sinf(GetTime() * 4.0f + i) * 0.12f;
+                                        float size = 100.0f * pulse;
+                                        DrawCircleGradient(p->position.x, p->position.y, size, ColorAlpha(LIME, 0.65f), ColorAlpha(LIME, 0.0f));
+                                        DrawCircleGradient(p->position.x, p->position.y, size * 0.3f, ColorAlpha(GREEN, 0.8f), ColorAlpha(GREEN, 0.0f));
+                                    } else if (p->type == PROJ_SHURIKEN) {
+                                        // Vầng sáng vàng kim nhỏ gọn 40px nhưng rất sáng, flicker nhanh
+                                        float flicker = 1.0f + sinf(GetTime() * 35.0f + i) * 0.18f;
+                                        float size = 40.0f * flicker;
+                                        DrawCircleGradient(p->position.x, p->position.y, size, ColorAlpha(GOLD, 0.9f), ColorAlpha(GOLD, 0.0f));
+                                        DrawCircleGradient(p->position.x, p->position.y, size * 0.4f, ColorAlpha(WHITE, 1.0f), ColorAlpha(WHITE, 0.0f));
+                                    } else if (p->type == PROJ_TORNADO) {
+                                        // Vầng sáng dọc theo chiều cao lốc xoáy, cam-vàng, flash sét trắng ngẫu nhiên
+                                        float heightVal = p->radius * 3.5f;
+                                        float flash = (sinf(GetTime() * 50.0f + i) > 0.85f) ? 1.0f : 0.0f;
+                                        // Vẽ nhiều nốt sáng chồng lên nhau theo chiều dọc phễu lốc xoáy
+                                        for (int step = 0; step < 5; step++) {
+                                            float t = step / 4.0f; // 0 đáy, 1 đỉnh
+                                            float offsety = -t * heightVal;
+                                            float size = p->radius * (1.5f - t * 0.8f) * 2.0f;
+                                            Color glowColor = ColorAlpha(ORANGE, 0.4f - t * 0.2f);
+                                            DrawCircleGradient(p->position.x, p->position.y + offsety, size, glowColor, ColorAlpha(ORANGE, 0.0f));
+                                            
+                                            // Sét nhấp nháy trắng ở lõi lốc xoáy
+                                            if (flash > 0.5f) {
+                                                DrawCircleGradient(p->position.x, p->position.y + offsety, size * 0.3f, ColorAlpha(WHITE, 0.8f), ColorAlpha(WHITE, 0.0f));
+                                            }
+                                        }
+                                    } else {
+                                        // Default fallback (nếu có loại đạn khác của người chơi)
+                                        DrawCircleGradient(p->position.x, p->position.y, 55.0f, ColorAlpha(p->color, 0.75f), ColorAlpha(p->color, 0.0f));
+                                        DrawCircleGradient(p->position.x, p->position.y, 18.0f, ColorAlpha(WHITE, 1.0f), ColorAlpha(WHITE, 0.0f));
+                                    }
+                                }
                             }
                         }
                         
@@ -1164,6 +1314,71 @@ int main(void) {
                             (Vector2){ 0, 0 }, 0.0f, WHITE
                         );
                     EndBlendMode();
+                EndTextureMode(); // Tạm dừng vẽ lên virtualCanvas để áp dụng Bloom
+                
+                // --- BƯỚC 3.5: Áp dụng Bloom Pipeline ---
+                if (gs.bloomExtractShaderLoaded && gs.bloomBlurShaderLoaded) {
+                    Vector2 renderSz = { 320.0f, 180.0f };
+                    // 1. Trích xuất các pixel sáng sang bloomCanvas (320x180)
+                    BeginTextureMode(gs.bloomCanvas);
+                        ClearBackground(BLACK);
+                        BeginShaderMode(gs.bloomExtractShader);
+                            float thresholdVal = 0.75f;
+                            SetShaderValue(gs.bloomExtractShader, GetShaderLocation(gs.bloomExtractShader, "threshold"), &thresholdVal, SHADER_UNIFORM_FLOAT);
+                            DrawTexturePro(
+                                gs.virtualCanvas.texture,
+                                (Rectangle){ 0.0f, 0.0f, (float)VIRTUAL_WIDTH, -(float)VIRTUAL_HEIGHT },
+                                (Rectangle){ 0.0f, 0.0f, 320.0f, 180.0f },
+                                (Vector2){ 0, 0 }, 0.0f, WHITE
+                            );
+                        EndShaderMode();
+                    EndTextureMode();
+                    
+                    // 2. Blur ngang: bloomCanvas -> blurCanvas
+                    BeginTextureMode(gs.blurCanvas);
+                        ClearBackground(BLACK);
+                        BeginShaderMode(gs.bloomBlurShader);
+                            int horiz = 1;
+                            SetShaderValue(gs.bloomBlurShader, GetShaderLocation(gs.bloomBlurShader, "horizontal"), &horiz, SHADER_UNIFORM_INT);
+                            SetShaderValue(gs.bloomBlurShader, GetShaderLocation(gs.bloomBlurShader, "renderSize"), &renderSz, SHADER_UNIFORM_VEC2);
+                            DrawTexturePro(
+                                gs.bloomCanvas.texture,
+                                (Rectangle){ 0.0f, 0.0f, 320.0f, -180.0f },
+                                (Rectangle){ 0.0f, 0.0f, 320.0f, 180.0f },
+                                (Vector2){ 0, 0 }, 0.0f, WHITE
+                            );
+                        EndShaderMode();
+                    EndTextureMode();
+                    
+                    // 3. Blur dọc: blurCanvas -> bloomCanvas
+                    BeginTextureMode(gs.bloomCanvas);
+                        ClearBackground(BLACK);
+                        BeginShaderMode(gs.bloomBlurShader);
+                            int vert = 0;
+                            SetShaderValue(gs.bloomBlurShader, GetShaderLocation(gs.bloomBlurShader, "horizontal"), &vert, SHADER_UNIFORM_INT);
+                            SetShaderValue(gs.bloomBlurShader, GetShaderLocation(gs.bloomBlurShader, "renderSize"), &renderSz, SHADER_UNIFORM_VEC2);
+                            DrawTexturePro(
+                                gs.blurCanvas.texture,
+                                (Rectangle){ 0.0f, 0.0f, 320.0f, -180.0f },
+                                (Rectangle){ 0.0f, 0.0f, 320.0f, 180.0f },
+                                (Vector2){ 0, 0 }, 0.0f, WHITE
+                            );
+                        EndShaderMode();
+                    EndTextureMode();
+                    
+                    // 4. Cộng chập Bloom (BLEND_ADDITIVE) quay lại virtualCanvas
+                    BeginTextureMode(gs.virtualCanvas);
+                        BeginBlendMode(BLEND_ADDITIVE);
+                            DrawTexturePro(
+                                gs.bloomCanvas.texture,
+                                (Rectangle){ 0.0f, 0.0f, 320.0f, -180.0f },
+                                (Rectangle){ 0.0f, 0.0f, (float)VIRTUAL_WIDTH, (float)VIRTUAL_HEIGHT },
+                                (Vector2){ 0, 0 }, 0.0f, WHITE
+                            );
+                        EndBlendMode();
+                } else {
+                    BeginTextureMode(gs.virtualCanvas);
+                }
                 
                 // --- BƯỚC 4: Vẽ HUD lên trên cùng ---
                 DrawHUD(&gs);
@@ -1235,6 +1450,10 @@ int main(void) {
     // ----------------------------------------------------------------
     UnloadRenderTexture(gs.virtualCanvas);
     UnloadRenderTexture(gs.lightmap);
+    UnloadRenderTexture(gs.screenCopyTex);
+    UnloadRenderTexture(gs.bloomCanvas);
+    UnloadRenderTexture(gs.blurCanvas);
+    if (IsTextureReady(gs.dummyWhiteTex)) UnloadTexture(gs.dummyWhiteTex);
     
     if (IsTextureReady(witchFlyTexture))          UnloadTexture(witchFlyTexture);
     if (IsTextureReady(witchAttackHandTexture))   UnloadTexture(witchAttackHandTexture);
@@ -1282,6 +1501,15 @@ int main(void) {
     if (shieldShaderLoaded) {
         UnloadShader(shieldShader);
     }
+
+    if (gs.fireballShaderLoaded)    UnloadShader(gs.fireballShader);
+    if (gs.iceBlastShaderLoaded)    UnloadShader(gs.iceBlastShader);
+    if (gs.poisonCloudShaderLoaded) UnloadShader(gs.poisonCloudShader);
+    if (gs.shurikenShaderLoaded)    UnloadShader(gs.shurikenShader);
+    if (gs.tornadoShaderLoaded)     UnloadShader(gs.tornadoShader);
+    if (gs.bloomExtractShaderLoaded) UnloadShader(gs.bloomExtractShader);
+    if (gs.bloomBlurShaderLoaded)    UnloadShader(gs.bloomBlurShader);
+    if (gs.vaporShaderLoaded)        UnloadShader(gs.vaporShader);
     
     CloseAudioDevice();
     CloseWindow();

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Aktiv edin</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text">%1$s Google Play xidmətlərini aktiv edənə kimi işləməyəcək.</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Google Play xidmətlərini aktiv edin</string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">Quraşdırın</string>
+    <string name="common_google_play_services_install_text">%1$s cihazınızda mövcud olmayan Google Play xidmətləri olmadan çalışmayacaq.</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">Google Play xidmətlərini əldə edin</string>
+    <string name="common_google_play_services_notification_channel_name">Google Play xidmətlərinin əlçatanlığı</string>
+    <string name="common_google_play_services_notification_ticker">Google Play xidmətləri xətası</string>
+    <string name="common_google_play_services_unknown_issue">%1$s tətbiqi ilə Google Play xidmətləri arasında problem var. Daha sonra yenidən cəhd edin.</string>
+    <string name="common_google_play_services_unsupported_text">Cihazınız tərəfindən dəstəklənməyən Google Play xidmətləri olmadan %1$s tətbiqi işləməyəcək.</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">Güncəlləyin</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text">%1$s Google Play xidmətləri yeniləmə halda çalışmaz.</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">Google Play xidmətlərini güncəlləşdirin</string>
+    <string name="common_google_play_services_updating_text">%1$s hal-hazırda güncəllənən Google Play xidmətləri olmadan çalışmayacaq.</string>
+    <string name="common_google_play_services_wear_update_text">Google Play xidmətlərinin yeni versiyası lazımdır. Qısa müddətə özünü yeniləyəcək.</string>
+    <string name="common_open_on_phone">Telefonda açın</string>
+    <string name="common_signin_button_text">Daxil olun</string>
+    <string name="common_signin_button_text_long">Google ilə daxil olun</string>
+    <string msgid="3260749812566568062" name="copy_toast_msg">"Link buferə kopyalandı"</string>
+    <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"Linki kopyalayın"</string>
+    <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"Brauzerdə açın"</string>
+    <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"Linki paylaşın"</string>
+    <string name="native_body">Əsas</string>
+    <string name="native_headline">Başlıq</string>
+    <string name="native_media_view">Media Paneli</string>
+    <string name="notifications_permission_confirm">İcazə verin</string>
+    <string name="notifications_permission_decline">İcazə verməyin</string>
+    <string name="notifications_permission_title">Tətbiqə sizə bildirişlər göndərmək icazəsi verilsin?</string>
+    <string name="offline_dialog_image_description">İkona</string>
+    <string name="offline_dialog_text">Yenidən onlayn olduqda keçid bildirişi alacaqsınız</string>
+    <string name="offline_notification_title">Oflayn olduqda yadda saxladığınız reklama baxın</string>
+    <string name="offline_opt_in_confirm">OK</string>
+    <string name="offline_opt_in_decline">Xeyr, təşəkkür</string>
+    <string name="offline_opt_in_message">Sizə reklamçının saytına keçid olan bildiriş göndərəcəyik.</string>
+    <string name="offline_opt_in_title">Yenidən onlayn olduqda reklamı açın.</string>
+    <string name="s1">Şəkli yadda saxlayın</string>
+    <string name="s2">Reklama təsvirləri Şəkil qalereyasında saxlamağa icazə verilsin?</string>
+    <string name="s3">Qəbul edin</string>
+    <string name="s4">Rədd edin</string>
+    <string name="s5">Təqvim tədbiri yaradın</string>
+    <string name="s6">Təqvim tədbiri yaratmaq üçün Reklama icazə verilsin?</string>
+    <string name="s7">Test Reklamı</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="watermark_label_prefix">AdMob - </string>
+</resources>

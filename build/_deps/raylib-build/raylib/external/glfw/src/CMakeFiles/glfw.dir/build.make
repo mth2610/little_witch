@@ -366,62 +366,32 @@ _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.s
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/glfw.dir/nsgl_context.m.s"
 	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib/external/glfw/src && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/external/glfw/src/nsgl_context.m -o CMakeFiles/glfw.dir/nsgl_context.m.s
 
-# Object files for target glfw
-glfw_OBJECTS = \
-"CMakeFiles/glfw.dir/context.c.o" \
-"CMakeFiles/glfw.dir/init.c.o" \
-"CMakeFiles/glfw.dir/input.c.o" \
-"CMakeFiles/glfw.dir/monitor.c.o" \
-"CMakeFiles/glfw.dir/platform.c.o" \
-"CMakeFiles/glfw.dir/vulkan.c.o" \
-"CMakeFiles/glfw.dir/window.c.o" \
-"CMakeFiles/glfw.dir/egl_context.c.o" \
-"CMakeFiles/glfw.dir/osmesa_context.c.o" \
-"CMakeFiles/glfw.dir/null_init.c.o" \
-"CMakeFiles/glfw.dir/null_monitor.c.o" \
-"CMakeFiles/glfw.dir/null_window.c.o" \
-"CMakeFiles/glfw.dir/null_joystick.c.o" \
-"CMakeFiles/glfw.dir/cocoa_time.c.o" \
-"CMakeFiles/glfw.dir/posix_module.c.o" \
-"CMakeFiles/glfw.dir/posix_thread.c.o" \
-"CMakeFiles/glfw.dir/cocoa_init.m.o" \
-"CMakeFiles/glfw.dir/cocoa_joystick.m.o" \
-"CMakeFiles/glfw.dir/cocoa_monitor.m.o" \
-"CMakeFiles/glfw.dir/cocoa_window.m.o" \
-"CMakeFiles/glfw.dir/nsgl_context.m.o"
-
-# External object files for target glfw
-glfw_EXTERNAL_OBJECTS =
-
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/build.make
-_deps/raylib-build/raylib/external/glfw/src/libglfw3.a: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking C static library libglfw3.a"
-	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib/external/glfw/src && $(CMAKE_COMMAND) -P CMakeFiles/glfw.dir/cmake_clean_target.cmake
-	cd /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-build/raylib/external/glfw/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/glfw.dir/link.txt --verbose=$(VERBOSE)
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o
+glfw: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/build.make
+.PHONY : glfw
 
 # Rule to build all files generated by this target.
-_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/build: _deps/raylib-build/raylib/external/glfw/src/libglfw3.a
+_deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/build: glfw
 .PHONY : _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/build
 
 _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/clean:

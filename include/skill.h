@@ -29,6 +29,7 @@ typedef struct Projectile {
     float           damageTimer;  // Hồi chiêu gây sát thương duy trì lên mỗi quái
     bool            isUltimate;   // Xác định đạn Ultimate tự bẻ lái (homing)
     float           rotation;     // Góc xoay tự động (Shuriken, Tornado)
+    bool            isWeak;       // Xác định đạn yếu ớt (khi không có sao)
 } Projectile;
 
 // Object Pool quản lý đạn
@@ -45,9 +46,10 @@ void InitProjectilePool(ProjectilePool *pool);
 int  SpawnProjectile(ProjectilePool *pool, Vector2 position, Vector2 velocity,
                      float radius, int damage, bool isEnemy, Color color, ProjectileType type);
 void UpdateProjectiles(ProjectilePool *pool, float deltaTime, struct ParticlePool *partPool, struct EnemyPool *enemyPool);
-void DrawProjectiles(const ProjectilePool *pool);
+void DrawProjectiles(const ProjectilePool *pool, const struct GameState *gs);
 
 // API Mới: Kích hoạt, Cập nhật và Vẽ các Kỹ năng
+void CastNormalAttack(struct GameState *gs);
 void CastActiveSkill(struct GameState *gs, SkillType skill);
 void UpdateSkills(struct GameState *gs, float deltaTime);
 void DrawSkills(struct GameState *gs);
