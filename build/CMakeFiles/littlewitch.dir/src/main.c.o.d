@@ -1,21 +1,20 @@
 CMakeFiles/littlewitch.dir/src/main.c.o: \
   /Users/mth2610/Desktop/c_games/little_witch/src/main.c \
+  /Users/mth2610/Desktop/c_games/little_witch/include/admob_bridge.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/config.h \
   /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raylib.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdarg.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdbool.h \
-  /Users/mth2610/Desktop/c_games/little_witch/include/game.h \
-  /Users/mth2610/Desktop/c_games/little_witch/include/config.h \
-  /Users/mth2610/Desktop/c_games/little_witch/include/witch.h \
-  /Users/mth2610/Desktop/c_games/little_witch/include/star.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/biome.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/enemy.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/skill.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/witch.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/biome_procedural.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/game.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/star.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/particle.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/save.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/trail.h \
-  /Users/mth2610/Desktop/c_games/little_witch/include/ui.h \
-  /Users/mth2610/Desktop/c_games/little_witch/include/admob_bridge.h \
-  /Users/mth2610/Desktop/c_games/little_witch/include/biome.h \
-  /Users/mth2610/Desktop/c_games/little_witch/include/biome_procedural.h \
   /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raymath.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h \
@@ -24,6 +23,7 @@ CMakeFiles/littlewitch.dir/src/main.c.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/ui.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h \

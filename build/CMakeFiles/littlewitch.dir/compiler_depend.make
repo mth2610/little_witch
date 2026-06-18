@@ -488,7 +488,14 @@ CMakeFiles/littlewitch.dir/src/particle.c.o: /Users/mth2610/Desktop/c_games/litt
   _deps/raylib-src/src/raylib.h \
   _deps/raylib-src/src/raymath.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/config.h \
-  /Users/mth2610/Desktop/c_games/little_witch/include/particle.h
+  /Users/mth2610/Desktop/c_games/little_witch/include/enemy.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/game.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/particle.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/save.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/skill.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/star.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/trail.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/witch.h
 
 CMakeFiles/littlewitch.dir/src/save.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/save.c \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h \

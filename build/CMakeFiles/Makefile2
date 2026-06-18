@@ -166,8 +166,8 @@ _deps/raylib-build/raylib/external/glfw/src/clean: _deps/raylib-build/raylib/ext
 # Target rules for target CMakeFiles/littlewitch.dir
 
 # All Build rule for target.
-CMakeFiles/littlewitch.dir/all: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/all
 CMakeFiles/littlewitch.dir/all: _deps/raylib-build/raylib/CMakeFiles/raylib.dir/all
+CMakeFiles/littlewitch.dir/all: _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=22,23,24,25,26,27,28,29,30,31,32,33,34,35,36 "Built target littlewitch"
