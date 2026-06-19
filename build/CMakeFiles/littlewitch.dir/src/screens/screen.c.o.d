@@ -1,0 +1,21 @@
+CMakeFiles/littlewitch.dir/src/screens/screen.c.o: \
+  /Users/mth2610/Desktop/c_games/little_witch/src/screens/screen.c \
+  /Users/mth2610/Desktop/c_games/little_witch/include/screens/screen.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/config.h \
+  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raylib.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdarg.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdbool.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/game.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/witch.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/star.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/enemies/enemy.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/skills/skill.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/particle.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/save.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/trail.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/biomes/biome.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/biomes/biome_procedural.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/lightmap.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/ui.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/gameplay.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h

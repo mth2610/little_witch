@@ -1,0 +1,25 @@
+CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.o: \
+  /Users/mth2610/Desktop/c_games/little_witch/src/skills/fluid_skill.c \
+  /Users/mth2610/Desktop/c_games/little_witch/include/skills/fluid_skill.h \
+  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raylib.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdarg.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdbool.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/config.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/enemies/enemy.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/skills/skill.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/witch.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/game.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/star.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/particle.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/save.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/trail.h \
+  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raymath.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_symbol_aliasing.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_posix_availability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/core/resource_loader.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h

@@ -15,16 +15,17 @@ CMakeFiles/littlewitch.dir/src/main.c.o: \
   /Users/mth2610/Desktop/c_games/little_witch/include/particle.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/save.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/trail.h \
-  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raymath.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_symbol_aliasing.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_posix_availability.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/gameplay.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/lightmap.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/resource_loader.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/ui.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h \
-  /Users/mth2610/Desktop/c_games/little_witch/include/ui.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdlib.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_symbol_aliasing.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_posix_availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h \

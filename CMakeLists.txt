@@ -38,7 +38,14 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(raylib)
 
 # Include thư mục header
-include_directories(include)
+include_directories(
+    include
+    include/core
+    include/enemies
+    include/skills
+    include/biomes
+    include/screens
+)
 
 # Tập hợp toàn bộ file nguồn .c trong src/
 file(GLOB_RECURSE SRC_FILES src/*.c)

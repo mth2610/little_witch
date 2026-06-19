@@ -1,0 +1,19 @@
+CMakeFiles/littlewitch.dir/src/enemies/bat.c.o: \
+  /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bat.c \
+  /Users/mth2610/Desktop/c_games/little_witch/include/enemy.h \
+  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raylib.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdarg.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdbool.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/config.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/skill.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/witch.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/resource_loader.h \
+  /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raymath.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_symbol_aliasing.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_posix_availability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h

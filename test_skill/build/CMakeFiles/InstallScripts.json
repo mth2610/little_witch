@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/mth2610/Desktop/c_games/little_witch/test_skill/build/cmake_install.cmake",
+		"/Users/mth2610/Desktop/c_games/little_witch/test_skill/build/_deps/raylib-build/cmake_install.cmake",
+		"/Users/mth2610/Desktop/c_games/little_witch/test_skill/build/_deps/raylib-build/raylib/cmake_install.cmake",
+		"/Users/mth2610/Desktop/c_games/little_witch/test_skill/build/_deps/raylib-build/raylib/external/glfw/cmake_install.cmake",
+		"/Users/mth2610/Desktop/c_games/little_witch/test_skill/build/_deps/raylib-build/raylib/external/glfw/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

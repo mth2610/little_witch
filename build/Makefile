@@ -246,341 +246,845 @@ update_mappings/fast:
 	$(MAKE) $(MAKESILENT) -f _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build.make _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build
 .PHONY : update_mappings/fast
 
-src/admob_bridge.o: src/admob_bridge.c.o
-.PHONY : src/admob_bridge.o
+src/biomes/biome.o: src/biomes/biome.c.o
+.PHONY : src/biomes/biome.o
 
 # target to build an object file
-src/admob_bridge.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/admob_bridge.c.o
-.PHONY : src/admob_bridge.c.o
+src/biomes/biome.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/biomes/biome.c.o
+.PHONY : src/biomes/biome.c.o
 
-src/admob_bridge.i: src/admob_bridge.c.i
-.PHONY : src/admob_bridge.i
+src/biomes/biome.i: src/biomes/biome.c.i
+.PHONY : src/biomes/biome.i
 
 # target to preprocess a source file
-src/admob_bridge.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/admob_bridge.c.i
-.PHONY : src/admob_bridge.c.i
+src/biomes/biome.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/biomes/biome.c.i
+.PHONY : src/biomes/biome.c.i
 
-src/admob_bridge.s: src/admob_bridge.c.s
-.PHONY : src/admob_bridge.s
+src/biomes/biome.s: src/biomes/biome.c.s
+.PHONY : src/biomes/biome.s
 
 # target to generate assembly for a file
-src/admob_bridge.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/admob_bridge.c.s
-.PHONY : src/admob_bridge.c.s
+src/biomes/biome.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/biomes/biome.c.s
+.PHONY : src/biomes/biome.c.s
 
-src/biome.o: src/biome.c.o
-.PHONY : src/biome.o
+src/biomes/biome_procedural.o: src/biomes/biome_procedural.c.o
+.PHONY : src/biomes/biome_procedural.o
 
 # target to build an object file
-src/biome.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/biome.c.o
-.PHONY : src/biome.c.o
+src/biomes/biome_procedural.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.o
+.PHONY : src/biomes/biome_procedural.c.o
 
-src/biome.i: src/biome.c.i
-.PHONY : src/biome.i
+src/biomes/biome_procedural.i: src/biomes/biome_procedural.c.i
+.PHONY : src/biomes/biome_procedural.i
 
 # target to preprocess a source file
-src/biome.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/biome.c.i
-.PHONY : src/biome.c.i
+src/biomes/biome_procedural.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.i
+.PHONY : src/biomes/biome_procedural.c.i
 
-src/biome.s: src/biome.c.s
-.PHONY : src/biome.s
+src/biomes/biome_procedural.s: src/biomes/biome_procedural.c.s
+.PHONY : src/biomes/biome_procedural.s
 
 # target to generate assembly for a file
-src/biome.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/biome.c.s
-.PHONY : src/biome.c.s
+src/biomes/biome_procedural.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.s
+.PHONY : src/biomes/biome_procedural.c.s
 
-src/biome_procedural.o: src/biome_procedural.c.o
-.PHONY : src/biome_procedural.o
+src/core/admob_bridge.o: src/core/admob_bridge.c.o
+.PHONY : src/core/admob_bridge.o
 
 # target to build an object file
-src/biome_procedural.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/biome_procedural.c.o
-.PHONY : src/biome_procedural.c.o
+src/core/admob_bridge.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.o
+.PHONY : src/core/admob_bridge.c.o
 
-src/biome_procedural.i: src/biome_procedural.c.i
-.PHONY : src/biome_procedural.i
+src/core/admob_bridge.i: src/core/admob_bridge.c.i
+.PHONY : src/core/admob_bridge.i
 
 # target to preprocess a source file
-src/biome_procedural.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/biome_procedural.c.i
-.PHONY : src/biome_procedural.c.i
+src/core/admob_bridge.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.i
+.PHONY : src/core/admob_bridge.c.i
 
-src/biome_procedural.s: src/biome_procedural.c.s
-.PHONY : src/biome_procedural.s
+src/core/admob_bridge.s: src/core/admob_bridge.c.s
+.PHONY : src/core/admob_bridge.s
 
 # target to generate assembly for a file
-src/biome_procedural.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/biome_procedural.c.s
-.PHONY : src/biome_procedural.c.s
+src/core/admob_bridge.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.s
+.PHONY : src/core/admob_bridge.c.s
 
-src/enemy.o: src/enemy.c.o
-.PHONY : src/enemy.o
+src/core/collision.o: src/core/collision.c.o
+.PHONY : src/core/collision.o
 
 # target to build an object file
-src/enemy.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemy.c.o
-.PHONY : src/enemy.c.o
+src/core/collision.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/collision.c.o
+.PHONY : src/core/collision.c.o
 
-src/enemy.i: src/enemy.c.i
-.PHONY : src/enemy.i
+src/core/collision.i: src/core/collision.c.i
+.PHONY : src/core/collision.i
 
 # target to preprocess a source file
-src/enemy.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemy.c.i
-.PHONY : src/enemy.c.i
+src/core/collision.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/collision.c.i
+.PHONY : src/core/collision.c.i
 
-src/enemy.s: src/enemy.c.s
-.PHONY : src/enemy.s
+src/core/collision.s: src/core/collision.c.s
+.PHONY : src/core/collision.s
 
 # target to generate assembly for a file
-src/enemy.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemy.c.s
-.PHONY : src/enemy.c.s
+src/core/collision.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/collision.c.s
+.PHONY : src/core/collision.c.s
 
-src/enemy_boss.o: src/enemy_boss.c.o
-.PHONY : src/enemy_boss.o
+src/core/gameplay.o: src/core/gameplay.c.o
+.PHONY : src/core/gameplay.o
 
 # target to build an object file
-src/enemy_boss.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemy_boss.c.o
-.PHONY : src/enemy_boss.c.o
+src/core/gameplay.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/gameplay.c.o
+.PHONY : src/core/gameplay.c.o
 
-src/enemy_boss.i: src/enemy_boss.c.i
-.PHONY : src/enemy_boss.i
+src/core/gameplay.i: src/core/gameplay.c.i
+.PHONY : src/core/gameplay.i
 
 # target to preprocess a source file
-src/enemy_boss.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemy_boss.c.i
-.PHONY : src/enemy_boss.c.i
+src/core/gameplay.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/gameplay.c.i
+.PHONY : src/core/gameplay.c.i
 
-src/enemy_boss.s: src/enemy_boss.c.s
-.PHONY : src/enemy_boss.s
+src/core/gameplay.s: src/core/gameplay.c.s
+.PHONY : src/core/gameplay.s
 
 # target to generate assembly for a file
-src/enemy_boss.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemy_boss.c.s
-.PHONY : src/enemy_boss.c.s
+src/core/gameplay.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/gameplay.c.s
+.PHONY : src/core/gameplay.c.s
 
-src/enemy_normal.o: src/enemy_normal.c.o
-.PHONY : src/enemy_normal.o
+src/core/lightmap.o: src/core/lightmap.c.o
+.PHONY : src/core/lightmap.o
 
 # target to build an object file
-src/enemy_normal.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemy_normal.c.o
-.PHONY : src/enemy_normal.c.o
+src/core/lightmap.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/lightmap.c.o
+.PHONY : src/core/lightmap.c.o
 
-src/enemy_normal.i: src/enemy_normal.c.i
-.PHONY : src/enemy_normal.i
+src/core/lightmap.i: src/core/lightmap.c.i
+.PHONY : src/core/lightmap.i
 
 # target to preprocess a source file
-src/enemy_normal.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemy_normal.c.i
-.PHONY : src/enemy_normal.c.i
+src/core/lightmap.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/lightmap.c.i
+.PHONY : src/core/lightmap.c.i
 
-src/enemy_normal.s: src/enemy_normal.c.s
-.PHONY : src/enemy_normal.s
+src/core/lightmap.s: src/core/lightmap.c.s
+.PHONY : src/core/lightmap.s
 
 # target to generate assembly for a file
-src/enemy_normal.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemy_normal.c.s
-.PHONY : src/enemy_normal.c.s
+src/core/lightmap.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/lightmap.c.s
+.PHONY : src/core/lightmap.c.s
 
-src/main.o: src/main.c.o
-.PHONY : src/main.o
+src/core/main.o: src/core/main.c.o
+.PHONY : src/core/main.o
 
 # target to build an object file
-src/main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/main.c.o
-.PHONY : src/main.c.o
+src/core/main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/main.c.o
+.PHONY : src/core/main.c.o
 
-src/main.i: src/main.c.i
-.PHONY : src/main.i
+src/core/main.i: src/core/main.c.i
+.PHONY : src/core/main.i
 
 # target to preprocess a source file
-src/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/main.c.i
-.PHONY : src/main.c.i
+src/core/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/main.c.i
+.PHONY : src/core/main.c.i
 
-src/main.s: src/main.c.s
-.PHONY : src/main.s
+src/core/main.s: src/core/main.c.s
+.PHONY : src/core/main.s
 
 # target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/main.c.s
-.PHONY : src/main.c.s
+src/core/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/main.c.s
+.PHONY : src/core/main.c.s
 
-src/particle.o: src/particle.c.o
-.PHONY : src/particle.o
+src/core/particle.o: src/core/particle.c.o
+.PHONY : src/core/particle.o
 
 # target to build an object file
-src/particle.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/particle.c.o
-.PHONY : src/particle.c.o
+src/core/particle.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/particle.c.o
+.PHONY : src/core/particle.c.o
 
-src/particle.i: src/particle.c.i
-.PHONY : src/particle.i
+src/core/particle.i: src/core/particle.c.i
+.PHONY : src/core/particle.i
 
 # target to preprocess a source file
-src/particle.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/particle.c.i
-.PHONY : src/particle.c.i
+src/core/particle.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/particle.c.i
+.PHONY : src/core/particle.c.i
 
-src/particle.s: src/particle.c.s
-.PHONY : src/particle.s
+src/core/particle.s: src/core/particle.c.s
+.PHONY : src/core/particle.s
 
 # target to generate assembly for a file
-src/particle.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/particle.c.s
-.PHONY : src/particle.c.s
+src/core/particle.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/particle.c.s
+.PHONY : src/core/particle.c.s
 
-src/save.o: src/save.c.o
-.PHONY : src/save.o
+src/core/resource_loader.o: src/core/resource_loader.c.o
+.PHONY : src/core/resource_loader.o
 
 # target to build an object file
-src/save.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/save.c.o
-.PHONY : src/save.c.o
+src/core/resource_loader.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/resource_loader.c.o
+.PHONY : src/core/resource_loader.c.o
 
-src/save.i: src/save.c.i
-.PHONY : src/save.i
+src/core/resource_loader.i: src/core/resource_loader.c.i
+.PHONY : src/core/resource_loader.i
 
 # target to preprocess a source file
-src/save.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/save.c.i
-.PHONY : src/save.c.i
+src/core/resource_loader.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/resource_loader.c.i
+.PHONY : src/core/resource_loader.c.i
 
-src/save.s: src/save.c.s
-.PHONY : src/save.s
+src/core/resource_loader.s: src/core/resource_loader.c.s
+.PHONY : src/core/resource_loader.s
 
 # target to generate assembly for a file
-src/save.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/save.c.s
-.PHONY : src/save.c.s
+src/core/resource_loader.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/resource_loader.c.s
+.PHONY : src/core/resource_loader.c.s
 
-src/skill.o: src/skill.c.o
-.PHONY : src/skill.o
+src/core/save.o: src/core/save.c.o
+.PHONY : src/core/save.o
 
 # target to build an object file
-src/skill.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skill.c.o
-.PHONY : src/skill.c.o
+src/core/save.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/save.c.o
+.PHONY : src/core/save.c.o
 
-src/skill.i: src/skill.c.i
-.PHONY : src/skill.i
+src/core/save.i: src/core/save.c.i
+.PHONY : src/core/save.i
 
 # target to preprocess a source file
-src/skill.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skill.c.i
-.PHONY : src/skill.c.i
+src/core/save.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/save.c.i
+.PHONY : src/core/save.c.i
 
-src/skill.s: src/skill.c.s
-.PHONY : src/skill.s
+src/core/save.s: src/core/save.c.s
+.PHONY : src/core/save.s
 
 # target to generate assembly for a file
-src/skill.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skill.c.s
-.PHONY : src/skill.c.s
+src/core/save.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/save.c.s
+.PHONY : src/core/save.c.s
 
-src/star.o: src/star.c.o
-.PHONY : src/star.o
+src/core/star.o: src/core/star.c.o
+.PHONY : src/core/star.o
 
 # target to build an object file
-src/star.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/star.c.o
-.PHONY : src/star.c.o
+src/core/star.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/star.c.o
+.PHONY : src/core/star.c.o
 
-src/star.i: src/star.c.i
-.PHONY : src/star.i
+src/core/star.i: src/core/star.c.i
+.PHONY : src/core/star.i
 
 # target to preprocess a source file
-src/star.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/star.c.i
-.PHONY : src/star.c.i
+src/core/star.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/star.c.i
+.PHONY : src/core/star.c.i
 
-src/star.s: src/star.c.s
-.PHONY : src/star.s
+src/core/star.s: src/core/star.c.s
+.PHONY : src/core/star.s
 
 # target to generate assembly for a file
-src/star.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/star.c.s
-.PHONY : src/star.c.s
+src/core/star.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/star.c.s
+.PHONY : src/core/star.c.s
 
-src/trail.o: src/trail.c.o
-.PHONY : src/trail.o
+src/core/trail.o: src/core/trail.c.o
+.PHONY : src/core/trail.o
 
 # target to build an object file
-src/trail.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/trail.c.o
-.PHONY : src/trail.c.o
+src/core/trail.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/trail.c.o
+.PHONY : src/core/trail.c.o
 
-src/trail.i: src/trail.c.i
-.PHONY : src/trail.i
+src/core/trail.i: src/core/trail.c.i
+.PHONY : src/core/trail.i
 
 # target to preprocess a source file
-src/trail.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/trail.c.i
-.PHONY : src/trail.c.i
+src/core/trail.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/trail.c.i
+.PHONY : src/core/trail.c.i
 
-src/trail.s: src/trail.c.s
-.PHONY : src/trail.s
+src/core/trail.s: src/core/trail.c.s
+.PHONY : src/core/trail.s
 
 # target to generate assembly for a file
-src/trail.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/trail.c.s
-.PHONY : src/trail.c.s
+src/core/trail.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/trail.c.s
+.PHONY : src/core/trail.c.s
 
-src/ui.o: src/ui.c.o
-.PHONY : src/ui.o
+src/core/ui.o: src/core/ui.c.o
+.PHONY : src/core/ui.o
 
 # target to build an object file
-src/ui.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/ui.c.o
-.PHONY : src/ui.c.o
+src/core/ui.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/ui.c.o
+.PHONY : src/core/ui.c.o
 
-src/ui.i: src/ui.c.i
-.PHONY : src/ui.i
+src/core/ui.i: src/core/ui.c.i
+.PHONY : src/core/ui.i
 
 # target to preprocess a source file
-src/ui.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/ui.c.i
-.PHONY : src/ui.c.i
+src/core/ui.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/ui.c.i
+.PHONY : src/core/ui.c.i
 
-src/ui.s: src/ui.c.s
-.PHONY : src/ui.s
+src/core/ui.s: src/core/ui.c.s
+.PHONY : src/core/ui.s
 
 # target to generate assembly for a file
-src/ui.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/ui.c.s
-.PHONY : src/ui.c.s
+src/core/ui.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/ui.c.s
+.PHONY : src/core/ui.c.s
 
-src/witch.o: src/witch.c.o
-.PHONY : src/witch.o
+src/core/witch.o: src/core/witch.c.o
+.PHONY : src/core/witch.o
 
 # target to build an object file
-src/witch.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/witch.c.o
-.PHONY : src/witch.c.o
+src/core/witch.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/witch.c.o
+.PHONY : src/core/witch.c.o
 
-src/witch.i: src/witch.c.i
-.PHONY : src/witch.i
+src/core/witch.i: src/core/witch.c.i
+.PHONY : src/core/witch.i
 
 # target to preprocess a source file
-src/witch.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/witch.c.i
-.PHONY : src/witch.c.i
+src/core/witch.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/witch.c.i
+.PHONY : src/core/witch.c.i
 
-src/witch.s: src/witch.c.s
-.PHONY : src/witch.s
+src/core/witch.s: src/core/witch.c.s
+.PHONY : src/core/witch.s
 
 # target to generate assembly for a file
-src/witch.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/witch.c.s
-.PHONY : src/witch.c.s
+src/core/witch.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/core/witch.c.s
+.PHONY : src/core/witch.c.s
+
+src/enemies/bosses/boss_cave.o: src/enemies/bosses/boss_cave.c.o
+.PHONY : src/enemies/bosses/boss_cave.o
+
+# target to build an object file
+src/enemies/bosses/boss_cave.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.o
+.PHONY : src/enemies/bosses/boss_cave.c.o
+
+src/enemies/bosses/boss_cave.i: src/enemies/bosses/boss_cave.c.i
+.PHONY : src/enemies/bosses/boss_cave.i
+
+# target to preprocess a source file
+src/enemies/bosses/boss_cave.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.i
+.PHONY : src/enemies/bosses/boss_cave.c.i
+
+src/enemies/bosses/boss_cave.s: src/enemies/bosses/boss_cave.c.s
+.PHONY : src/enemies/bosses/boss_cave.s
+
+# target to generate assembly for a file
+src/enemies/bosses/boss_cave.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.s
+.PHONY : src/enemies/bosses/boss_cave.c.s
+
+src/enemies/bosses/boss_city.o: src/enemies/bosses/boss_city.c.o
+.PHONY : src/enemies/bosses/boss_city.o
+
+# target to build an object file
+src/enemies/bosses/boss_city.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.o
+.PHONY : src/enemies/bosses/boss_city.c.o
+
+src/enemies/bosses/boss_city.i: src/enemies/bosses/boss_city.c.i
+.PHONY : src/enemies/bosses/boss_city.i
+
+# target to preprocess a source file
+src/enemies/bosses/boss_city.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.i
+.PHONY : src/enemies/bosses/boss_city.c.i
+
+src/enemies/bosses/boss_city.s: src/enemies/bosses/boss_city.c.s
+.PHONY : src/enemies/bosses/boss_city.s
+
+# target to generate assembly for a file
+src/enemies/bosses/boss_city.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.s
+.PHONY : src/enemies/bosses/boss_city.c.s
+
+src/enemies/bosses/boss_forest.o: src/enemies/bosses/boss_forest.c.o
+.PHONY : src/enemies/bosses/boss_forest.o
+
+# target to build an object file
+src/enemies/bosses/boss_forest.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.o
+.PHONY : src/enemies/bosses/boss_forest.c.o
+
+src/enemies/bosses/boss_forest.i: src/enemies/bosses/boss_forest.c.i
+.PHONY : src/enemies/bosses/boss_forest.i
+
+# target to preprocess a source file
+src/enemies/bosses/boss_forest.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.i
+.PHONY : src/enemies/bosses/boss_forest.c.i
+
+src/enemies/bosses/boss_forest.s: src/enemies/bosses/boss_forest.c.s
+.PHONY : src/enemies/bosses/boss_forest.s
+
+# target to generate assembly for a file
+src/enemies/bosses/boss_forest.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.s
+.PHONY : src/enemies/bosses/boss_forest.c.s
+
+src/enemies/bosses/boss_space.o: src/enemies/bosses/boss_space.c.o
+.PHONY : src/enemies/bosses/boss_space.o
+
+# target to build an object file
+src/enemies/bosses/boss_space.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.o
+.PHONY : src/enemies/bosses/boss_space.c.o
+
+src/enemies/bosses/boss_space.i: src/enemies/bosses/boss_space.c.i
+.PHONY : src/enemies/bosses/boss_space.i
+
+# target to preprocess a source file
+src/enemies/bosses/boss_space.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.i
+.PHONY : src/enemies/bosses/boss_space.c.i
+
+src/enemies/bosses/boss_space.s: src/enemies/bosses/boss_space.c.s
+.PHONY : src/enemies/bosses/boss_space.s
+
+# target to generate assembly for a file
+src/enemies/bosses/boss_space.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.s
+.PHONY : src/enemies/bosses/boss_space.c.s
+
+src/enemies/enemy.o: src/enemies/enemy.c.o
+.PHONY : src/enemies/enemy.o
+
+# target to build an object file
+src/enemies/enemy.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/enemy.c.o
+.PHONY : src/enemies/enemy.c.o
+
+src/enemies/enemy.i: src/enemies/enemy.c.i
+.PHONY : src/enemies/enemy.i
+
+# target to preprocess a source file
+src/enemies/enemy.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/enemy.c.i
+.PHONY : src/enemies/enemy.c.i
+
+src/enemies/enemy.s: src/enemies/enemy.c.s
+.PHONY : src/enemies/enemy.s
+
+# target to generate assembly for a file
+src/enemies/enemy.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/enemy.c.s
+.PHONY : src/enemies/enemy.c.s
+
+src/enemies/normal/alien.o: src/enemies/normal/alien.c.o
+.PHONY : src/enemies/normal/alien.o
+
+# target to build an object file
+src/enemies/normal/alien.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.o
+.PHONY : src/enemies/normal/alien.c.o
+
+src/enemies/normal/alien.i: src/enemies/normal/alien.c.i
+.PHONY : src/enemies/normal/alien.i
+
+# target to preprocess a source file
+src/enemies/normal/alien.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.i
+.PHONY : src/enemies/normal/alien.c.i
+
+src/enemies/normal/alien.s: src/enemies/normal/alien.c.s
+.PHONY : src/enemies/normal/alien.s
+
+# target to generate assembly for a file
+src/enemies/normal/alien.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.s
+.PHONY : src/enemies/normal/alien.c.s
+
+src/enemies/normal/bat.o: src/enemies/normal/bat.c.o
+.PHONY : src/enemies/normal/bat.o
+
+# target to build an object file
+src/enemies/normal/bat.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.o
+.PHONY : src/enemies/normal/bat.c.o
+
+src/enemies/normal/bat.i: src/enemies/normal/bat.c.i
+.PHONY : src/enemies/normal/bat.i
+
+# target to preprocess a source file
+src/enemies/normal/bat.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.i
+.PHONY : src/enemies/normal/bat.c.i
+
+src/enemies/normal/bat.s: src/enemies/normal/bat.c.s
+.PHONY : src/enemies/normal/bat.s
+
+# target to generate assembly for a file
+src/enemies/normal/bat.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.s
+.PHONY : src/enemies/normal/bat.c.s
+
+src/enemies/normal/drone.o: src/enemies/normal/drone.c.o
+.PHONY : src/enemies/normal/drone.o
+
+# target to build an object file
+src/enemies/normal/drone.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.o
+.PHONY : src/enemies/normal/drone.c.o
+
+src/enemies/normal/drone.i: src/enemies/normal/drone.c.i
+.PHONY : src/enemies/normal/drone.i
+
+# target to preprocess a source file
+src/enemies/normal/drone.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.i
+.PHONY : src/enemies/normal/drone.c.i
+
+src/enemies/normal/drone.s: src/enemies/normal/drone.c.s
+.PHONY : src/enemies/normal/drone.s
+
+# target to generate assembly for a file
+src/enemies/normal/drone.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.s
+.PHONY : src/enemies/normal/drone.c.s
+
+src/enemies/normal/ghost.o: src/enemies/normal/ghost.c.o
+.PHONY : src/enemies/normal/ghost.o
+
+# target to build an object file
+src/enemies/normal/ghost.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.o
+.PHONY : src/enemies/normal/ghost.c.o
+
+src/enemies/normal/ghost.i: src/enemies/normal/ghost.c.i
+.PHONY : src/enemies/normal/ghost.i
+
+# target to preprocess a source file
+src/enemies/normal/ghost.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.i
+.PHONY : src/enemies/normal/ghost.c.i
+
+src/enemies/normal/ghost.s: src/enemies/normal/ghost.c.s
+.PHONY : src/enemies/normal/ghost.s
+
+# target to generate assembly for a file
+src/enemies/normal/ghost.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.s
+.PHONY : src/enemies/normal/ghost.c.s
+
+src/enemies/normal/robot.o: src/enemies/normal/robot.c.o
+.PHONY : src/enemies/normal/robot.o
+
+# target to build an object file
+src/enemies/normal/robot.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.o
+.PHONY : src/enemies/normal/robot.c.o
+
+src/enemies/normal/robot.i: src/enemies/normal/robot.c.i
+.PHONY : src/enemies/normal/robot.i
+
+# target to preprocess a source file
+src/enemies/normal/robot.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.i
+.PHONY : src/enemies/normal/robot.c.i
+
+src/enemies/normal/robot.s: src/enemies/normal/robot.c.s
+.PHONY : src/enemies/normal/robot.s
+
+# target to generate assembly for a file
+src/enemies/normal/robot.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.s
+.PHONY : src/enemies/normal/robot.c.s
+
+src/enemies/normal/slime.o: src/enemies/normal/slime.c.o
+.PHONY : src/enemies/normal/slime.o
+
+# target to build an object file
+src/enemies/normal/slime.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.o
+.PHONY : src/enemies/normal/slime.c.o
+
+src/enemies/normal/slime.i: src/enemies/normal/slime.c.i
+.PHONY : src/enemies/normal/slime.i
+
+# target to preprocess a source file
+src/enemies/normal/slime.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.i
+.PHONY : src/enemies/normal/slime.c.i
+
+src/enemies/normal/slime.s: src/enemies/normal/slime.c.s
+.PHONY : src/enemies/normal/slime.s
+
+# target to generate assembly for a file
+src/enemies/normal/slime.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.s
+.PHONY : src/enemies/normal/slime.c.s
+
+src/enemies/normal/ufo.o: src/enemies/normal/ufo.c.o
+.PHONY : src/enemies/normal/ufo.o
+
+# target to build an object file
+src/enemies/normal/ufo.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.o
+.PHONY : src/enemies/normal/ufo.c.o
+
+src/enemies/normal/ufo.i: src/enemies/normal/ufo.c.i
+.PHONY : src/enemies/normal/ufo.i
+
+# target to preprocess a source file
+src/enemies/normal/ufo.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.i
+.PHONY : src/enemies/normal/ufo.c.i
+
+src/enemies/normal/ufo.s: src/enemies/normal/ufo.c.s
+.PHONY : src/enemies/normal/ufo.s
+
+# target to generate assembly for a file
+src/enemies/normal/ufo.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.s
+.PHONY : src/enemies/normal/ufo.c.s
+
+src/screens/screen.o: src/screens/screen.c.o
+.PHONY : src/screens/screen.o
+
+# target to build an object file
+src/screens/screen.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/screens/screen.c.o
+.PHONY : src/screens/screen.c.o
+
+src/screens/screen.i: src/screens/screen.c.i
+.PHONY : src/screens/screen.i
+
+# target to preprocess a source file
+src/screens/screen.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/screens/screen.c.i
+.PHONY : src/screens/screen.c.i
+
+src/screens/screen.s: src/screens/screen.c.s
+.PHONY : src/screens/screen.s
+
+# target to generate assembly for a file
+src/screens/screen.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/screens/screen.c.s
+.PHONY : src/screens/screen.c.s
+
+src/skills/fireball_skill.o: src/skills/fireball_skill.c.o
+.PHONY : src/skills/fireball_skill.o
+
+# target to build an object file
+src/skills/fireball_skill.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.o
+.PHONY : src/skills/fireball_skill.c.o
+
+src/skills/fireball_skill.i: src/skills/fireball_skill.c.i
+.PHONY : src/skills/fireball_skill.i
+
+# target to preprocess a source file
+src/skills/fireball_skill.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.i
+.PHONY : src/skills/fireball_skill.c.i
+
+src/skills/fireball_skill.s: src/skills/fireball_skill.c.s
+.PHONY : src/skills/fireball_skill.s
+
+# target to generate assembly for a file
+src/skills/fireball_skill.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.s
+.PHONY : src/skills/fireball_skill.c.s
+
+src/skills/fluid_skill.o: src/skills/fluid_skill.c.o
+.PHONY : src/skills/fluid_skill.o
+
+# target to build an object file
+src/skills/fluid_skill.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.o
+.PHONY : src/skills/fluid_skill.c.o
+
+src/skills/fluid_skill.i: src/skills/fluid_skill.c.i
+.PHONY : src/skills/fluid_skill.i
+
+# target to preprocess a source file
+src/skills/fluid_skill.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.i
+.PHONY : src/skills/fluid_skill.c.i
+
+src/skills/fluid_skill.s: src/skills/fluid_skill.c.s
+.PHONY : src/skills/fluid_skill.s
+
+# target to generate assembly for a file
+src/skills/fluid_skill.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.s
+.PHONY : src/skills/fluid_skill.c.s
+
+src/skills/lightning_skill.o: src/skills/lightning_skill.c.o
+.PHONY : src/skills/lightning_skill.o
+
+# target to build an object file
+src/skills/lightning_skill.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.o
+.PHONY : src/skills/lightning_skill.c.o
+
+src/skills/lightning_skill.i: src/skills/lightning_skill.c.i
+.PHONY : src/skills/lightning_skill.i
+
+# target to preprocess a source file
+src/skills/lightning_skill.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.i
+.PHONY : src/skills/lightning_skill.c.i
+
+src/skills/lightning_skill.s: src/skills/lightning_skill.c.s
+.PHONY : src/skills/lightning_skill.s
+
+# target to generate assembly for a file
+src/skills/lightning_skill.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.s
+.PHONY : src/skills/lightning_skill.c.s
+
+src/skills/magnet_skill.o: src/skills/magnet_skill.c.o
+.PHONY : src/skills/magnet_skill.o
+
+# target to build an object file
+src/skills/magnet_skill.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.o
+.PHONY : src/skills/magnet_skill.c.o
+
+src/skills/magnet_skill.i: src/skills/magnet_skill.c.i
+.PHONY : src/skills/magnet_skill.i
+
+# target to preprocess a source file
+src/skills/magnet_skill.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.i
+.PHONY : src/skills/magnet_skill.c.i
+
+src/skills/magnet_skill.s: src/skills/magnet_skill.c.s
+.PHONY : src/skills/magnet_skill.s
+
+# target to generate assembly for a file
+src/skills/magnet_skill.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.s
+.PHONY : src/skills/magnet_skill.c.s
+
+src/skills/poison_cloud_skill.o: src/skills/poison_cloud_skill.c.o
+.PHONY : src/skills/poison_cloud_skill.o
+
+# target to build an object file
+src/skills/poison_cloud_skill.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.o
+.PHONY : src/skills/poison_cloud_skill.c.o
+
+src/skills/poison_cloud_skill.i: src/skills/poison_cloud_skill.c.i
+.PHONY : src/skills/poison_cloud_skill.i
+
+# target to preprocess a source file
+src/skills/poison_cloud_skill.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.i
+.PHONY : src/skills/poison_cloud_skill.c.i
+
+src/skills/poison_cloud_skill.s: src/skills/poison_cloud_skill.c.s
+.PHONY : src/skills/poison_cloud_skill.s
+
+# target to generate assembly for a file
+src/skills/poison_cloud_skill.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.s
+.PHONY : src/skills/poison_cloud_skill.c.s
+
+src/skills/shield_skill.o: src/skills/shield_skill.c.o
+.PHONY : src/skills/shield_skill.o
+
+# target to build an object file
+src/skills/shield_skill.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.o
+.PHONY : src/skills/shield_skill.c.o
+
+src/skills/shield_skill.i: src/skills/shield_skill.c.i
+.PHONY : src/skills/shield_skill.i
+
+# target to preprocess a source file
+src/skills/shield_skill.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.i
+.PHONY : src/skills/shield_skill.c.i
+
+src/skills/shield_skill.s: src/skills/shield_skill.c.s
+.PHONY : src/skills/shield_skill.s
+
+# target to generate assembly for a file
+src/skills/shield_skill.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.s
+.PHONY : src/skills/shield_skill.c.s
+
+src/skills/shuriken_skill.o: src/skills/shuriken_skill.c.o
+.PHONY : src/skills/shuriken_skill.o
+
+# target to build an object file
+src/skills/shuriken_skill.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.o
+.PHONY : src/skills/shuriken_skill.c.o
+
+src/skills/shuriken_skill.i: src/skills/shuriken_skill.c.i
+.PHONY : src/skills/shuriken_skill.i
+
+# target to preprocess a source file
+src/skills/shuriken_skill.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.i
+.PHONY : src/skills/shuriken_skill.c.i
+
+src/skills/shuriken_skill.s: src/skills/shuriken_skill.c.s
+.PHONY : src/skills/shuriken_skill.s
+
+# target to generate assembly for a file
+src/skills/shuriken_skill.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.s
+.PHONY : src/skills/shuriken_skill.c.s
+
+src/skills/skill.o: src/skills/skill.c.o
+.PHONY : src/skills/skill.o
+
+# target to build an object file
+src/skills/skill.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/skill.c.o
+.PHONY : src/skills/skill.c.o
+
+src/skills/skill.i: src/skills/skill.c.i
+.PHONY : src/skills/skill.i
+
+# target to preprocess a source file
+src/skills/skill.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/skill.c.i
+.PHONY : src/skills/skill.c.i
+
+src/skills/skill.s: src/skills/skill.c.s
+.PHONY : src/skills/skill.s
+
+# target to generate assembly for a file
+src/skills/skill.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/littlewitch.dir/build.make CMakeFiles/littlewitch.dir/src/skills/skill.c.s
+.PHONY : src/skills/skill.c.s
 
 # Help Target
 help:
@@ -601,48 +1105,111 @@ help:
 	@echo "... glfw"
 	@echo "... littlewitch"
 	@echo "... raylib"
-	@echo "... src/admob_bridge.o"
-	@echo "... src/admob_bridge.i"
-	@echo "... src/admob_bridge.s"
-	@echo "... src/biome.o"
-	@echo "... src/biome.i"
-	@echo "... src/biome.s"
-	@echo "... src/biome_procedural.o"
-	@echo "... src/biome_procedural.i"
-	@echo "... src/biome_procedural.s"
-	@echo "... src/enemy.o"
-	@echo "... src/enemy.i"
-	@echo "... src/enemy.s"
-	@echo "... src/enemy_boss.o"
-	@echo "... src/enemy_boss.i"
-	@echo "... src/enemy_boss.s"
-	@echo "... src/enemy_normal.o"
-	@echo "... src/enemy_normal.i"
-	@echo "... src/enemy_normal.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
-	@echo "... src/particle.o"
-	@echo "... src/particle.i"
-	@echo "... src/particle.s"
-	@echo "... src/save.o"
-	@echo "... src/save.i"
-	@echo "... src/save.s"
-	@echo "... src/skill.o"
-	@echo "... src/skill.i"
-	@echo "... src/skill.s"
-	@echo "... src/star.o"
-	@echo "... src/star.i"
-	@echo "... src/star.s"
-	@echo "... src/trail.o"
-	@echo "... src/trail.i"
-	@echo "... src/trail.s"
-	@echo "... src/ui.o"
-	@echo "... src/ui.i"
-	@echo "... src/ui.s"
-	@echo "... src/witch.o"
-	@echo "... src/witch.i"
-	@echo "... src/witch.s"
+	@echo "... src/biomes/biome.o"
+	@echo "... src/biomes/biome.i"
+	@echo "... src/biomes/biome.s"
+	@echo "... src/biomes/biome_procedural.o"
+	@echo "... src/biomes/biome_procedural.i"
+	@echo "... src/biomes/biome_procedural.s"
+	@echo "... src/core/admob_bridge.o"
+	@echo "... src/core/admob_bridge.i"
+	@echo "... src/core/admob_bridge.s"
+	@echo "... src/core/collision.o"
+	@echo "... src/core/collision.i"
+	@echo "... src/core/collision.s"
+	@echo "... src/core/gameplay.o"
+	@echo "... src/core/gameplay.i"
+	@echo "... src/core/gameplay.s"
+	@echo "... src/core/lightmap.o"
+	@echo "... src/core/lightmap.i"
+	@echo "... src/core/lightmap.s"
+	@echo "... src/core/main.o"
+	@echo "... src/core/main.i"
+	@echo "... src/core/main.s"
+	@echo "... src/core/particle.o"
+	@echo "... src/core/particle.i"
+	@echo "... src/core/particle.s"
+	@echo "... src/core/resource_loader.o"
+	@echo "... src/core/resource_loader.i"
+	@echo "... src/core/resource_loader.s"
+	@echo "... src/core/save.o"
+	@echo "... src/core/save.i"
+	@echo "... src/core/save.s"
+	@echo "... src/core/star.o"
+	@echo "... src/core/star.i"
+	@echo "... src/core/star.s"
+	@echo "... src/core/trail.o"
+	@echo "... src/core/trail.i"
+	@echo "... src/core/trail.s"
+	@echo "... src/core/ui.o"
+	@echo "... src/core/ui.i"
+	@echo "... src/core/ui.s"
+	@echo "... src/core/witch.o"
+	@echo "... src/core/witch.i"
+	@echo "... src/core/witch.s"
+	@echo "... src/enemies/bosses/boss_cave.o"
+	@echo "... src/enemies/bosses/boss_cave.i"
+	@echo "... src/enemies/bosses/boss_cave.s"
+	@echo "... src/enemies/bosses/boss_city.o"
+	@echo "... src/enemies/bosses/boss_city.i"
+	@echo "... src/enemies/bosses/boss_city.s"
+	@echo "... src/enemies/bosses/boss_forest.o"
+	@echo "... src/enemies/bosses/boss_forest.i"
+	@echo "... src/enemies/bosses/boss_forest.s"
+	@echo "... src/enemies/bosses/boss_space.o"
+	@echo "... src/enemies/bosses/boss_space.i"
+	@echo "... src/enemies/bosses/boss_space.s"
+	@echo "... src/enemies/enemy.o"
+	@echo "... src/enemies/enemy.i"
+	@echo "... src/enemies/enemy.s"
+	@echo "... src/enemies/normal/alien.o"
+	@echo "... src/enemies/normal/alien.i"
+	@echo "... src/enemies/normal/alien.s"
+	@echo "... src/enemies/normal/bat.o"
+	@echo "... src/enemies/normal/bat.i"
+	@echo "... src/enemies/normal/bat.s"
+	@echo "... src/enemies/normal/drone.o"
+	@echo "... src/enemies/normal/drone.i"
+	@echo "... src/enemies/normal/drone.s"
+	@echo "... src/enemies/normal/ghost.o"
+	@echo "... src/enemies/normal/ghost.i"
+	@echo "... src/enemies/normal/ghost.s"
+	@echo "... src/enemies/normal/robot.o"
+	@echo "... src/enemies/normal/robot.i"
+	@echo "... src/enemies/normal/robot.s"
+	@echo "... src/enemies/normal/slime.o"
+	@echo "... src/enemies/normal/slime.i"
+	@echo "... src/enemies/normal/slime.s"
+	@echo "... src/enemies/normal/ufo.o"
+	@echo "... src/enemies/normal/ufo.i"
+	@echo "... src/enemies/normal/ufo.s"
+	@echo "... src/screens/screen.o"
+	@echo "... src/screens/screen.i"
+	@echo "... src/screens/screen.s"
+	@echo "... src/skills/fireball_skill.o"
+	@echo "... src/skills/fireball_skill.i"
+	@echo "... src/skills/fireball_skill.s"
+	@echo "... src/skills/fluid_skill.o"
+	@echo "... src/skills/fluid_skill.i"
+	@echo "... src/skills/fluid_skill.s"
+	@echo "... src/skills/lightning_skill.o"
+	@echo "... src/skills/lightning_skill.i"
+	@echo "... src/skills/lightning_skill.s"
+	@echo "... src/skills/magnet_skill.o"
+	@echo "... src/skills/magnet_skill.i"
+	@echo "... src/skills/magnet_skill.s"
+	@echo "... src/skills/poison_cloud_skill.o"
+	@echo "... src/skills/poison_cloud_skill.i"
+	@echo "... src/skills/poison_cloud_skill.s"
+	@echo "... src/skills/shield_skill.o"
+	@echo "... src/skills/shield_skill.i"
+	@echo "... src/skills/shield_skill.s"
+	@echo "... src/skills/shuriken_skill.o"
+	@echo "... src/skills/shuriken_skill.i"
+	@echo "... src/skills/shuriken_skill.s"
+	@echo "... src/skills/skill.o"
+	@echo "... src/skills/skill.i"
+	@echo "... src/skills/skill.s"
 .PHONY : help
 
 

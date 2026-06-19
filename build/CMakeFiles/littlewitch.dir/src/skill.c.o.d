@@ -12,6 +12,13 @@ CMakeFiles/littlewitch.dir/src/skill.c.o: \
   /Users/mth2610/Desktop/c_games/little_witch/include/particle.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/save.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/trail.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/shuriken_skill.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/poison_cloud_skill.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/fluid_skill.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/fireball_skill.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/lightning_skill.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/magnet_skill.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/shield_skill.h \
   /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raymath.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h \

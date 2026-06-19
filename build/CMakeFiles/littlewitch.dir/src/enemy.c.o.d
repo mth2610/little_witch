@@ -12,8 +12,6 @@ CMakeFiles/littlewitch.dir/src/enemy.c.o: \
   /Users/mth2610/Desktop/c_games/little_witch/include/particle.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/save.h \
   /Users/mth2610/Desktop/c_games/little_witch/include/trail.h \
-  /Users/mth2610/Desktop/c_games/little_witch/include/enemy_normal.h \
-  /Users/mth2610/Desktop/c_games/little_witch/include/enemy_boss.h \
   /Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/raymath.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h \

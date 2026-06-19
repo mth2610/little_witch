@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP
 
-C_INCLUDES = -I/Users/mth2610/Desktop/c_games/little_witch/include -I/Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src -I/Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/external/glfw/include
+C_INCLUDES = -I/Users/mth2610/Desktop/c_games/little_witch/include -I/Users/mth2610/Desktop/c_games/little_witch/include/core -I/Users/mth2610/Desktop/c_games/little_witch/include/enemies -I/Users/mth2610/Desktop/c_games/little_witch/include/skills -I/Users/mth2610/Desktop/c_games/little_witch/include/biomes -I/Users/mth2610/Desktop/c_games/little_witch/include/screens -I/Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src -I/Users/mth2610/Desktop/c_games/little_witch/build/_deps/raylib-src/src/external/glfw/include
 
-C_FLAGS = -O3 -DNDEBUG -std=gnu99
+C_FLAGS = -g -std=gnu99
 

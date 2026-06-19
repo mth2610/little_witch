@@ -72,240 +72,576 @@ include CMakeFiles/littlewitch.dir/flags.make
 CMakeFiles/littlewitch.dir/codegen:
 .PHONY : CMakeFiles/littlewitch.dir/codegen
 
-CMakeFiles/littlewitch.dir/src/admob_bridge.c.o: CMakeFiles/littlewitch.dir/flags.make
-CMakeFiles/littlewitch.dir/src/admob_bridge.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/admob_bridge.c
-CMakeFiles/littlewitch.dir/src/admob_bridge.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/littlewitch.dir/src/admob_bridge.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/admob_bridge.c.o -MF CMakeFiles/littlewitch.dir/src/admob_bridge.c.o.d -o CMakeFiles/littlewitch.dir/src/admob_bridge.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/admob_bridge.c
+CMakeFiles/littlewitch.dir/src/biomes/biome.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/biomes/biome.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/biomes/biome.c
+CMakeFiles/littlewitch.dir/src/biomes/biome.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/littlewitch.dir/src/biomes/biome.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/biomes/biome.c.o -MF CMakeFiles/littlewitch.dir/src/biomes/biome.c.o.d -o CMakeFiles/littlewitch.dir/src/biomes/biome.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/biomes/biome.c
 
-CMakeFiles/littlewitch.dir/src/admob_bridge.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/admob_bridge.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/admob_bridge.c > CMakeFiles/littlewitch.dir/src/admob_bridge.c.i
+CMakeFiles/littlewitch.dir/src/biomes/biome.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/biomes/biome.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/biomes/biome.c > CMakeFiles/littlewitch.dir/src/biomes/biome.c.i
 
-CMakeFiles/littlewitch.dir/src/admob_bridge.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/admob_bridge.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/admob_bridge.c -o CMakeFiles/littlewitch.dir/src/admob_bridge.c.s
+CMakeFiles/littlewitch.dir/src/biomes/biome.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/biomes/biome.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/biomes/biome.c -o CMakeFiles/littlewitch.dir/src/biomes/biome.c.s
 
-CMakeFiles/littlewitch.dir/src/biome.c.o: CMakeFiles/littlewitch.dir/flags.make
-CMakeFiles/littlewitch.dir/src/biome.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/biome.c
-CMakeFiles/littlewitch.dir/src/biome.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/littlewitch.dir/src/biome.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/biome.c.o -MF CMakeFiles/littlewitch.dir/src/biome.c.o.d -o CMakeFiles/littlewitch.dir/src/biome.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/biome.c
+CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/biomes/biome_procedural.c
+CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.o -MF CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.o.d -o CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/biomes/biome_procedural.c
 
-CMakeFiles/littlewitch.dir/src/biome.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/biome.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/biome.c > CMakeFiles/littlewitch.dir/src/biome.c.i
+CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/biomes/biome_procedural.c > CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.i
 
-CMakeFiles/littlewitch.dir/src/biome.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/biome.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/biome.c -o CMakeFiles/littlewitch.dir/src/biome.c.s
+CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/biomes/biome_procedural.c -o CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.s
 
-CMakeFiles/littlewitch.dir/src/biome_procedural.c.o: CMakeFiles/littlewitch.dir/flags.make
-CMakeFiles/littlewitch.dir/src/biome_procedural.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/biome_procedural.c
-CMakeFiles/littlewitch.dir/src/biome_procedural.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/littlewitch.dir/src/biome_procedural.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/biome_procedural.c.o -MF CMakeFiles/littlewitch.dir/src/biome_procedural.c.o.d -o CMakeFiles/littlewitch.dir/src/biome_procedural.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/biome_procedural.c
+CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/core/admob_bridge.c
+CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.o -MF CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.o.d -o CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/core/admob_bridge.c
 
-CMakeFiles/littlewitch.dir/src/biome_procedural.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/biome_procedural.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/biome_procedural.c > CMakeFiles/littlewitch.dir/src/biome_procedural.c.i
+CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/core/admob_bridge.c > CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.i
 
-CMakeFiles/littlewitch.dir/src/biome_procedural.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/biome_procedural.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/biome_procedural.c -o CMakeFiles/littlewitch.dir/src/biome_procedural.c.s
+CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/core/admob_bridge.c -o CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.s
 
-CMakeFiles/littlewitch.dir/src/enemy.c.o: CMakeFiles/littlewitch.dir/flags.make
-CMakeFiles/littlewitch.dir/src/enemy.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemy.c
-CMakeFiles/littlewitch.dir/src/enemy.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/littlewitch.dir/src/enemy.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemy.c.o -MF CMakeFiles/littlewitch.dir/src/enemy.c.o.d -o CMakeFiles/littlewitch.dir/src/enemy.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemy.c
+CMakeFiles/littlewitch.dir/src/core/collision.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/core/collision.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/core/collision.c
+CMakeFiles/littlewitch.dir/src/core/collision.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/littlewitch.dir/src/core/collision.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/core/collision.c.o -MF CMakeFiles/littlewitch.dir/src/core/collision.c.o.d -o CMakeFiles/littlewitch.dir/src/core/collision.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/core/collision.c
 
-CMakeFiles/littlewitch.dir/src/enemy.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemy.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemy.c > CMakeFiles/littlewitch.dir/src/enemy.c.i
+CMakeFiles/littlewitch.dir/src/core/collision.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/core/collision.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/core/collision.c > CMakeFiles/littlewitch.dir/src/core/collision.c.i
 
-CMakeFiles/littlewitch.dir/src/enemy.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemy.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemy.c -o CMakeFiles/littlewitch.dir/src/enemy.c.s
+CMakeFiles/littlewitch.dir/src/core/collision.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/core/collision.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/core/collision.c -o CMakeFiles/littlewitch.dir/src/core/collision.c.s
 
-CMakeFiles/littlewitch.dir/src/enemy_boss.c.o: CMakeFiles/littlewitch.dir/flags.make
-CMakeFiles/littlewitch.dir/src/enemy_boss.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemy_boss.c
-CMakeFiles/littlewitch.dir/src/enemy_boss.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/littlewitch.dir/src/enemy_boss.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemy_boss.c.o -MF CMakeFiles/littlewitch.dir/src/enemy_boss.c.o.d -o CMakeFiles/littlewitch.dir/src/enemy_boss.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemy_boss.c
+CMakeFiles/littlewitch.dir/src/core/gameplay.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/core/gameplay.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/core/gameplay.c
+CMakeFiles/littlewitch.dir/src/core/gameplay.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/littlewitch.dir/src/core/gameplay.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/core/gameplay.c.o -MF CMakeFiles/littlewitch.dir/src/core/gameplay.c.o.d -o CMakeFiles/littlewitch.dir/src/core/gameplay.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/core/gameplay.c
 
-CMakeFiles/littlewitch.dir/src/enemy_boss.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemy_boss.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemy_boss.c > CMakeFiles/littlewitch.dir/src/enemy_boss.c.i
+CMakeFiles/littlewitch.dir/src/core/gameplay.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/core/gameplay.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/core/gameplay.c > CMakeFiles/littlewitch.dir/src/core/gameplay.c.i
 
-CMakeFiles/littlewitch.dir/src/enemy_boss.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemy_boss.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemy_boss.c -o CMakeFiles/littlewitch.dir/src/enemy_boss.c.s
+CMakeFiles/littlewitch.dir/src/core/gameplay.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/core/gameplay.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/core/gameplay.c -o CMakeFiles/littlewitch.dir/src/core/gameplay.c.s
 
-CMakeFiles/littlewitch.dir/src/enemy_normal.c.o: CMakeFiles/littlewitch.dir/flags.make
-CMakeFiles/littlewitch.dir/src/enemy_normal.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemy_normal.c
-CMakeFiles/littlewitch.dir/src/enemy_normal.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/littlewitch.dir/src/enemy_normal.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemy_normal.c.o -MF CMakeFiles/littlewitch.dir/src/enemy_normal.c.o.d -o CMakeFiles/littlewitch.dir/src/enemy_normal.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemy_normal.c
+CMakeFiles/littlewitch.dir/src/core/lightmap.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/core/lightmap.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/core/lightmap.c
+CMakeFiles/littlewitch.dir/src/core/lightmap.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/littlewitch.dir/src/core/lightmap.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/core/lightmap.c.o -MF CMakeFiles/littlewitch.dir/src/core/lightmap.c.o.d -o CMakeFiles/littlewitch.dir/src/core/lightmap.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/core/lightmap.c
 
-CMakeFiles/littlewitch.dir/src/enemy_normal.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemy_normal.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemy_normal.c > CMakeFiles/littlewitch.dir/src/enemy_normal.c.i
+CMakeFiles/littlewitch.dir/src/core/lightmap.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/core/lightmap.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/core/lightmap.c > CMakeFiles/littlewitch.dir/src/core/lightmap.c.i
 
-CMakeFiles/littlewitch.dir/src/enemy_normal.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemy_normal.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemy_normal.c -o CMakeFiles/littlewitch.dir/src/enemy_normal.c.s
+CMakeFiles/littlewitch.dir/src/core/lightmap.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/core/lightmap.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/core/lightmap.c -o CMakeFiles/littlewitch.dir/src/core/lightmap.c.s
 
-CMakeFiles/littlewitch.dir/src/main.c.o: CMakeFiles/littlewitch.dir/flags.make
-CMakeFiles/littlewitch.dir/src/main.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/main.c
-CMakeFiles/littlewitch.dir/src/main.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/littlewitch.dir/src/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/main.c.o -MF CMakeFiles/littlewitch.dir/src/main.c.o.d -o CMakeFiles/littlewitch.dir/src/main.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/main.c
+CMakeFiles/littlewitch.dir/src/core/main.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/core/main.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/core/main.c
+CMakeFiles/littlewitch.dir/src/core/main.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/littlewitch.dir/src/core/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/core/main.c.o -MF CMakeFiles/littlewitch.dir/src/core/main.c.o.d -o CMakeFiles/littlewitch.dir/src/core/main.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/core/main.c
 
-CMakeFiles/littlewitch.dir/src/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/main.c > CMakeFiles/littlewitch.dir/src/main.c.i
+CMakeFiles/littlewitch.dir/src/core/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/core/main.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/core/main.c > CMakeFiles/littlewitch.dir/src/core/main.c.i
 
-CMakeFiles/littlewitch.dir/src/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/main.c -o CMakeFiles/littlewitch.dir/src/main.c.s
+CMakeFiles/littlewitch.dir/src/core/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/core/main.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/core/main.c -o CMakeFiles/littlewitch.dir/src/core/main.c.s
 
-CMakeFiles/littlewitch.dir/src/particle.c.o: CMakeFiles/littlewitch.dir/flags.make
-CMakeFiles/littlewitch.dir/src/particle.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/particle.c
-CMakeFiles/littlewitch.dir/src/particle.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/littlewitch.dir/src/particle.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/particle.c.o -MF CMakeFiles/littlewitch.dir/src/particle.c.o.d -o CMakeFiles/littlewitch.dir/src/particle.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/particle.c
+CMakeFiles/littlewitch.dir/src/core/particle.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/core/particle.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/core/particle.c
+CMakeFiles/littlewitch.dir/src/core/particle.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/littlewitch.dir/src/core/particle.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/core/particle.c.o -MF CMakeFiles/littlewitch.dir/src/core/particle.c.o.d -o CMakeFiles/littlewitch.dir/src/core/particle.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/core/particle.c
 
-CMakeFiles/littlewitch.dir/src/particle.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/particle.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/particle.c > CMakeFiles/littlewitch.dir/src/particle.c.i
+CMakeFiles/littlewitch.dir/src/core/particle.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/core/particle.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/core/particle.c > CMakeFiles/littlewitch.dir/src/core/particle.c.i
 
-CMakeFiles/littlewitch.dir/src/particle.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/particle.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/particle.c -o CMakeFiles/littlewitch.dir/src/particle.c.s
+CMakeFiles/littlewitch.dir/src/core/particle.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/core/particle.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/core/particle.c -o CMakeFiles/littlewitch.dir/src/core/particle.c.s
 
-CMakeFiles/littlewitch.dir/src/save.c.o: CMakeFiles/littlewitch.dir/flags.make
-CMakeFiles/littlewitch.dir/src/save.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/save.c
-CMakeFiles/littlewitch.dir/src/save.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/littlewitch.dir/src/save.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/save.c.o -MF CMakeFiles/littlewitch.dir/src/save.c.o.d -o CMakeFiles/littlewitch.dir/src/save.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/save.c
+CMakeFiles/littlewitch.dir/src/core/resource_loader.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/core/resource_loader.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/core/resource_loader.c
+CMakeFiles/littlewitch.dir/src/core/resource_loader.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/littlewitch.dir/src/core/resource_loader.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/core/resource_loader.c.o -MF CMakeFiles/littlewitch.dir/src/core/resource_loader.c.o.d -o CMakeFiles/littlewitch.dir/src/core/resource_loader.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/core/resource_loader.c
 
-CMakeFiles/littlewitch.dir/src/save.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/save.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/save.c > CMakeFiles/littlewitch.dir/src/save.c.i
+CMakeFiles/littlewitch.dir/src/core/resource_loader.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/core/resource_loader.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/core/resource_loader.c > CMakeFiles/littlewitch.dir/src/core/resource_loader.c.i
 
-CMakeFiles/littlewitch.dir/src/save.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/save.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/save.c -o CMakeFiles/littlewitch.dir/src/save.c.s
+CMakeFiles/littlewitch.dir/src/core/resource_loader.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/core/resource_loader.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/core/resource_loader.c -o CMakeFiles/littlewitch.dir/src/core/resource_loader.c.s
 
-CMakeFiles/littlewitch.dir/src/skill.c.o: CMakeFiles/littlewitch.dir/flags.make
-CMakeFiles/littlewitch.dir/src/skill.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/skill.c
-CMakeFiles/littlewitch.dir/src/skill.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/littlewitch.dir/src/skill.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/skill.c.o -MF CMakeFiles/littlewitch.dir/src/skill.c.o.d -o CMakeFiles/littlewitch.dir/src/skill.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/skill.c
+CMakeFiles/littlewitch.dir/src/core/save.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/core/save.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/core/save.c
+CMakeFiles/littlewitch.dir/src/core/save.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/littlewitch.dir/src/core/save.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/core/save.c.o -MF CMakeFiles/littlewitch.dir/src/core/save.c.o.d -o CMakeFiles/littlewitch.dir/src/core/save.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/core/save.c
 
-CMakeFiles/littlewitch.dir/src/skill.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/skill.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/skill.c > CMakeFiles/littlewitch.dir/src/skill.c.i
+CMakeFiles/littlewitch.dir/src/core/save.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/core/save.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/core/save.c > CMakeFiles/littlewitch.dir/src/core/save.c.i
 
-CMakeFiles/littlewitch.dir/src/skill.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/skill.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/skill.c -o CMakeFiles/littlewitch.dir/src/skill.c.s
+CMakeFiles/littlewitch.dir/src/core/save.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/core/save.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/core/save.c -o CMakeFiles/littlewitch.dir/src/core/save.c.s
 
-CMakeFiles/littlewitch.dir/src/star.c.o: CMakeFiles/littlewitch.dir/flags.make
-CMakeFiles/littlewitch.dir/src/star.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/star.c
-CMakeFiles/littlewitch.dir/src/star.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/littlewitch.dir/src/star.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/star.c.o -MF CMakeFiles/littlewitch.dir/src/star.c.o.d -o CMakeFiles/littlewitch.dir/src/star.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/star.c
+CMakeFiles/littlewitch.dir/src/core/star.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/core/star.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/core/star.c
+CMakeFiles/littlewitch.dir/src/core/star.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/littlewitch.dir/src/core/star.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/core/star.c.o -MF CMakeFiles/littlewitch.dir/src/core/star.c.o.d -o CMakeFiles/littlewitch.dir/src/core/star.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/core/star.c
 
-CMakeFiles/littlewitch.dir/src/star.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/star.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/star.c > CMakeFiles/littlewitch.dir/src/star.c.i
+CMakeFiles/littlewitch.dir/src/core/star.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/core/star.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/core/star.c > CMakeFiles/littlewitch.dir/src/core/star.c.i
 
-CMakeFiles/littlewitch.dir/src/star.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/star.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/star.c -o CMakeFiles/littlewitch.dir/src/star.c.s
+CMakeFiles/littlewitch.dir/src/core/star.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/core/star.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/core/star.c -o CMakeFiles/littlewitch.dir/src/core/star.c.s
 
-CMakeFiles/littlewitch.dir/src/trail.c.o: CMakeFiles/littlewitch.dir/flags.make
-CMakeFiles/littlewitch.dir/src/trail.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/trail.c
-CMakeFiles/littlewitch.dir/src/trail.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/littlewitch.dir/src/trail.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/trail.c.o -MF CMakeFiles/littlewitch.dir/src/trail.c.o.d -o CMakeFiles/littlewitch.dir/src/trail.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/trail.c
+CMakeFiles/littlewitch.dir/src/core/trail.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/core/trail.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/core/trail.c
+CMakeFiles/littlewitch.dir/src/core/trail.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/littlewitch.dir/src/core/trail.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/core/trail.c.o -MF CMakeFiles/littlewitch.dir/src/core/trail.c.o.d -o CMakeFiles/littlewitch.dir/src/core/trail.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/core/trail.c
 
-CMakeFiles/littlewitch.dir/src/trail.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/trail.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/trail.c > CMakeFiles/littlewitch.dir/src/trail.c.i
+CMakeFiles/littlewitch.dir/src/core/trail.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/core/trail.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/core/trail.c > CMakeFiles/littlewitch.dir/src/core/trail.c.i
 
-CMakeFiles/littlewitch.dir/src/trail.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/trail.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/trail.c -o CMakeFiles/littlewitch.dir/src/trail.c.s
+CMakeFiles/littlewitch.dir/src/core/trail.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/core/trail.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/core/trail.c -o CMakeFiles/littlewitch.dir/src/core/trail.c.s
 
-CMakeFiles/littlewitch.dir/src/ui.c.o: CMakeFiles/littlewitch.dir/flags.make
-CMakeFiles/littlewitch.dir/src/ui.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/ui.c
-CMakeFiles/littlewitch.dir/src/ui.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/littlewitch.dir/src/ui.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/ui.c.o -MF CMakeFiles/littlewitch.dir/src/ui.c.o.d -o CMakeFiles/littlewitch.dir/src/ui.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/ui.c
+CMakeFiles/littlewitch.dir/src/core/ui.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/core/ui.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/core/ui.c
+CMakeFiles/littlewitch.dir/src/core/ui.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/littlewitch.dir/src/core/ui.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/core/ui.c.o -MF CMakeFiles/littlewitch.dir/src/core/ui.c.o.d -o CMakeFiles/littlewitch.dir/src/core/ui.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/core/ui.c
 
-CMakeFiles/littlewitch.dir/src/ui.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/ui.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/ui.c > CMakeFiles/littlewitch.dir/src/ui.c.i
+CMakeFiles/littlewitch.dir/src/core/ui.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/core/ui.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/core/ui.c > CMakeFiles/littlewitch.dir/src/core/ui.c.i
 
-CMakeFiles/littlewitch.dir/src/ui.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/ui.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/ui.c -o CMakeFiles/littlewitch.dir/src/ui.c.s
+CMakeFiles/littlewitch.dir/src/core/ui.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/core/ui.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/core/ui.c -o CMakeFiles/littlewitch.dir/src/core/ui.c.s
 
-CMakeFiles/littlewitch.dir/src/witch.c.o: CMakeFiles/littlewitch.dir/flags.make
-CMakeFiles/littlewitch.dir/src/witch.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/witch.c
-CMakeFiles/littlewitch.dir/src/witch.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/littlewitch.dir/src/witch.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/witch.c.o -MF CMakeFiles/littlewitch.dir/src/witch.c.o.d -o CMakeFiles/littlewitch.dir/src/witch.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/witch.c
+CMakeFiles/littlewitch.dir/src/core/witch.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/core/witch.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/core/witch.c
+CMakeFiles/littlewitch.dir/src/core/witch.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/littlewitch.dir/src/core/witch.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/core/witch.c.o -MF CMakeFiles/littlewitch.dir/src/core/witch.c.o.d -o CMakeFiles/littlewitch.dir/src/core/witch.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/core/witch.c
 
-CMakeFiles/littlewitch.dir/src/witch.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/witch.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/witch.c > CMakeFiles/littlewitch.dir/src/witch.c.i
+CMakeFiles/littlewitch.dir/src/core/witch.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/core/witch.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/core/witch.c > CMakeFiles/littlewitch.dir/src/core/witch.c.i
 
-CMakeFiles/littlewitch.dir/src/witch.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/witch.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/witch.c -o CMakeFiles/littlewitch.dir/src/witch.c.s
+CMakeFiles/littlewitch.dir/src/core/witch.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/core/witch.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/core/witch.c -o CMakeFiles/littlewitch.dir/src/core/witch.c.s
+
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_cave.c
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.o -MF CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.o.d -o CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_cave.c
+
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_cave.c > CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.i
+
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_cave.c -o CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.s
+
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_city.c
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.o -MF CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.o.d -o CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_city.c
+
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_city.c > CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.i
+
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_city.c -o CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.s
+
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_forest.c
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.o -MF CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.o.d -o CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_forest.c
+
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_forest.c > CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.i
+
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_forest.c -o CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.s
+
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_space.c
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.o -MF CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.o.d -o CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_space.c
+
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_space.c > CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.i
+
+CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemies/bosses/boss_space.c -o CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.s
+
+CMakeFiles/littlewitch.dir/src/enemies/enemy.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/enemies/enemy.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemies/enemy.c
+CMakeFiles/littlewitch.dir/src/enemies/enemy.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/littlewitch.dir/src/enemies/enemy.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemies/enemy.c.o -MF CMakeFiles/littlewitch.dir/src/enemies/enemy.c.o.d -o CMakeFiles/littlewitch.dir/src/enemies/enemy.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemies/enemy.c
+
+CMakeFiles/littlewitch.dir/src/enemies/enemy.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemies/enemy.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemies/enemy.c > CMakeFiles/littlewitch.dir/src/enemies/enemy.c.i
+
+CMakeFiles/littlewitch.dir/src/enemies/enemy.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemies/enemy.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemies/enemy.c -o CMakeFiles/littlewitch.dir/src/enemies/enemy.c.s
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/alien.c
+CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.o -MF CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.o.d -o CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/alien.c
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/alien.c > CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.i
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/alien.c -o CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.s
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/bat.c
+CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.o -MF CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.o.d -o CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/bat.c
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/bat.c > CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.i
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/bat.c -o CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.s
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/drone.c
+CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.o -MF CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.o.d -o CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/drone.c
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/drone.c > CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.i
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/drone.c -o CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.s
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/ghost.c
+CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.o -MF CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.o.d -o CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/ghost.c
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/ghost.c > CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.i
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/ghost.c -o CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.s
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/robot.c
+CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.o -MF CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.o.d -o CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/robot.c
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/robot.c > CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.i
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/robot.c -o CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.s
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/slime.c
+CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.o -MF CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.o.d -o CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/slime.c
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/slime.c > CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.i
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/slime.c -o CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.s
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/ufo.c
+CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.o -MF CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.o.d -o CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/ufo.c
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/ufo.c > CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.i
+
+CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/enemies/normal/ufo.c -o CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.s
+
+CMakeFiles/littlewitch.dir/src/screens/screen.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/screens/screen.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/screens/screen.c
+CMakeFiles/littlewitch.dir/src/screens/screen.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/littlewitch.dir/src/screens/screen.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/screens/screen.c.o -MF CMakeFiles/littlewitch.dir/src/screens/screen.c.o.d -o CMakeFiles/littlewitch.dir/src/screens/screen.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/screens/screen.c
+
+CMakeFiles/littlewitch.dir/src/screens/screen.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/screens/screen.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/screens/screen.c > CMakeFiles/littlewitch.dir/src/screens/screen.c.i
+
+CMakeFiles/littlewitch.dir/src/screens/screen.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/screens/screen.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/screens/screen.c -o CMakeFiles/littlewitch.dir/src/screens/screen.c.s
+
+CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/skills/fireball_skill.c
+CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.o -MF CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.o.d -o CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/skills/fireball_skill.c
+
+CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/skills/fireball_skill.c > CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.i
+
+CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/skills/fireball_skill.c -o CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.s
+
+CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/skills/fluid_skill.c
+CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.o -MF CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.o.d -o CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/skills/fluid_skill.c
+
+CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/skills/fluid_skill.c > CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.i
+
+CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/skills/fluid_skill.c -o CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.s
+
+CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/skills/lightning_skill.c
+CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.o -MF CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.o.d -o CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/skills/lightning_skill.c
+
+CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/skills/lightning_skill.c > CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.i
+
+CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/skills/lightning_skill.c -o CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.s
+
+CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/skills/magnet_skill.c
+CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.o -MF CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.o.d -o CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/skills/magnet_skill.c
+
+CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/skills/magnet_skill.c > CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.i
+
+CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/skills/magnet_skill.c -o CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.s
+
+CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/skills/poison_cloud_skill.c
+CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.o -MF CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.o.d -o CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/skills/poison_cloud_skill.c
+
+CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/skills/poison_cloud_skill.c > CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.i
+
+CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/skills/poison_cloud_skill.c -o CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.s
+
+CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/skills/shield_skill.c
+CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.o -MF CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.o.d -o CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/skills/shield_skill.c
+
+CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/skills/shield_skill.c > CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.i
+
+CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/skills/shield_skill.c -o CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.s
+
+CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/skills/shuriken_skill.c
+CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.o -MF CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.o.d -o CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/skills/shuriken_skill.c
+
+CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/skills/shuriken_skill.c > CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.i
+
+CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/skills/shuriken_skill.c -o CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.s
+
+CMakeFiles/littlewitch.dir/src/skills/skill.c.o: CMakeFiles/littlewitch.dir/flags.make
+CMakeFiles/littlewitch.dir/src/skills/skill.c.o: /Users/mth2610/Desktop/c_games/little_witch/src/skills/skill.c
+CMakeFiles/littlewitch.dir/src/skills/skill.c.o: CMakeFiles/littlewitch.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/littlewitch.dir/src/skills/skill.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/littlewitch.dir/src/skills/skill.c.o -MF CMakeFiles/littlewitch.dir/src/skills/skill.c.o.d -o CMakeFiles/littlewitch.dir/src/skills/skill.c.o -c /Users/mth2610/Desktop/c_games/little_witch/src/skills/skill.c
+
+CMakeFiles/littlewitch.dir/src/skills/skill.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/littlewitch.dir/src/skills/skill.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/src/skills/skill.c > CMakeFiles/littlewitch.dir/src/skills/skill.c.i
+
+CMakeFiles/littlewitch.dir/src/skills/skill.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/littlewitch.dir/src/skills/skill.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/src/skills/skill.c -o CMakeFiles/littlewitch.dir/src/skills/skill.c.s
 
 # Object files for target littlewitch
 littlewitch_OBJECTS = \
-"CMakeFiles/littlewitch.dir/src/admob_bridge.c.o" \
-"CMakeFiles/littlewitch.dir/src/biome.c.o" \
-"CMakeFiles/littlewitch.dir/src/biome_procedural.c.o" \
-"CMakeFiles/littlewitch.dir/src/enemy.c.o" \
-"CMakeFiles/littlewitch.dir/src/enemy_boss.c.o" \
-"CMakeFiles/littlewitch.dir/src/enemy_normal.c.o" \
-"CMakeFiles/littlewitch.dir/src/main.c.o" \
-"CMakeFiles/littlewitch.dir/src/particle.c.o" \
-"CMakeFiles/littlewitch.dir/src/save.c.o" \
-"CMakeFiles/littlewitch.dir/src/skill.c.o" \
-"CMakeFiles/littlewitch.dir/src/star.c.o" \
-"CMakeFiles/littlewitch.dir/src/trail.c.o" \
-"CMakeFiles/littlewitch.dir/src/ui.c.o" \
-"CMakeFiles/littlewitch.dir/src/witch.c.o"
+"CMakeFiles/littlewitch.dir/src/biomes/biome.c.o" \
+"CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.o" \
+"CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.o" \
+"CMakeFiles/littlewitch.dir/src/core/collision.c.o" \
+"CMakeFiles/littlewitch.dir/src/core/gameplay.c.o" \
+"CMakeFiles/littlewitch.dir/src/core/lightmap.c.o" \
+"CMakeFiles/littlewitch.dir/src/core/main.c.o" \
+"CMakeFiles/littlewitch.dir/src/core/particle.c.o" \
+"CMakeFiles/littlewitch.dir/src/core/resource_loader.c.o" \
+"CMakeFiles/littlewitch.dir/src/core/save.c.o" \
+"CMakeFiles/littlewitch.dir/src/core/star.c.o" \
+"CMakeFiles/littlewitch.dir/src/core/trail.c.o" \
+"CMakeFiles/littlewitch.dir/src/core/ui.c.o" \
+"CMakeFiles/littlewitch.dir/src/core/witch.c.o" \
+"CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.o" \
+"CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.o" \
+"CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.o" \
+"CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.o" \
+"CMakeFiles/littlewitch.dir/src/enemies/enemy.c.o" \
+"CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.o" \
+"CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.o" \
+"CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.o" \
+"CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.o" \
+"CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.o" \
+"CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.o" \
+"CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.o" \
+"CMakeFiles/littlewitch.dir/src/screens/screen.c.o" \
+"CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.o" \
+"CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.o" \
+"CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.o" \
+"CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.o" \
+"CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.o" \
+"CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.o" \
+"CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.o" \
+"CMakeFiles/littlewitch.dir/src/skills/skill.c.o"
 
 # External object files for target littlewitch
 littlewitch_EXTERNAL_OBJECTS =
 
-bin/littlewitch: CMakeFiles/littlewitch.dir/src/admob_bridge.c.o
-bin/littlewitch: CMakeFiles/littlewitch.dir/src/biome.c.o
-bin/littlewitch: CMakeFiles/littlewitch.dir/src/biome_procedural.c.o
-bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemy.c.o
-bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemy_boss.c.o
-bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemy_normal.c.o
-bin/littlewitch: CMakeFiles/littlewitch.dir/src/main.c.o
-bin/littlewitch: CMakeFiles/littlewitch.dir/src/particle.c.o
-bin/littlewitch: CMakeFiles/littlewitch.dir/src/save.c.o
-bin/littlewitch: CMakeFiles/littlewitch.dir/src/skill.c.o
-bin/littlewitch: CMakeFiles/littlewitch.dir/src/star.c.o
-bin/littlewitch: CMakeFiles/littlewitch.dir/src/trail.c.o
-bin/littlewitch: CMakeFiles/littlewitch.dir/src/ui.c.o
-bin/littlewitch: CMakeFiles/littlewitch.dir/src/witch.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/biomes/biome.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/biomes/biome_procedural.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/core/admob_bridge.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/core/collision.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/core/gameplay.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/core/lightmap.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/core/main.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/core/particle.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/core/resource_loader.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/core/save.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/core/star.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/core/trail.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/core/ui.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/core/witch.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_cave.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_city.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_forest.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemies/bosses/boss_space.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemies/enemy.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemies/normal/alien.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemies/normal/bat.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemies/normal/drone.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemies/normal/ghost.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemies/normal/robot.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemies/normal/slime.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/enemies/normal/ufo.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/screens/screen.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/skills/fireball_skill.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/skills/fluid_skill.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/skills/lightning_skill.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/skills/magnet_skill.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/skills/poison_cloud_skill.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/skills/shield_skill.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/skills/shuriken_skill.c.o
+bin/littlewitch: CMakeFiles/littlewitch.dir/src/skills/skill.c.o
 bin/littlewitch: CMakeFiles/littlewitch.dir/build.make
 bin/littlewitch: _deps/raylib-build/raylib/libraylib.a
 bin/littlewitch: CMakeFiles/littlewitch.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking C executable bin/littlewitch"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Linking C executable bin/littlewitch"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/littlewitch.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -20,4 +20,5 @@ CMakeFiles/littlewitch.dir/src/witch.c.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h \
+  /Users/mth2610/Desktop/c_games/little_witch/include/shield_skill.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h
