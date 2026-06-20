@@ -9,7 +9,7 @@
 #define MAX_EMITTERS 10
 
 // ---- Hành trình theo thời gian ----
-#define FIRE_TRAVEL_SPEED 1.5f
+#define FIRE_TRAVEL_SPEED 0.9f
 #define FIRE_CAST_DURATION 0.45f
 #define FIRE_PROGRESS_MAX 2.5f // Bay vút lên trời
 
@@ -50,13 +50,63 @@
 static float Math_Mix(float x, float y, float a) {
   return x * (1.0f - a) + y * a;
 }
+
 static float Random01(void) {
   return (float)GetRandomValue(0, 10000) / 10000.0f;
+}
+
+static float GetAmplitudeEnvelope(float distFromHead, float totalLength) {
+  if (totalLength <= 0.0f) return 0.0f;
+  float norm = distFromHead / totalLength;
+  if (norm < 0.15f) {
+    float t = norm / 0.15f;
+    return Math_Mix(0.25f, 1.0f, t);
+  } else if (norm < 0.8f) {
+    return 1.0f;
+  } else {
+    float t = (norm - 0.8f) / 0.2f;
+    return Math_Mix(1.0f, 0.0f, t);
+  }
+}
+
+// Lấy các điểm cách đều nhau một khoảng cố định dọc theo đường đi (path)
+static int SamplePath(const Vector2* path, int pathCount, float spacing, Vector2* outSegments, int maxSegments) {
+  if (pathCount == 0 || maxSegments <= 0) return 0;
+
+  outSegments[0] = path[0];
+  int segmentIndex = 1;
+  float targetDist = spacing;
+  float accumulatedDist = 0.0f;
+
+  for (int i = 0; i < pathCount - 1; i++) {
+    Vector2 p1 = path[i];
+    Vector2 p2 = path[i + 1];
+    float d = Vector2Distance(p1, p2);
+
+    while (accumulatedDist + d >= targetDist) {
+      float needed = targetDist - accumulatedDist;
+      float t = (d > 0.0f) ? (needed / d) : 0.0f;
+      Vector2 interpPos = Vector2Lerp(p1, p2, t);
+
+      outSegments[segmentIndex] = interpPos;
+      segmentIndex++;
+      if (segmentIndex >= maxSegments) {
+        return segmentIndex;
+      }
+      targetDist += spacing;
+    }
+    accumulatedDist += d;
+  }
+
+  return segmentIndex;
 }
 
 // =============================================================================
 // Struct dữ liệu
 // =============================================================================
+
+#define EMITTER_PATH_MAX 500
+#define MAX_SAMPLED_SEGMENTS 150
 
 typedef struct {
   bool active;
@@ -65,7 +115,13 @@ typedef struct {
   Vector2 p1, p2;
   float headProgress;
   float twistPhase;
+  Vector2 path[EMITTER_PATH_MAX];
+  int pathCount;
+  Vector2 sampledPath[MAX_SAMPLED_SEGMENTS];
+  int sampledCount;
 } FireEmitter;
+
+#define PARTICLE_HISTORY_COUNT 6
 
 typedef struct {
   bool active;
@@ -74,7 +130,10 @@ typedef struct {
   float radius;
   float lifetime;
   float maxLifetime;
-  int type; // 1: Vệt sợi xé gió (Wind Trails), 2: Tia lửa va chạm (Burst)
+  int type; // 1: Wind Trails, 2: Spark Bursts, 3: Floating Embers, 4: Fire Vortex, 5: Fire Breath, 6: Shockwave Ring, 7: Ambient Light Flash
+  Vector2 history[PARTICLE_HISTORY_COUNT];
+  int historyCount;
+  float angle;
 } FireParticle;
 
 static FireParticle firePool[MAX_PARTICLES];
@@ -153,6 +212,17 @@ static Vector2 GetDragonPathTangent(Vector2 p0, Vector2 p1, Vector2 p2,
   return Vector2Normalize(tangent);
 }
 
+static Vector2 GetTexturePointInWorld(Vector2 headPos, Vector2 tangent, float scaleX, float scaleY, Vector2 origin, Vector2 texPt, float flipY) {
+  float lx = texPt.x * DRAGON_HEAD_BASE_SCALE - origin.x;
+  float ly = (texPt.y * scaleY - origin.y) * flipY;
+  Vector2 perp = {-tangent.y, tangent.x};
+  Vector2 worldPos = {
+    headPos.x + tangent.x * lx + perp.x * ly,
+    headPos.y + tangent.y * lx + perp.y * ly
+  };
+  return worldPos;
+}
+
 static void SpawnParticle(int type, Vector2 pos, Vector2 vel, float baseRadius,
                           float maxLife) {
   for (int i = 0; i < MAX_PARTICLES; i++) {
@@ -165,10 +235,46 @@ static void SpawnParticle(int type, Vector2 pos, Vector2 vel, float baseRadius,
       firePool[index].maxLifetime = maxLife;
       firePool[index].lifetime = maxLife;
       firePool[index].active = true;
+      firePool[index].historyCount = 0;
+      for (int h = 0; h < PARTICLE_HISTORY_COUNT; h++) {
+        firePool[index].history[h] = pos;
+      }
+      firePool[index].angle = Random01() * 3.14159265f * 2.0f;
       lastUsedParticle = (index + 1) % MAX_PARTICLES;
       break;
     }
   }
+}
+
+static void TriggerFireImpact(Vector2 pos) {
+  // 1. Tia lửa phát tán nhanh (Radial Spark Burst)
+  int sparkCount = GetRandomValue(30, 45);
+  for (int s = 0; s < sparkCount; s++) {
+    float angle = Random01() * 3.14159265f * 2.0f;
+    float speed = Math_Mix(250.0f, 650.0f, Random01());
+    Vector2 vel = { cosf(angle) * speed, sinf(angle) * speed };
+    float rad = Math_Mix(2.0f, 5.5f, Random01());
+    float life = Math_Mix(0.3f, 0.7f, Random01());
+    SpawnParticle(2, pos, vel, rad, life);
+  }
+
+  // 2. Hạt bụi lửa tán ra rồi bốc lên theo gió (Dispersing Noise Particles)
+  int disperseCount = GetRandomValue(40, 50);
+  for (int v = 0; v < disperseCount; v++) {
+    float angle = Random01() * 3.14159265f * 2.0f;
+    float speed = Math_Mix(120.0f, 400.0f, Random01());
+    Vector2 vel = { cosf(angle) * speed, sinf(angle) * speed - 120.0f }; // Tán rộng ra và hơi bay lên
+    float rad = Math_Mix(6.0f, 15.0f, Random01());
+    float life = Math_Mix(0.6f, 1.3f, Random01());
+    SpawnParticle(4, pos, vel, rad, life);
+  }
+
+  // 3. Vòng sóng kích nổ (Fiery Shockwave Rings - Type 6)
+  SpawnParticle(6, pos, (Vector2){0, 0}, 130.0f, 0.40f); // Vòng ngoài
+  SpawnParticle(6, pos, (Vector2){0, 0}, 80.0f, 0.25f);  // Vòng trong
+
+  // 4. Ánh chớp phát sáng môi trường (Ambient Light Flash - Type 7)
+  SpawnParticle(7, pos, (Vector2){0, 0}, 260.0f, 0.25f);
 }
 
 // =============================================================================
@@ -188,22 +294,32 @@ void InitFireSkill(int screenWidth, int screenHeight) {
 }
 
 void CastFireSkill(Vector2 startPos, Vector2 target, float twistPhase) {
-  for (int i = 0; i < MAX_EMITTERS; i++) {
-    if (!emitters[i].active) {
-      emitters[i].active = true;
-      emitters[i].startPos = startPos;
-      emitters[i].targetPos = target;
-      emitters[i].headProgress = 0.0f;
-      emitters[i].twistPhase = twistPhase;
+  float phases[2] = { twistPhase, twistPhase + PI };
+  for (int p = 0; p < 2; p++) {
+    for (int i = 0; i < MAX_EMITTERS; i++) {
+      if (!emitters[i].active) {
+        emitters[i].active = true;
+        emitters[i].startPos = startPos;
+        emitters[i].targetPos = target;
+        emitters[i].headProgress = 0.0f;
+        emitters[i].twistPhase = phases[p];
+        emitters[i].pathCount = 1;
+        emitters[i].path[0] = startPos;
 
-      float curveSign = (twistPhase == 0.0f) ? -1.0f : 1.0f;
-      emitters[i].p1 = (Vector2){startPos.x + (target.x - startPos.x) * 0.5f +
-                                     curveSign * BEZIER_CONTROL1_X_OFFSET,
-                                 startPos.y - BEZIER_CONTROL1_Y_OFFSET};
-      emitters[i].p2 = (Vector2){target.x, target.y + BEZIER_CONTROL2_Y_OFFSET};
-      break;
+        float curveSign = (phases[p] == 0.0f || phases[p] == 2.0f * PI) ? -1.0f : 1.0f;
+        if (p == 1) curveSign = -curveSign;
+        
+        emitters[i].p1 = (Vector2){startPos.x + (target.x - startPos.x) * 0.5f +
+                                       curveSign * BEZIER_CONTROL1_X_OFFSET,
+                                   startPos.y - BEZIER_CONTROL1_Y_OFFSET};
+        emitters[i].p2 = (Vector2){target.x, target.y + BEZIER_CONTROL2_Y_OFFSET};
+        break;
+      }
     }
   }
+
+  // Casting heat flash (Type 7)
+  SpawnParticle(7, startPos, (Vector2){0, 0}, 150.0f, 0.30f);
 
   int burstCount = GetRandomValue(CAST_BURST_COUNT_MIN, CAST_BURST_COUNT_MAX);
   for (int s = 0; s < burstCount; s++) {
@@ -227,68 +343,193 @@ void UpdateFireSkill(float dt) {
       continue;
 
     float prevProgress = emitters[e].headProgress;
-    emitters[e].headProgress += dt * FIRE_TRAVEL_SPEED;
+    float targetProgress = prevProgress + dt * FIRE_TRAVEL_SPEED;
+    if (targetProgress >= FIRE_PROGRESS_MAX) {
+      targetProgress = FIRE_PROGRESS_MAX;
+    }
 
+    // Sub-stepping to record a smooth straight path
+    float step = 0.005f;
+    float currentProgress = prevProgress;
+    while (currentProgress < targetProgress) {
+      currentProgress += step;
+      if (currentProgress > targetProgress) currentProgress = targetProgress;
+
+      Vector2 pos = GetDragonPathPos(emitters[e].startPos, emitters[e].p1, emitters[e].p2,
+                                     emitters[e].targetPos, currentProgress);
+
+      float dist = 0.0f;
+      if (emitters[e].pathCount > 0) {
+        dist = Vector2Distance(pos, emitters[e].path[0]);
+      } else {
+        dist = Vector2Distance(pos, emitters[e].startPos);
+      }
+
+      if (dist > 1.5f || emitters[e].pathCount == 0) {
+        for (int h = EMITTER_PATH_MAX - 1; h > 0; h--) {
+          emitters[e].path[h] = emitters[e].path[h - 1];
+        }
+        emitters[e].path[0] = pos;
+        if (emitters[e].pathCount < EMITTER_PATH_MAX) {
+          emitters[e].pathCount++;
+        }
+      }
+    }
+    emitters[e].headProgress = targetProgress;
+
+    // If progress exceeded max, deactivate
     if (emitters[e].headProgress >= FIRE_PROGRESS_MAX) {
       emitters[e].active = false;
       continue;
     }
 
+    // Sample path at 6.0f spacing for drawing and particle spawning
+    emitters[e].sampledCount = SamplePath(emitters[e].path, emitters[e].pathCount,
+                                          6.0f, emitters[e].sampledPath, MAX_SAMPLED_SEGMENTS);
+
     if (prevProgress <= 1.0f && emitters[e].headProgress > 1.0f) {
-      int splashCount = GetRandomValue(15, 25);
-      for (int s = 0; s < splashCount; s++) {
-        Vector2 vel = {
-            (float)GetRandomValue((int)SPLASH_VEL_X_MIN, (int)SPLASH_VEL_X_MAX),
-            (float)GetRandomValue((int)SPLASH_VEL_Y_MIN,
-                                  (int)SPLASH_VEL_Y_MAX)};
-        float rad = Math_Mix(SPLASH_RADIUS_MIN, SPLASH_RADIUS_MAX, Random01());
-        float life =
-            Math_Mix(SPLASH_LIFETIME_MIN, SPLASH_LIFETIME_MAX, Random01());
-        SpawnParticle(2, emitters[e].targetPos, vel, rad, life);
+      TriggerFireImpact(emitters[e].targetPos);
+    }
+
+    // Determine current head properties for visuals
+    Vector2 headPos = (emitters[e].pathCount > 0) ? emitters[e].path[0] : emitters[e].startPos;
+    Vector2 tangent = GetDragonPathTangent(emitters[e].startPos, emitters[e].p1, emitters[e].p2,
+                                           emitters[e].targetPos, emitters[e].headProgress);
+    Vector2 perp = {-tangent.y, tangent.x};
+
+    // Calculate visual head position (head wiggle envelope is 0.25)
+    float headWaveVal = sinf(time * 16.0f + emitters[e].twistPhase) * (22.0f * 0.25f);
+    Vector2 visualHeadPos = Vector2Add(headPos, Vector2Scale(perp, headWaveVal));
+
+    if (emitters[e].headProgress <= 1.0f) {
+      float jawOsc = sinf(time * DRAGON_JAW_OSCILLATION_SPEED) * DRAGON_JAW_OSCILLATION_AMP;
+      float scaleY = DRAGON_HEAD_BASE_SCALE * (1.0f + jawOsc);
+      float flipY = (tangent.x < 0.0f) ? -1.0f : 1.0f;
+      Vector2 origin = { dragonHeadTex.width * DRAGON_HEAD_BASE_SCALE * DRAGON_HEAD_ORIGIN_X_FACTOR,
+                        dragonHeadTex.height * scaleY * 0.5f };
+      Vector2 mouthTexPt = { 460.0f, 260.0f };
+      Vector2 mouthWorldPos = GetTexturePointInWorld(visualHeadPos, tangent, DRAGON_HEAD_BASE_SCALE, scaleY, origin, mouthTexPt, flipY);
+
+      int breathCount = GetRandomValue(2, 4);
+      for (int b = 0; b < breathCount; b++) {
+        float angleOffset = (float)GetRandomValue(-20, 20) * DEG2RAD;
+        Vector2 dir = {
+            tangent.x * cosf(angleOffset) - tangent.y * sinf(angleOffset),
+            tangent.x * sinf(angleOffset) + tangent.y * cosf(angleOffset)
+        };
+        float speed = (float)GetRandomValue(450, 850);
+        Vector2 vel = Vector2Scale(dir, speed);
+        float rad = Math_Mix(2.0f, 5.5f, Random01());
+        float life = Math_Mix(0.15f, 0.45f, Random01());
+        SpawnParticle(5, mouthWorldPos, vel, rad, life);
       }
     }
 
-    // ===============================================================
-    // MA THUẬT: SPAWN CÁC SỢI KHÍ XÉ GIÓ (WIND TRAILS)
-    // ===============================================================
-    float tailProgress =
-        fmaxf(0.0f, emitters[e].headProgress - FIRE_CAST_DURATION);
+    // Spawn wind trails and embers along the sampled path
+    if (emitters[e].sampledCount > 1) {
+      // Wisps (Type 1) - Spiraling around the body
+      int wispsToSpawn = GetRandomValue(25, 45);
+      for (int k = 0; k < wispsToSpawn; k++) {
+        int idx = GetRandomValue(0, emitters[e].sampledCount - 1);
+        Vector2 purePos = emitters[e].sampledPath[idx];
 
-    // Spawn lượng lớn hạt nhưng sẽ vẽ bằng Dòng Kẻ (Line) mảnh
-    int wispsToSpawn = GetRandomValue(35, 65);
-    for (int k = 0; k < wispsToSpawn; k++) {
-      float t = Math_Mix(tailProgress, emitters[e].headProgress, Random01());
+        Vector2 pureTangent;
+        if (idx < emitters[e].sampledCount - 1)
+          pureTangent = Vector2Normalize(Vector2Subtract(purePos, emitters[e].sampledPath[idx + 1]));
+        else
+          pureTangent = Vector2Normalize(Vector2Subtract(emitters[e].sampledPath[idx - 1], purePos));
 
-      Vector2 basePos =
-          GetDragonPathPos(emitters[e].startPos, emitters[e].p1, emitters[e].p2,
-                           emitters[e].targetPos, t);
-      Vector2 tangent =
-          GetDragonPathTangent(emitters[e].startPos, emitters[e].p1,
-                               emitters[e].p2, emitters[e].targetPos, t);
-      Vector2 perp = {-tangent.y, tangent.x};
+        Vector2 purePerp = {-pureTangent.y, pureTangent.x};
+        float distFromHead = idx * 6.0f;
 
-      float wave =
-          sinf(t * 18.0f - time * 12.0f + emitters[e].twistPhase) * 20.0f;
+        // Core radius at this segment (approximate matching of the core size)
+        float normDist = (emitters[e].sampledCount > 1) ? ((float)idx / (float)(emitters[e].sampledCount - 1)) : 0.0f;
+        float taper = powf(1.0f - normDist, 0.5f);
+        float coreRad = Math_Mix(2.0f, 10.0f, taper);
 
-      // Lệch ra ngoài rìa thân rồng một chút
-      float offset = Math_Mix(-25.0f, 25.0f, Random01());
-      Vector2 spawnPos = {basePos.x + perp.x * (wave + offset),
-                          basePos.y + perp.y * (wave + offset)};
+        // Spiral phase matching the single helix ribbon but with random offset/variety
+        float spiralPhase = time * 18.0f - distFromHead * 0.05f + emitters[e].twistPhase + Random01() * 0.2f;
+        float coilRad = coreRad * 1.8f;
 
-      // Gió tạt siêu mạnh về phía sau để kéo giãn sợi khói
-      Vector2 windVel = {-tangent.x * GetRandomValue(300, 800) +
-                             perp.x * GetRandomValue(-150, 150),
-                         -tangent.y * GetRandomValue(300, 800) +
-                             perp.y * GetRandomValue(-150, 150)};
+        Vector2 spawnPos = {
+          purePos.x + purePerp.x * cosf(spiralPhase) * coilRad,
+          purePos.y + purePerp.y * cosf(spiralPhase) * coilRad
+        };
 
-      // Bán kính giờ đây chính là ĐỘ DÀY CỦA SỢI KHÓI (rất mỏng)
-      float rad = Math_Mix(1.0f, 4.0f, Random01());
-      float life = Math_Mix(0.2f, 0.6f, Random01());
-      SpawnParticle(1, spawnPos, windVel, rad, life);
+        // Add minor randomness
+        spawnPos.x += Math_Mix(-5.0f, 5.0f, Random01());
+        spawnPos.y += Math_Mix(-5.0f, 5.0f, Random01());
+
+        // Velocity vector: drift back, orbit, and expand slowly
+        float cosVal = cosf(spiralPhase);
+        float sinVal = sinf(spiralPhase);
+        Vector2 radDir = { purePerp.x * cosVal, purePerp.y * cosVal };
+        Vector2 rotDir = { -purePerp.x * sinVal, -purePerp.y * sinVal };
+
+        float forwardSpeed = Math_Mix(200.0f, 400.0f, Random01());
+        float orbitSpeed = 180.0f;
+        float expandSpeed = 25.0f;
+
+        Vector2 windVel = {
+          -pureTangent.x * forwardSpeed + rotDir.x * orbitSpeed + radDir.x * expandSpeed,
+          -pureTangent.y * forwardSpeed + rotDir.y * orbitSpeed + radDir.y * expandSpeed
+        };
+
+        float rad = Math_Mix(2.0f, 4.5f, Random01());
+        float life = Math_Mix(0.3f, 0.6f, Random01());
+        SpawnParticle(1, spawnPos, windVel, rad, life);
+      }
+
+      // Embers (Type 3) - Also spiraling but slightly wider and slower
+      int embersToSpawn = GetRandomValue(3, 5);
+      for (int k = 0; k < embersToSpawn; k++) {
+        int idx = GetRandomValue(0, emitters[e].sampledCount - 1);
+        Vector2 purePos = emitters[e].sampledPath[idx];
+
+        Vector2 pureTangent;
+        if (idx < emitters[e].sampledCount - 1)
+          pureTangent = Vector2Normalize(Vector2Subtract(purePos, emitters[e].sampledPath[idx + 1]));
+        else
+          pureTangent = Vector2Normalize(Vector2Subtract(emitters[e].sampledPath[idx - 1], purePos));
+
+        Vector2 purePerp = {-pureTangent.y, pureTangent.x};
+        float distFromHead = idx * 6.0f;
+        float normDist = (emitters[e].sampledCount > 1) ? ((float)idx / (float)(emitters[e].sampledCount - 1)) : 0.0f;
+        float taper = powf(1.0f - normDist, 0.5f);
+        float coreRad = Math_Mix(2.0f, 10.0f, taper);
+
+        float spiralPhase = time * 18.0f - distFromHead * 0.05f + emitters[e].twistPhase + Random01() * PI;
+        float coilRad = coreRad * 2.2f; // slightly wider than Type 1
+
+        Vector2 spawnPos = {
+          purePos.x + purePerp.x * cosf(spiralPhase) * coilRad,
+          purePos.y + purePerp.y * cosf(spiralPhase) * coilRad
+        };
+
+        // Add minor randomness
+        spawnPos.x += Math_Mix(-6.0f, 6.0f, Random01());
+        spawnPos.y += Math_Mix(-6.0f, 6.0f, Random01());
+
+        float cosVal = cosf(spiralPhase);
+        float sinVal = sinf(spiralPhase);
+        Vector2 radDir = { purePerp.x * cosVal, purePerp.y * cosVal };
+        Vector2 rotDir = { -purePerp.x * sinVal, -purePerp.y * sinVal };
+
+        float forwardSpeed = Math_Mix(120.0f, 250.0f, Random01());
+        float orbitSpeed = 120.0f;
+        float expandSpeed = 35.0f;
+
+        Vector2 vel = {
+          -pureTangent.x * forwardSpeed + rotDir.x * orbitSpeed + radDir.x * expandSpeed,
+          -pureTangent.y * forwardSpeed + rotDir.y * orbitSpeed + radDir.y * expandSpeed
+        };
+        float rad = Math_Mix(3.0f, 7.5f, Random01());
+        float life = Math_Mix(0.7f, 1.4f, Random01());
+        SpawnParticle(3, spawnPos, vel, rad, life);
+      }
     }
   }
 
-  // CẬP NHẬT VẬT LÝ
   for (int i = 0; i < MAX_PARTICLES; i++) {
     if (!firePool[i].active)
       continue;
@@ -299,18 +540,46 @@ void UpdateFireSkill(float dt) {
       continue;
     }
 
+    for (int h = PARTICLE_HISTORY_COUNT - 1; h > 0; h--) {
+      firePool[i].history[h] = firePool[i].history[h - 1];
+    }
+    firePool[i].history[0] = firePool[i].position;
+    if (firePool[i].historyCount < PARTICLE_HISTORY_COUNT) {
+      firePool[i].historyCount++;
+    }
+
     firePool[i].velocity.x *= (1.0f - 2.5f * dt);
     firePool[i].velocity.y *= (1.0f - 2.5f * dt);
 
-    // Khói luôn có xu hướng bốc lên trên
     firePool[i].velocity.y -= 180.0f * dt;
 
-    // Turbulance uốn lượn nhẹ
     if (firePool[i].type == 1) {
       float pX = firePool[i].position.x * 0.015f;
       float pY = firePool[i].position.y * 0.015f;
-      firePool[i].velocity.x += sinf(pY + time * 6.0f) * 120.0f * dt;
-      firePool[i].velocity.y += cosf(pX + time * 6.0f) * 120.0f * dt;
+      firePool[i].velocity.x += sinf(pY + time * 8.0f) * 160.0f * dt;
+      firePool[i].velocity.y += cosf(pX + time * 8.0f) * 160.0f * dt;
+    }
+    else if (firePool[i].type == 3) {
+      firePool[i].angle += dt * 6.0f;
+      firePool[i].velocity.x += sinf(firePool[i].angle) * 90.0f * dt;
+      firePool[i].velocity.y -= 120.0f * dt;
+    }
+    else if (firePool[i].type == 4) {
+      firePool[i].velocity.x *= (1.0f - 3.5f * dt);
+      firePool[i].velocity.y *= (1.0f - 2.0f * dt);
+      firePool[i].velocity.y -= 260.0f * dt;
+      float pX = firePool[i].position.x * 0.02f;
+      float pY = firePool[i].position.y * 0.02f;
+      firePool[i].velocity.x += sinf(pY + time * 10.0f) * 180.0f * dt;
+      firePool[i].velocity.y += cosf(pX + time * 10.0f) * 180.0f * dt;
+    }
+    else if (firePool[i].type == 5) {
+      firePool[i].velocity.x *= (1.0f - 4.5f * dt);
+      firePool[i].velocity.y *= (1.0f - 4.5f * dt);
+      firePool[i].velocity.y -= 90.0f * dt;
+    }
+    else if (firePool[i].type == 7) {
+      firePool[i].velocity = (Vector2){0, 0};
     }
 
     firePool[i].position.x += firePool[i].velocity.x * dt;
@@ -324,153 +593,310 @@ void DrawFireSkill(void) {
   BeginTextureMode(canvasTexture);
   ClearBackground(BLANK);
 
-  BeginBlendMode(BLEND_ADDITIVE);
-
   // =======================================================
-  // 1. VẼ THÂN RỒNG (Trả lại dạng Lửa tự nhiên, bớt khối đặc)
+  // 1. VẼ KHÓI MỜ BỌC ÔM SÁT THÂN RỒNG (BLEND_ALPHA)
   // =======================================================
   for (int e = 0; e < MAX_EMITTERS; e++) {
     if (!emitters[e].active)
       continue;
 
-    float headT = emitters[e].headProgress;
-    float tailT = fmaxf(0.0f, headT - FIRE_CAST_DURATION);
+    int bodySegments = emitters[e].sampledCount;
+    if (bodySegments == 0) continue;
 
-    // Trải 200 điểm dọc thân. Nếu đứt vài chỗ càng giống lửa bùng cháy.
-    int bodySegments = 200;
+    BeginBlendMode(BLEND_ALPHA);
     for (int i = 0; i < bodySegments; i++) {
-      float t = Math_Mix(tailT, headT, (float)i / (bodySegments - 1));
+      Vector2 purePos_i = emitters[e].sampledPath[i];
+      Vector2 pureTangent;
+      if (i < bodySegments - 1)
+        pureTangent = Vector2Normalize(Vector2Subtract(purePos_i, emitters[e].sampledPath[i + 1]));
+      else if (i > 0)
+        pureTangent = Vector2Normalize(Vector2Subtract(emitters[e].sampledPath[i - 1], purePos_i));
+      else
+        pureTangent = (Vector2){1, 0};
 
-      Vector2 basePos =
-          GetDragonPathPos(emitters[e].startPos, emitters[e].p1, emitters[e].p2,
-                           emitters[e].targetPos, t);
-      Vector2 tangent =
-          GetDragonPathTangent(emitters[e].startPos, emitters[e].p1,
-                               emitters[e].p2, emitters[e].targetPos, t);
-      Vector2 perp = {-tangent.y, tangent.x};
+      Vector2 purePerp = {-pureTangent.y, pureTangent.x};
+      float distFromHead = (float)i * 6.0f;
+      float envelope = GetAmplitudeEnvelope(distFromHead, bodySegments * 6.0f);
+      float waveVal = sinf(time * 16.0f - distFromHead * 0.018f + emitters[e].twistPhase) * (22.0f * envelope);
+      Vector2 drawPos = Vector2Add(purePos_i, Vector2Scale(purePerp, waveVal));
 
-      float normDist = Clamp((headT - t) / FIRE_CAST_DURATION, 0.0f, 1.0f);
+      float normDist = (bodySegments > 1) ? ((float)i / (float)(bodySegments - 1)) : 0.0f;
       float taper = powf(1.0f - normDist, 0.5f);
 
-      float wave = sinf(t * 18.0f - time * 12.0f + emitters[e].twistPhase) *
-                   22.0f * taper;
-
-      // Jitter xáo trộn nhẹ để thân rồng không bị thẳng đuột
-      float jitterX = sinf(t * 532.1f + time * 20.0f) * 12.0f * taper;
-      float jitterY = cosf(t * 921.4f - time * 20.0f) * 12.0f * taper;
-
-      Vector2 drawPos = {basePos.x + perp.x * wave + jitterX,
-                         basePos.y + perp.y * wave + jitterY};
-
-      float coreRad = Math_Mix(4.0f, 15.0f, taper);
-      float auraRad = Math_Mix(14.0f, 35.0f, taper);
-
-      // Khóa Alpha ở 255. Dùng độ sáng kênh RGB để Shader cộng dồn.
-      // Điều này tránh triệt để lỗi "tàng hình" do Shader discard!
-      float brightness = (1.0f - normDist) * 0.15f;
-      unsigned char coreV = (unsigned char)(255.0f * brightness * 2.0f);
-      unsigned char auraV = (unsigned char)(255.0f * brightness * 0.5f);
-
-      Color coreColor = {coreV, coreV, coreV, 255};
-      Color auraColor = {auraV, auraV, auraV, 255};
-      Color edgeCol = {0, 0, 0, 0}; // Viền đen trong suốt để fade mượt
-
-      DrawCircleGradient((int)drawPos.x, (int)drawPos.y, auraRad, auraColor,
-                         edgeCol);
-      DrawCircleGradient((int)drawPos.x, (int)drawPos.y, coreRad, coreColor,
-                         edgeCol);
+      float smokeRad = Math_Mix(12.0f, 30.0f, taper);
+      unsigned char smokeAlpha = (unsigned char)(255.0f * taper * 0.35f);
+      DrawCircleGradient((int)drawPos.x, (int)drawPos.y, smokeRad,
+                         (Color){70, 30, 30, smokeAlpha}, BLANK);
     }
+    EndBlendMode();
   }
 
   // =======================================================
-  // 2. VẼ VỆT SỢI XÉ GIÓ (STREAK LINES)
+  // 2. VẼ VỆT SỢI XÉ GIÓ VÀ CÁC HẠT (BLEND_ADDITIVE)
   // =======================================================
+  BeginBlendMode(BLEND_ADDITIVE);
   for (int i = 0; i < MAX_PARTICLES; i++) {
     if (!firePool[i].active)
       continue;
 
     float lifeRatio = firePool[i].lifetime / firePool[i].maxLifetime;
+    Color edgeCol = {0, 0, 0, 0};
 
     if (firePool[i].type == 1) {
-      // MA THUẬT STREAKS: Vẽ đường thẳng (Line) giật lùi theo vận tốc
-      Vector2 p1 = firePool[i].position;
-      // Stretch factor (0.04f) quyết định độ dài của sợi khí
-      Vector2 p2 = {p1.x - firePool[i].velocity.x * 0.04f,
-                    p1.y - firePool[i].velocity.y * 0.04f};
-
-      // Tỏa sáng mạnh ở đầu, mờ ở đuôi
-      unsigned char intensity = (unsigned char)(255.0f * lifeRatio * 0.8f);
-      Color streakColor = {intensity, intensity, intensity, 255};
-
-      DrawLineEx(p1, p2, firePool[i].radius, streakColor);
-    } else {
-      // Tia lửa nổ
+      float rad = firePool[i].radius * (0.5f + 0.5f * lifeRatio);
+      unsigned char intensity = (unsigned char)(255.0f * lifeRatio * 0.45f);
+      Color wispCol = {intensity, (unsigned char)(intensity * 0.5f), (unsigned char)(intensity * 0.15f), 255};
+      DrawCircleGradient((int)firePool[i].position.x, (int)firePool[i].position.y, rad * 2.5f, wispCol, edgeCol);
+    } else if (firePool[i].type == 2) {
       float rad = firePool[i].radius * lifeRatio;
       unsigned char intensity = (unsigned char)(255.0f * lifeRatio * 0.9f);
       Color sparkColor = {intensity, intensity, intensity, 255};
-      Color edgeCol = {0, 0, 0, 0};
       DrawCircleGradient((int)firePool[i].position.x,
-                         (int)firePool[i].position.y, rad, sparkColor, edgeCol);
+                         (int)firePool[i].position.y, rad * 2.0f, sparkColor, edgeCol);
+    } else if (firePool[i].type == 3) {
+      float rad = firePool[i].radius * (0.4f + 0.6f * lifeRatio);
+      unsigned char intensity = (unsigned char)(255.0f * lifeRatio * 0.8f);
+      Color emberCol = {intensity, (unsigned char)(intensity * 0.9f), (unsigned char)(intensity * 0.3f), 255};
+      DrawCircleGradient((int)firePool[i].position.x, (int)firePool[i].position.y, rad * 2.5f, emberCol, edgeCol);
+      DrawCircle((int)firePool[i].position.x, (int)firePool[i].position.y, rad * 0.5f, (Color){intensity, intensity, intensity, 255});
+    } else if (firePool[i].type == 4) {
+      float rad = firePool[i].radius * (1.1f - 0.3f * lifeRatio) * lifeRatio;
+      unsigned char intensity = (unsigned char)(255.0f * lifeRatio * 0.85f);
+      Color vortexCol = {intensity, (unsigned char)(intensity * 0.4f), (unsigned char)(intensity * 0.1f), 255};
+      DrawCircleGradient((int)firePool[i].position.x, (int)firePool[i].position.y, rad * 2.8f, vortexCol, edgeCol);
+      DrawCircle((int)firePool[i].position.x, (int)firePool[i].position.y, rad * 0.6f, (Color){intensity, (unsigned char)(intensity * 0.8f), (unsigned char)(intensity * 0.5f), 255});
+    } else if (firePool[i].type == 5) {
+      float rad = firePool[i].radius * lifeRatio;
+      unsigned char intensity = (unsigned char)(255.0f * lifeRatio * 0.95f);
+      Color breathCol = {intensity, (unsigned char)(intensity * 0.6f), (unsigned char)(intensity * 0.2f), 255};
+      DrawCircleGradient((int)firePool[i].position.x, (int)firePool[i].position.y, rad * 2.2f, breathCol, edgeCol);
+    } else if (firePool[i].type == 6) {
+      float progress = 1.0f - lifeRatio;
+      float outerRad = firePool[i].radius * progress;
+      float innerRad = outerRad * 0.70f;
+      unsigned char intensity = (unsigned char)(255.0f * lifeRatio * 0.85f);
+      Color ringCol = {intensity, intensity, intensity, 255};
+      DrawRing(firePool[i].position, innerRad, outerRad, 0.0f, 360.0f, 32, ringCol);
+    } else if (firePool[i].type == 7) {
+      float progress = 1.0f - lifeRatio;
+      float rad = firePool[i].radius * (0.6f + 0.4f * progress);
+      unsigned char intensity = (unsigned char)(255.0f * lifeRatio * 0.45f);
+      Color flashCol = {intensity, intensity, intensity, 255};
+      DrawCircleGradient((int)firePool[i].position.x, (int)firePool[i].position.y, rad, flashCol, edgeCol);
     }
   }
+  EndBlendMode();
 
   // =======================================================
-  // 3. VẼ ĐẦU RỒNG & KHỚP CỔ
+  // 3. VẼ LÕI RỒNG, HELIX RIBBONS, VẢY RỒNG, ĐẦU VÀ MẮT (BLEND_ADDITIVE)
   // =======================================================
   for (int e = 0; e < MAX_EMITTERS; e++) {
-    if (!emitters[e].active || emitters[e].headProgress >= FIRE_PROGRESS_MAX)
+    if (!emitters[e].active)
       continue;
 
-    Vector2 headPos =
-        GetDragonPathPos(emitters[e].startPos, emitters[e].p1, emitters[e].p2,
-                         emitters[e].targetPos, emitters[e].headProgress);
-    Vector2 tangent = GetDragonPathTangent(
-        emitters[e].startPos, emitters[e].p1, emitters[e].p2,
-        emitters[e].targetPos, emitters[e].headProgress);
-    Vector2 perp = {-tangent.y, tangent.x};
+    int bodySegments = emitters[e].sampledCount;
+    if (bodySegments == 0) continue;
 
-    float wave = sinf(emitters[e].headProgress * 18.0f - time * 12.0f +
-                      emitters[e].twistPhase) *
-                 22.0f;
-    headPos = Vector2Add(headPos, Vector2Scale(perp, wave));
+    BeginBlendMode(BLEND_ADDITIVE);
+    Vector2 prevDrawPos = {0};
+    Vector2 prevH1 = {0};
+    Vector2 headDrawPos = {0};
+    Vector2 headPureTangent = {1, 0};
 
-    float rotation = atan2f(tangent.y, tangent.x) * RAD2DEG;
-    float flipY = (tangent.x < 0.0f) ? -1.0f : 1.0f;
-    Rectangle sourceRec = {0.0f, 0.0f, (float)dragonHeadTex.width,
-                           (float)dragonHeadTex.height * flipY};
+    for (int i = 0; i < bodySegments; i++) {
+      Vector2 purePos_i = emitters[e].sampledPath[i];
+      Vector2 pureTangent;
+      if (i < bodySegments - 1)
+        pureTangent = Vector2Normalize(Vector2Subtract(purePos_i, emitters[e].sampledPath[i + 1]));
+      else if (i > 0)
+        pureTangent = Vector2Normalize(Vector2Subtract(emitters[e].sampledPath[i - 1], purePos_i));
+      else
+        pureTangent = (Vector2){1, 0};
 
-    float jawOscillation =
-        sinf(time * DRAGON_JAW_OSCILLATION_SPEED) * DRAGON_JAW_OSCILLATION_AMP;
-    float scaleY = DRAGON_HEAD_BASE_SCALE * (1.0f + jawOscillation);
+      Vector2 purePerp = {-pureTangent.y, pureTangent.x};
+      float distFromHead = (float)i * 6.0f;
+      float envelope = GetAmplitudeEnvelope(distFromHead, bodySegments * 6.0f);
+      float waveVal = sinf(time * 16.0f - distFromHead * 0.018f + emitters[e].twistPhase) * (22.0f * envelope);
+      Vector2 drawPos = Vector2Add(purePos_i, Vector2Scale(purePerp, waveVal));
 
-    Rectangle destRec = {headPos.x, headPos.y,
-                         dragonHeadTex.width * DRAGON_HEAD_BASE_SCALE,
-                         dragonHeadTex.height * scaleY};
-    Vector2 origin = {destRec.width * DRAGON_HEAD_ORIGIN_X_FACTOR,
-                      destRec.height * 0.5f};
+      if (i == 0) {
+        headDrawPos = drawPos;
+        headPureTangent = pureTangent;
+      }
 
-    float headAlpha = 1.0f;
-    float fadeStart = FIRE_PROGRESS_MAX - 0.4f;
-    if (emitters[e].headProgress > fadeStart) {
-      headAlpha = Clamp(1.0f - (emitters[e].headProgress - fadeStart) / 0.4f,
-                        0.0f, 1.0f);
+      float normDist = (bodySegments > 1) ? ((float)i / (float)(bodySegments - 1)) : 0.0f;
+      float taper = powf(1.0f - normDist, 0.5f);
+
+      float coreRad = Math_Mix(2.0f, 10.0f, taper);
+      float auraRad = Math_Mix(8.0f, 26.0f, taper);
+      float brightness = taper * 0.06f;
+
+      unsigned char coreV = (unsigned char)(255.0f * brightness * 3.0f);
+      unsigned char auraV = (unsigned char)(255.0f * brightness * 1.0f);
+      Color coreColor = {coreV, coreV, coreV, 255};
+      Color auraColor = {auraV, auraV, auraV, 255};
+
+      if (i > 0) {
+        DrawLineEx(prevDrawPos, drawPos, auraRad * 2.0f, auraColor);
+        DrawLineEx(prevDrawPos, drawPos, coreRad * 2.0f, coreColor);
+      }
+      DrawCircleGradient((int)drawPos.x, (int)drawPos.y, auraRad, auraColor, BLANK);
+      DrawCircleGradient((int)drawPos.x, (int)drawPos.y, coreRad, coreColor, BLANK);
+
+      // LỬA CUỘN (Helix): Giờ là làn khói lửa cuộn tròn mềm mại mờ ảo (1 sợi lụa)
+      float spiralPhase1 = time * 15.0f - distFromHead * 0.05f;
+      float coilRad = coreRad * 1.8f;
+
+      Vector2 h1 = {drawPos.x + purePerp.x * cosf(spiralPhase1) * coilRad,
+                    drawPos.y + purePerp.y * cosf(spiralPhase1) * coilRad};
+
+      unsigned char hV = (unsigned char)(255.0f * brightness * 1.6f);
+      Color hColor = {hV, hV, hV, 255};
+
+      if (i > 0) {
+        float ribbonThickness = coreRad * 1.8f; // Dải lụa dày dặn lả lướt
+        DrawLineEx(prevH1, h1, ribbonThickness, hColor);
+      }
+
+      DrawCircleGradient((int)h1.x, (int)h1.y, coreRad * 2.0f, hColor, BLANK);
+
+      // VẢY RỒNG: Sắc nhọn và vươn dài ra ngoài (tăng độ sáng đáng kể để phát sáng rực rỡ)
+      if (i % 15 == 0 && i > 0 && i < bodySegments - 4) {
+        float sideSign = (i % 30 == 0) ? 1.0f : -1.0f;
+        Vector2 tip = {drawPos.x + purePerp.x * coreRad * 3.5f * sideSign,
+                       drawPos.y + purePerp.y * coreRad * 3.5f * sideSign};
+        Vector2 base1 = {drawPos.x - pureTangent.x * coreRad * 1.0f,
+                         drawPos.y - pureTangent.y * coreRad * 1.0f};
+        Vector2 base2 = {drawPos.x + pureTangent.x * coreRad * 1.0f,
+                         drawPos.y + pureTangent.y * coreRad * 1.0f};
+        unsigned char scaleV = (unsigned char)fminf(255.0f * brightness * 8.5f, 255.0f);
+        DrawTriangle(base1, base2, tip, (Color){scaleV, scaleV, scaleV, 255});
+      }
+      prevDrawPos = drawPos;
+      prevH1 = h1;
     }
 
-    // Cục năng lượng khớp cổ (Nối mạch đầu với thân)
-    unsigned char jointV = (unsigned char)(255.0f * headAlpha);
-    Color jointCol = {jointV, jointV, jointV, 255};
-    Color edgeCol = {0, 0, 0, 0};
-    DrawCircleGradient((int)headPos.x, (int)headPos.y, 45.0f * scaleY, jointCol,
-                       edgeCol);
+    // VẼ ĐUÔI RỒNG TRIDENT
+    if (bodySegments > 5) {
+      Vector2 tailPos = prevDrawPos;
+      Vector2 tailTangent;
+      if (bodySegments > 1) {
+        tailTangent = Vector2Normalize(Vector2Subtract(emitters[e].sampledPath[bodySegments - 2], emitters[e].sampledPath[bodySegments - 1]));
+      } else {
+        tailTangent = headPureTangent;
+      }
+      Vector2 tailPerp = {-tailTangent.y, tailTangent.x};
 
-    // Vẽ Đầu Rồng trực tiếp bằng ADDITIVE (Lửa ăn khớp mượt mà)
-    DrawTexturePro(dragonHeadTex, sourceRec, destRec, origin, rotation,
-                   ColorAlpha(WHITE, headAlpha));
+      float finLength = 40.0f;
+      float finWidth = 14.0f;
+
+      // Center tail fin tip
+      Vector2 centerTip = {tailPos.x - tailTangent.x * finLength,
+                           tailPos.y - tailTangent.y * finLength};
+      // Left tail fin tip
+      Vector2 leftTip = {tailPos.x - tailTangent.x * finLength * 0.8f + tailPerp.x * finWidth,
+                         tailPos.y - tailTangent.y * finLength * 0.8f + tailPerp.y * finWidth};
+      // Right tail fin tip
+      Vector2 rightTip = {tailPos.x - tailTangent.x * finLength * 0.8f - tailPerp.x * finWidth,
+                          tailPos.y - tailTangent.y * finLength * 0.8f - tailPerp.y * finWidth};
+
+      Vector2 base1 = {tailPos.x - tailPerp.x * 5.0f, tailPos.y - tailPerp.y * 5.0f};
+      Vector2 base2 = {tailPos.x + tailPerp.x * 5.0f, tailPos.y + tailPerp.y * 5.0f};
+
+      unsigned char tailV = (unsigned char)(255.0f * 0.06f * 4.0f);
+      Color tailCol = {tailV, tailV, tailV, 255};
+
+      DrawTriangle(base1, base2, centerTip, tailCol);
+      DrawTriangle(base1, base2, leftTip, tailCol);
+      DrawTriangle(base1, base2, rightTip, tailCol);
+    }
+
+    if (emitters[e].headProgress < FIRE_PROGRESS_MAX && bodySegments > 1) {
+      Vector2 headPerp = {-headPureTangent.y, headPureTangent.x};
+      float rotation = atan2f(headPureTangent.y, headPureTangent.x) * RAD2DEG;
+      float flipY = (headPureTangent.x < 0.0f) ? -1.0f : 1.0f;
+      Rectangle sourceRec = {0.0f, 0.0f, (float)dragonHeadTex.width,
+                             (float)dragonHeadTex.height * flipY};
+
+      float jawOscillation = sinf(time * DRAGON_JAW_OSCILLATION_SPEED) *
+                             DRAGON_JAW_OSCILLATION_AMP;
+      float scaleY = DRAGON_HEAD_BASE_SCALE * (1.0f + jawOscillation);
+      Rectangle destRec = {headDrawPos.x, headDrawPos.y,
+                           dragonHeadTex.width * DRAGON_HEAD_BASE_SCALE,
+                           dragonHeadTex.height * scaleY};
+      Vector2 origin = {destRec.width * DRAGON_HEAD_ORIGIN_X_FACTOR,
+                        destRec.height * 0.5f};
+
+      float headAlpha = (emitters[e].headProgress > FIRE_PROGRESS_MAX - 0.4f)
+                            ? Clamp(1.0f - (emitters[e].headProgress -
+                                            (FIRE_PROGRESS_MAX - 0.4f)) /
+                                               0.4f,
+                                    0.0f, 1.0f)
+                            : 1.0f;
+
+      unsigned char jointV = (unsigned char)(255.0f * headAlpha * 0.35f);
+      DrawCircleGradient((int)headDrawPos.x, (int)headDrawPos.y, 28.0f * scaleY,
+                         (Color){jointV, jointV, jointV, 255}, BLANK);
+
+      DrawTexturePro(dragonHeadTex, sourceRec, destRec, origin, rotation,
+                     ColorAlpha(WHITE, headAlpha));
+
+      Vector2 whiskerBaseTop = GetTexturePointInWorld(
+          headDrawPos, headPureTangent, DRAGON_HEAD_BASE_SCALE, scaleY, origin,
+          (Vector2){320.0f, 180.0f}, flipY);
+      Vector2 whiskerBaseBottom = GetTexturePointInWorld(
+          headDrawPos, headPureTangent, DRAGON_HEAD_BASE_SCALE, scaleY, origin,
+          (Vector2){320.0f, 260.0f}, flipY);
+
+      Vector2 prevPtTop = whiskerBaseTop, prevPtBottom = whiskerBaseBottom;
+      for (int s = 1; s <= 12; s++) {
+        float tFactor = (float)s / 12.0f;
+        float segmentDist = (float)s * 7.5f;
+
+        float waveTop = sinf(time * 16.0f - (float)s * 0.7f) * 10.0f * tFactor;
+        float waveBottom =
+            cosf(time * 16.0f - (float)s * 0.7f) * 10.0f * tFactor;
+
+        Vector2 ptTop = {whiskerBaseTop.x - headPureTangent.x * segmentDist +
+                             headPerp.x * waveTop,
+                         whiskerBaseTop.y - headPureTangent.y * segmentDist +
+                             headPerp.y * waveTop};
+        Vector2 ptBottom = {
+            whiskerBaseBottom.x - headPureTangent.x * segmentDist +
+                headPerp.x * waveBottom,
+            whiskerBaseBottom.y - headPureTangent.y * segmentDist +
+                headPerp.y * waveBottom};
+
+        float thickness = Math_Mix(4.0f, 1.0f, tFactor) * scaleY;
+        unsigned char whiskerV =
+            (unsigned char)(255.0f * headAlpha * (1.0f - tFactor * 0.4f) *
+                            0.75f);
+        Color whiskerColor = {whiskerV, whiskerV, whiskerV, 255};
+
+        DrawLineEx(prevPtTop, ptTop, thickness, whiskerColor);
+        DrawLineEx(prevPtBottom, ptBottom, thickness, whiskerColor);
+        prevPtTop = ptTop;
+        prevPtBottom = ptBottom;
+      }
+
+      Vector2 eyePos = GetTexturePointInWorld(
+          headDrawPos, headPureTangent, DRAGON_HEAD_BASE_SCALE, scaleY, origin,
+          (Vector2){320.0f, 180.0f}, flipY);
+      float eyeRad = 9.0f * scaleY;
+      unsigned char eyeV = (unsigned char)(255.0f * headAlpha);
+      DrawCircleGradient((int)eyePos.x, (int)eyePos.y, eyeRad * 2.2f,
+                         (Color){eyeV, (unsigned char)(eyeV * 0.65f),
+                                 (unsigned char)(eyeV * 0.3f), 255},
+                         BLANK);
+      DrawCircle((int)eyePos.x, (int)eyePos.y, eyeRad * 0.4f,
+                 (Color){255, 255, 255, 255});
+    }
+    EndBlendMode();
   }
 
-  EndBlendMode();
   EndTextureMode();
 
+  // Set shader & draw canvas
   SetShaderValue(fireShader, timeLoc, &time, SHADER_UNIFORM_FLOAT);
   BeginShaderMode(fireShader);
   DrawTextureRec(canvasTexture.texture,
@@ -484,4 +910,50 @@ void UnloadFireSkill(void) {
   UnloadShader(fireShader);
   UnloadTexture(dragonHeadTex);
   UnloadRenderTexture(canvasTexture);
+}
+
+// Projectile Collision Interfaces
+int GetFireSkillProjectiles(SkillProjectile* outProjectiles, int maxProjectiles) {
+  int count = 0;
+  for (int i = 0; i < MAX_EMITTERS; i++) {
+    if (emitters[i].active && count < maxProjectiles) {
+      Vector2 headPos = (emitters[i].pathCount > 0) ? emitters[i].path[0] : emitters[i].startPos;
+      if (emitters[i].pathCount > 1) {
+        Vector2 tangent = GetDragonPathTangent(emitters[i].startPos, emitters[i].p1, emitters[i].p2,
+                                               emitters[i].targetPos, emitters[i].headProgress);
+        Vector2 perp = {-tangent.y, tangent.x};
+        float time = GetTime();
+        float headWaveVal = sinf(time * 16.0f + emitters[i].twistPhase) * (22.0f * 0.25f);
+        headPos = Vector2Add(headPos, Vector2Scale(perp, headWaveVal));
+      }
+      outProjectiles[count].position = headPos;
+      outProjectiles[count].radius = 35.0f; // Head / body collision radius
+      outProjectiles[count].active = true;
+      count++;
+    }
+  }
+  return count;
+}
+
+void DeactivateFireProjectile(int index) {
+  int count = 0;
+  for (int i = 0; i < MAX_EMITTERS; i++) {
+    if (emitters[i].active) {
+      if (count == index) {
+        emitters[i].active = false;
+        Vector2 headPos = (emitters[i].pathCount > 0) ? emitters[i].path[0] : emitters[i].startPos;
+        if (emitters[i].pathCount > 1) {
+          Vector2 tangent = GetDragonPathTangent(emitters[i].startPos, emitters[i].p1, emitters[i].p2,
+                                                 emitters[i].targetPos, emitters[i].headProgress);
+          Vector2 perp = {-tangent.y, tangent.x};
+          float time = GetTime();
+          float headWaveVal = sinf(time * 16.0f + emitters[i].twistPhase) * (22.0f * 0.25f);
+          headPos = Vector2Add(headPos, Vector2Scale(perp, headWaveVal));
+        }
+        TriggerFireImpact(headPos);
+        break;
+      }
+      count++;
+    }
+  }
 }

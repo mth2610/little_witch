@@ -15,8 +15,7 @@ CMakeFiles/water_game.dir/electric_skill.c.o: /Users/mth2610/Desktop/c_games/lit
   _deps/raylib-src/src/raylib.h \
   _deps/raylib-src/src/raymath.h \
   _deps/raylib-src/src/rlgl.h \
-  /Users/mth2610/Desktop/c_games/little_witch/test_skill/electric_skill.h \
-  /Users/mth2610/Desktop/c_games/little_witch/test_skill/skill_manager.h
+  /Users/mth2610/Desktop/c_games/little_witch/test_skill/electric_skill.h
 
 CMakeFiles/water_game.dir/fire_skill.c.o: /Users/mth2610/Desktop/c_games/little_witch/test_skill/fire_skill.c \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h \
@@ -127,8 +126,6 @@ _deps/raylib-src/src/raylib.h:
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdbool.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h:
-
-/Users/mth2610/Desktop/c_games/little_witch/test_skill/skill_manager.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h:
 
