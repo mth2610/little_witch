@@ -8,10 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/mth2610/Desktop/c_games/little_witch/test_skill/electric_skill.c" "CMakeFiles/water_game.dir/electric_skill.c.o" "gcc" "CMakeFiles/water_game.dir/electric_skill.c.o.d"
   "/Users/mth2610/Desktop/c_games/little_witch/test_skill/fire_skill.c" "CMakeFiles/water_game.dir/fire_skill.c.o" "gcc" "CMakeFiles/water_game.dir/fire_skill.c.o.d"
   "/Users/mth2610/Desktop/c_games/little_witch/test_skill/fluid_skill.c" "CMakeFiles/water_game.dir/fluid_skill.c.o" "gcc" "CMakeFiles/water_game.dir/fluid_skill.c.o.d"
   "/Users/mth2610/Desktop/c_games/little_witch/test_skill/main.c" "CMakeFiles/water_game.dir/main.c.o" "gcc" "CMakeFiles/water_game.dir/main.c.o.d"
   "/Users/mth2610/Desktop/c_games/little_witch/test_skill/metal_skill.c" "CMakeFiles/water_game.dir/metal_skill.c.o" "gcc" "CMakeFiles/water_game.dir/metal_skill.c.o.d"
+  "/Users/mth2610/Desktop/c_games/little_witch/test_skill/wood_skill.c" "CMakeFiles/water_game.dir/wood_skill.c.o" "gcc" "CMakeFiles/water_game.dir/wood_skill.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

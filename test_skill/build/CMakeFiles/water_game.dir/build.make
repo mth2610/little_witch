@@ -128,12 +128,42 @@ CMakeFiles/water_game.dir/fire_skill.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/water_game.dir/fire_skill.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/test_skill/fire_skill.c -o CMakeFiles/water_game.dir/fire_skill.c.s
 
+CMakeFiles/water_game.dir/wood_skill.c.o: CMakeFiles/water_game.dir/flags.make
+CMakeFiles/water_game.dir/wood_skill.c.o: /Users/mth2610/Desktop/c_games/little_witch/test_skill/wood_skill.c
+CMakeFiles/water_game.dir/wood_skill.c.o: CMakeFiles/water_game.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/test_skill/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/water_game.dir/wood_skill.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/water_game.dir/wood_skill.c.o -MF CMakeFiles/water_game.dir/wood_skill.c.o.d -o CMakeFiles/water_game.dir/wood_skill.c.o -c /Users/mth2610/Desktop/c_games/little_witch/test_skill/wood_skill.c
+
+CMakeFiles/water_game.dir/wood_skill.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/water_game.dir/wood_skill.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/test_skill/wood_skill.c > CMakeFiles/water_game.dir/wood_skill.c.i
+
+CMakeFiles/water_game.dir/wood_skill.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/water_game.dir/wood_skill.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/test_skill/wood_skill.c -o CMakeFiles/water_game.dir/wood_skill.c.s
+
+CMakeFiles/water_game.dir/electric_skill.c.o: CMakeFiles/water_game.dir/flags.make
+CMakeFiles/water_game.dir/electric_skill.c.o: /Users/mth2610/Desktop/c_games/little_witch/test_skill/electric_skill.c
+CMakeFiles/water_game.dir/electric_skill.c.o: CMakeFiles/water_game.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/test_skill/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/water_game.dir/electric_skill.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/water_game.dir/electric_skill.c.o -MF CMakeFiles/water_game.dir/electric_skill.c.o.d -o CMakeFiles/water_game.dir/electric_skill.c.o -c /Users/mth2610/Desktop/c_games/little_witch/test_skill/electric_skill.c
+
+CMakeFiles/water_game.dir/electric_skill.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/water_game.dir/electric_skill.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mth2610/Desktop/c_games/little_witch/test_skill/electric_skill.c > CMakeFiles/water_game.dir/electric_skill.c.i
+
+CMakeFiles/water_game.dir/electric_skill.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/water_game.dir/electric_skill.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mth2610/Desktop/c_games/little_witch/test_skill/electric_skill.c -o CMakeFiles/water_game.dir/electric_skill.c.s
+
 # Object files for target water_game
 water_game_OBJECTS = \
 "CMakeFiles/water_game.dir/main.c.o" \
 "CMakeFiles/water_game.dir/fluid_skill.c.o" \
 "CMakeFiles/water_game.dir/metal_skill.c.o" \
-"CMakeFiles/water_game.dir/fire_skill.c.o"
+"CMakeFiles/water_game.dir/fire_skill.c.o" \
+"CMakeFiles/water_game.dir/wood_skill.c.o" \
+"CMakeFiles/water_game.dir/electric_skill.c.o"
 
 # External object files for target water_game
 water_game_EXTERNAL_OBJECTS =
@@ -142,10 +172,12 @@ water_game: CMakeFiles/water_game.dir/main.c.o
 water_game: CMakeFiles/water_game.dir/fluid_skill.c.o
 water_game: CMakeFiles/water_game.dir/metal_skill.c.o
 water_game: CMakeFiles/water_game.dir/fire_skill.c.o
+water_game: CMakeFiles/water_game.dir/wood_skill.c.o
+water_game: CMakeFiles/water_game.dir/electric_skill.c.o
 water_game: CMakeFiles/water_game.dir/build.make
 water_game: _deps/raylib-build/raylib/libraylib.a
 water_game: CMakeFiles/water_game.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/test_skill/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable water_game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/mth2610/Desktop/c_games/little_witch/test_skill/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable water_game"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/water_game.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

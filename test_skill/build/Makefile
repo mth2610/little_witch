@@ -246,6 +246,30 @@ update_mappings/fast:
 	$(MAKE) $(MAKESILENT) -f _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build.make _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build
 .PHONY : update_mappings/fast
 
+electric_skill.o: electric_skill.c.o
+.PHONY : electric_skill.o
+
+# target to build an object file
+electric_skill.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/water_game.dir/build.make CMakeFiles/water_game.dir/electric_skill.c.o
+.PHONY : electric_skill.c.o
+
+electric_skill.i: electric_skill.c.i
+.PHONY : electric_skill.i
+
+# target to preprocess a source file
+electric_skill.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/water_game.dir/build.make CMakeFiles/water_game.dir/electric_skill.c.i
+.PHONY : electric_skill.c.i
+
+electric_skill.s: electric_skill.c.s
+.PHONY : electric_skill.s
+
+# target to generate assembly for a file
+electric_skill.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/water_game.dir/build.make CMakeFiles/water_game.dir/electric_skill.c.s
+.PHONY : electric_skill.c.s
+
 fire_skill.o: fire_skill.c.o
 .PHONY : fire_skill.o
 
@@ -342,6 +366,30 @@ metal_skill.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/water_game.dir/build.make CMakeFiles/water_game.dir/metal_skill.c.s
 .PHONY : metal_skill.c.s
 
+wood_skill.o: wood_skill.c.o
+.PHONY : wood_skill.o
+
+# target to build an object file
+wood_skill.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/water_game.dir/build.make CMakeFiles/water_game.dir/wood_skill.c.o
+.PHONY : wood_skill.c.o
+
+wood_skill.i: wood_skill.c.i
+.PHONY : wood_skill.i
+
+# target to preprocess a source file
+wood_skill.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/water_game.dir/build.make CMakeFiles/water_game.dir/wood_skill.c.i
+.PHONY : wood_skill.c.i
+
+wood_skill.s: wood_skill.c.s
+.PHONY : wood_skill.s
+
+# target to generate assembly for a file
+wood_skill.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/water_game.dir/build.make CMakeFiles/water_game.dir/wood_skill.c.s
+.PHONY : wood_skill.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -361,6 +409,9 @@ help:
 	@echo "... glfw"
 	@echo "... raylib"
 	@echo "... water_game"
+	@echo "... electric_skill.o"
+	@echo "... electric_skill.i"
+	@echo "... electric_skill.s"
 	@echo "... fire_skill.o"
 	@echo "... fire_skill.i"
 	@echo "... fire_skill.s"
@@ -373,6 +424,9 @@ help:
 	@echo "... metal_skill.o"
 	@echo "... metal_skill.i"
 	@echo "... metal_skill.s"
+	@echo "... wood_skill.o"
+	@echo "... wood_skill.i"
+	@echo "... wood_skill.s"
 .PHONY : help
 
 
