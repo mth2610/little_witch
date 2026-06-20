@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-#define MAX_PARTICLES 2500
+#define MAX_PARTICLES 2400
 #define MAX_EMITTERS 10
 
 // ---- Hành trình theo thời gian ----
@@ -51,22 +51,19 @@ static float Math_Mix(float x, float y, float a) {
   return x * (1.0f - a) + y * a;
 }
 
-static float Random01(void) {
-  return (float)GetRandomValue(0, 10000) / 10000.0f;
+static float SmoothStep01(float x) {
+  x = Clamp(x, 0.0f, 1.0f);
+  return x * x * (3.0f - 2.0f * x);
 }
 
-static float GetAmplitudeEnvelope(float distFromHead, float totalLength) {
-  if (totalLength <= 0.0f) return 0.0f;
-  float norm = distFromHead / totalLength;
-  if (norm < 0.15f) {
-    float t = norm / 0.15f;
-    return Math_Mix(0.25f, 1.0f, t);
-  } else if (norm < 0.8f) {
-    return 1.0f;
-  } else {
-    float t = (norm - 0.8f) / 0.2f;
-    return Math_Mix(1.0f, 0.0f, t);
-  }
+static Color FireDensityColor(float density, float alpha) {
+  unsigned char v = (unsigned char)Clamp(density * 255.0f, 0.0f, 255.0f);
+  unsigned char a = (unsigned char)Clamp(alpha * 255.0f, 0.0f, 255.0f);
+  return (Color){v, v, v, a};
+}
+
+static float Random01(void) {
+  return (float)GetRandomValue(0, 10000) / 10000.0f;
 }
 
 // Lấy các điểm cách đều nhau một khoảng cố định dọc theo đường đi (path)
@@ -105,8 +102,8 @@ static int SamplePath(const Vector2* path, int pathCount, float spacing, Vector2
 // Struct dữ liệu
 // =============================================================================
 
-#define EMITTER_PATH_MAX 500
-#define MAX_SAMPLED_SEGMENTS 150
+#define EMITTER_PATH_MAX 360
+#define MAX_SAMPLED_SEGMENTS 96
 
 typedef struct {
   bool active;
@@ -248,7 +245,7 @@ static void SpawnParticle(int type, Vector2 pos, Vector2 vel, float baseRadius,
 
 static void TriggerFireImpact(Vector2 pos) {
   // 1. Tia lửa phát tán nhanh (Radial Spark Burst)
-  int sparkCount = GetRandomValue(30, 45);
+  int sparkCount = GetRandomValue(18, 28);
   for (int s = 0; s < sparkCount; s++) {
     float angle = Random01() * 3.14159265f * 2.0f;
     float speed = Math_Mix(250.0f, 650.0f, Random01());
@@ -259,7 +256,7 @@ static void TriggerFireImpact(Vector2 pos) {
   }
 
   // 2. Hạt bụi lửa tán ra rồi bốc lên theo gió (Dispersing Noise Particles)
-  int disperseCount = GetRandomValue(40, 50);
+  int disperseCount = GetRandomValue(22, 32);
   for (int v = 0; v < disperseCount; v++) {
     float angle = Random01() * 3.14159265f * 2.0f;
     float speed = Math_Mix(120.0f, 400.0f, Random01());
@@ -275,6 +272,16 @@ static void TriggerFireImpact(Vector2 pos) {
 
   // 4. Ánh chớp phát sáng môi trường (Ambient Light Flash - Type 7)
   SpawnParticle(7, pos, (Vector2){0, 0}, 260.0f, 0.25f);
+
+  // 5. Lưỡi lửa bật ngược lại sau cú cắn để impact có cảm giác nổ tung.
+  int flameTongues = GetRandomValue(6, 10);
+  for (int f = 0; f < flameTongues; f++) {
+    float angle = Math_Mix(-PI * 0.92f, -PI * 0.08f, Random01());
+    float speed = Math_Mix(220.0f, 520.0f, Random01());
+    Vector2 vel = { cosf(angle) * speed, sinf(angle) * speed };
+    SpawnParticle(5, pos, vel, Math_Mix(5.0f, 12.0f, Random01()),
+                  Math_Mix(0.22f, 0.46f, Random01()));
+  }
 }
 
 // =============================================================================
@@ -294,34 +301,29 @@ void InitFireSkill(int screenWidth, int screenHeight) {
 }
 
 void CastFireSkill(Vector2 startPos, Vector2 target, float twistPhase) {
-  float phases[2] = { twistPhase, twistPhase + PI };
-  for (int p = 0; p < 2; p++) {
-    for (int i = 0; i < MAX_EMITTERS; i++) {
-      if (!emitters[i].active) {
-        emitters[i].active = true;
-        emitters[i].startPos = startPos;
-        emitters[i].targetPos = target;
-        emitters[i].headProgress = 0.0f;
-        emitters[i].twistPhase = phases[p];
-        emitters[i].pathCount = 1;
-        emitters[i].path[0] = startPos;
+  for (int i = 0; i < MAX_EMITTERS; i++) {
+    if (!emitters[i].active) {
+      emitters[i].active = true;
+      emitters[i].startPos = startPos;
+      emitters[i].targetPos = target;
+      emitters[i].headProgress = 0.0f;
+      emitters[i].twistPhase = twistPhase;
+      emitters[i].pathCount = 1;
+      emitters[i].path[0] = startPos;
 
-        float curveSign = (phases[p] == 0.0f || phases[p] == 2.0f * PI) ? -1.0f : 1.0f;
-        if (p == 1) curveSign = -curveSign;
-        
-        emitters[i].p1 = (Vector2){startPos.x + (target.x - startPos.x) * 0.5f +
-                                       curveSign * BEZIER_CONTROL1_X_OFFSET,
-                                   startPos.y - BEZIER_CONTROL1_Y_OFFSET};
-        emitters[i].p2 = (Vector2){target.x, target.y + BEZIER_CONTROL2_Y_OFFSET};
-        break;
-      }
+      float curveSign = (sinf(twistPhase) >= 0.0f) ? 1.0f : -1.0f;
+      emitters[i].p1 = (Vector2){startPos.x + (target.x - startPos.x) * 0.5f +
+                                     curveSign * BEZIER_CONTROL1_X_OFFSET,
+                                 startPos.y - BEZIER_CONTROL1_Y_OFFSET};
+      emitters[i].p2 = (Vector2){target.x, target.y + BEZIER_CONTROL2_Y_OFFSET};
+      break;
     }
   }
 
   // Casting heat flash (Type 7)
   SpawnParticle(7, startPos, (Vector2){0, 0}, 150.0f, 0.30f);
 
-  int burstCount = GetRandomValue(CAST_BURST_COUNT_MIN, CAST_BURST_COUNT_MAX);
+  int burstCount = GetRandomValue(12, 20);
   for (int s = 0; s < burstCount; s++) {
     Vector2 vel = {(float)GetRandomValue((int)CAST_BURST_VEL_X_MIN,
                                          (int)CAST_BURST_VEL_X_MAX),
@@ -349,7 +351,7 @@ void UpdateFireSkill(float dt) {
     }
 
     // Sub-stepping to record a smooth straight path
-    float step = 0.005f;
+    float step = 0.008f;
     float currentProgress = prevProgress;
     while (currentProgress < targetProgress) {
       currentProgress += step;
@@ -383,9 +385,9 @@ void UpdateFireSkill(float dt) {
       continue;
     }
 
-    // Sample path at 6.0f spacing for drawing and particle spawning
+    // Sample path at wider spacing to keep one fluid ribbon and reduce draw cost.
     emitters[e].sampledCount = SamplePath(emitters[e].path, emitters[e].pathCount,
-                                          6.0f, emitters[e].sampledPath, MAX_SAMPLED_SEGMENTS);
+                                          8.0f, emitters[e].sampledPath, MAX_SAMPLED_SEGMENTS);
 
     if (prevProgress <= 1.0f && emitters[e].headProgress > 1.0f) {
       TriggerFireImpact(emitters[e].targetPos);
@@ -395,11 +397,7 @@ void UpdateFireSkill(float dt) {
     Vector2 headPos = (emitters[e].pathCount > 0) ? emitters[e].path[0] : emitters[e].startPos;
     Vector2 tangent = GetDragonPathTangent(emitters[e].startPos, emitters[e].p1, emitters[e].p2,
                                            emitters[e].targetPos, emitters[e].headProgress);
-    Vector2 perp = {-tangent.y, tangent.x};
-
-    // Calculate visual head position (head wiggle envelope is 0.25)
-    float headWaveVal = sinf(time * 16.0f + emitters[e].twistPhase) * (22.0f * 0.25f);
-    Vector2 visualHeadPos = Vector2Add(headPos, Vector2Scale(perp, headWaveVal));
+    Vector2 visualHeadPos = headPos;
 
     if (emitters[e].headProgress <= 1.0f) {
       float jawOsc = sinf(time * DRAGON_JAW_OSCILLATION_SPEED) * DRAGON_JAW_OSCILLATION_AMP;
@@ -410,25 +408,25 @@ void UpdateFireSkill(float dt) {
       Vector2 mouthTexPt = { 460.0f, 260.0f };
       Vector2 mouthWorldPos = GetTexturePointInWorld(visualHeadPos, tangent, DRAGON_HEAD_BASE_SCALE, scaleY, origin, mouthTexPt, flipY);
 
-      int breathCount = GetRandomValue(2, 4);
+      int breathCount = GetRandomValue(3, 5);
       for (int b = 0; b < breathCount; b++) {
-        float angleOffset = (float)GetRandomValue(-20, 20) * DEG2RAD;
+        float angleOffset = (float)GetRandomValue(-18, 18) * DEG2RAD;
         Vector2 dir = {
             tangent.x * cosf(angleOffset) - tangent.y * sinf(angleOffset),
             tangent.x * sinf(angleOffset) + tangent.y * cosf(angleOffset)
         };
-        float speed = (float)GetRandomValue(450, 850);
+        float speed = (float)GetRandomValue(420, 760);
         Vector2 vel = Vector2Scale(dir, speed);
-        float rad = Math_Mix(2.0f, 5.5f, Random01());
-        float life = Math_Mix(0.15f, 0.45f, Random01());
+        float rad = Math_Mix(2.0f, 5.0f, Random01());
+        float life = Math_Mix(0.16f, 0.36f, Random01());
         SpawnParticle(5, mouthWorldPos, vel, rad, life);
       }
     }
 
     // Spawn wind trails and embers along the sampled path
     if (emitters[e].sampledCount > 1) {
-      // Wisps (Type 1) - Spiraling around the body
-      int wispsToSpawn = GetRandomValue(25, 45);
+      // Wisps (Type 1) - bám theo ribbon, vừa trôi dọc thân vừa cuộn nhiễu quanh nó.
+      int wispsToSpawn = GetRandomValue(18, 28);
       for (int k = 0; k < wispsToSpawn; k++) {
         int idx = GetRandomValue(0, emitters[e].sampledCount - 1);
         Vector2 purePos = emitters[e].sampledPath[idx];
@@ -440,47 +438,44 @@ void UpdateFireSkill(float dt) {
           pureTangent = Vector2Normalize(Vector2Subtract(emitters[e].sampledPath[idx - 1], purePos));
 
         Vector2 purePerp = {-pureTangent.y, pureTangent.x};
-        float distFromHead = idx * 6.0f;
+        float distFromHead = idx * 8.0f;
 
-        // Core radius at this segment (approximate matching of the core size)
         float normDist = (emitters[e].sampledCount > 1) ? ((float)idx / (float)(emitters[e].sampledCount - 1)) : 0.0f;
         float taper = powf(1.0f - normDist, 0.5f);
-        float coreRad = Math_Mix(2.0f, 10.0f, taper);
+        float coreRad = Math_Mix(3.5f, 12.0f, taper);
 
-        // Spiral phase matching the single helix ribbon but with random offset/variety
-        float spiralPhase = time * 18.0f - distFromHead * 0.05f + emitters[e].twistPhase + Random01() * 0.2f;
-        float coilRad = coreRad * 1.8f;
+        float spiralPhase = time * 11.0f - distFromHead * 0.075f +
+                            emitters[e].twistPhase + Random01() * PI * 2.0f;
+        float coilRad = coreRad * Math_Mix(0.75f, 1.65f, Random01());
 
         Vector2 spawnPos = {
           purePos.x + purePerp.x * cosf(spiralPhase) * coilRad,
           purePos.y + purePerp.y * cosf(spiralPhase) * coilRad
         };
 
-        // Add minor randomness
-        spawnPos.x += Math_Mix(-5.0f, 5.0f, Random01());
-        spawnPos.y += Math_Mix(-5.0f, 5.0f, Random01());
+        spawnPos.x += Math_Mix(-2.0f, 2.0f, Random01());
+        spawnPos.y += Math_Mix(-2.0f, 2.0f, Random01());
 
-        // Velocity vector: drift back, orbit, and expand slowly
         float cosVal = cosf(spiralPhase);
         float sinVal = sinf(spiralPhase);
         Vector2 radDir = { purePerp.x * cosVal, purePerp.y * cosVal };
         Vector2 rotDir = { -purePerp.x * sinVal, -purePerp.y * sinVal };
 
-        float forwardSpeed = Math_Mix(200.0f, 400.0f, Random01());
-        float orbitSpeed = 180.0f;
-        float expandSpeed = 25.0f;
+        float ribbonSpeed = Math_Mix(105.0f, 220.0f, Random01());
+        float orbitSpeed = Math_Mix(120.0f, 220.0f, Random01());
+        float expandSpeed = Math_Mix(-8.0f, 12.0f, Random01());
 
         Vector2 windVel = {
-          -pureTangent.x * forwardSpeed + rotDir.x * orbitSpeed + radDir.x * expandSpeed,
-          -pureTangent.y * forwardSpeed + rotDir.y * orbitSpeed + radDir.y * expandSpeed
+          -pureTangent.x * ribbonSpeed + rotDir.x * orbitSpeed + radDir.x * expandSpeed,
+          -pureTangent.y * ribbonSpeed + rotDir.y * orbitSpeed + radDir.y * expandSpeed
         };
 
-        float rad = Math_Mix(2.0f, 4.5f, Random01());
-        float life = Math_Mix(0.3f, 0.6f, Random01());
+        float rad = Math_Mix(3.2f, 7.5f, Random01());
+        float life = Math_Mix(0.32f, 0.62f, Random01());
         SpawnParticle(1, spawnPos, windVel, rad, life);
       }
 
-      // Embers (Type 3) - Also spiraling but slightly wider and slower
+      // Embers (Type 3) - ít hơn, rộng hơn, dùng để tạo lửa bốc quanh ribbon.
       int embersToSpawn = GetRandomValue(3, 5);
       for (int k = 0; k < embersToSpawn; k++) {
         int idx = GetRandomValue(0, emitters[e].sampledCount - 1);
@@ -493,38 +488,38 @@ void UpdateFireSkill(float dt) {
           pureTangent = Vector2Normalize(Vector2Subtract(emitters[e].sampledPath[idx - 1], purePos));
 
         Vector2 purePerp = {-pureTangent.y, pureTangent.x};
-        float distFromHead = idx * 6.0f;
+        float distFromHead = idx * 8.0f;
         float normDist = (emitters[e].sampledCount > 1) ? ((float)idx / (float)(emitters[e].sampledCount - 1)) : 0.0f;
         float taper = powf(1.0f - normDist, 0.5f);
-        float coreRad = Math_Mix(2.0f, 10.0f, taper);
+        float coreRad = Math_Mix(3.5f, 12.0f, taper);
 
-        float spiralPhase = time * 18.0f - distFromHead * 0.05f + emitters[e].twistPhase + Random01() * PI;
-        float coilRad = coreRad * 2.2f; // slightly wider than Type 1
+        float spiralPhase = time * 8.0f - distFromHead * 0.06f +
+                            emitters[e].twistPhase + Random01() * PI * 2.0f;
+        float coilRad = coreRad * Math_Mix(1.1f, 2.25f, Random01());
 
         Vector2 spawnPos = {
           purePos.x + purePerp.x * cosf(spiralPhase) * coilRad,
           purePos.y + purePerp.y * cosf(spiralPhase) * coilRad
         };
 
-        // Add minor randomness
-        spawnPos.x += Math_Mix(-6.0f, 6.0f, Random01());
-        spawnPos.y += Math_Mix(-6.0f, 6.0f, Random01());
+        spawnPos.x += Math_Mix(-2.5f, 2.5f, Random01());
+        spawnPos.y += Math_Mix(-2.5f, 2.5f, Random01());
 
         float cosVal = cosf(spiralPhase);
         float sinVal = sinf(spiralPhase);
         Vector2 radDir = { purePerp.x * cosVal, purePerp.y * cosVal };
         Vector2 rotDir = { -purePerp.x * sinVal, -purePerp.y * sinVal };
 
-        float forwardSpeed = Math_Mix(120.0f, 250.0f, Random01());
-        float orbitSpeed = 120.0f;
-        float expandSpeed = 35.0f;
+        float forwardSpeed = Math_Mix(70.0f, 150.0f, Random01());
+        float orbitSpeed = Math_Mix(95.0f, 170.0f, Random01());
+        float expandSpeed = Math_Mix(-4.0f, 18.0f, Random01());
 
         Vector2 vel = {
           -pureTangent.x * forwardSpeed + rotDir.x * orbitSpeed + radDir.x * expandSpeed,
           -pureTangent.y * forwardSpeed + rotDir.y * orbitSpeed + radDir.y * expandSpeed
         };
-        float rad = Math_Mix(3.0f, 7.5f, Random01());
-        float life = Math_Mix(0.7f, 1.4f, Random01());
+        float rad = Math_Mix(4.5f, 9.5f, Random01());
+        float life = Math_Mix(0.62f, 1.15f, Random01());
         SpawnParticle(3, spawnPos, vel, rad, life);
       }
     }
@@ -551,18 +546,24 @@ void UpdateFireSkill(float dt) {
     firePool[i].velocity.x *= (1.0f - 2.5f * dt);
     firePool[i].velocity.y *= (1.0f - 2.5f * dt);
 
-    firePool[i].velocity.y -= 180.0f * dt;
+    if (firePool[i].type == 1) {
+      firePool[i].velocity.y -= 45.0f * dt;
+    } else if (firePool[i].type == 3) {
+      firePool[i].velocity.y -= 75.0f * dt;
+    } else {
+      firePool[i].velocity.y -= 180.0f * dt;
+    }
 
     if (firePool[i].type == 1) {
       float pX = firePool[i].position.x * 0.015f;
       float pY = firePool[i].position.y * 0.015f;
-      firePool[i].velocity.x += sinf(pY + time * 8.0f) * 160.0f * dt;
-      firePool[i].velocity.y += cosf(pX + time * 8.0f) * 160.0f * dt;
+      firePool[i].velocity.x += sinf(pY + time * 8.0f) * 85.0f * dt;
+      firePool[i].velocity.y += cosf(pX + time * 8.0f) * 85.0f * dt;
     }
     else if (firePool[i].type == 3) {
       firePool[i].angle += dt * 6.0f;
-      firePool[i].velocity.x += sinf(firePool[i].angle) * 90.0f * dt;
-      firePool[i].velocity.y -= 120.0f * dt;
+      firePool[i].velocity.x += sinf(firePool[i].angle) * 70.0f * dt;
+      firePool[i].velocity.y -= 35.0f * dt;
     }
     else if (firePool[i].type == 4) {
       firePool[i].velocity.x *= (1.0f - 3.5f * dt);
@@ -604,27 +605,15 @@ void DrawFireSkill(void) {
     if (bodySegments == 0) continue;
 
     BeginBlendMode(BLEND_ALPHA);
-    for (int i = 0; i < bodySegments; i++) {
+    for (int i = 0; i < bodySegments; i += 2) {
       Vector2 purePos_i = emitters[e].sampledPath[i];
-      Vector2 pureTangent;
-      if (i < bodySegments - 1)
-        pureTangent = Vector2Normalize(Vector2Subtract(purePos_i, emitters[e].sampledPath[i + 1]));
-      else if (i > 0)
-        pureTangent = Vector2Normalize(Vector2Subtract(emitters[e].sampledPath[i - 1], purePos_i));
-      else
-        pureTangent = (Vector2){1, 0};
-
-      Vector2 purePerp = {-pureTangent.y, pureTangent.x};
-      float distFromHead = (float)i * 6.0f;
-      float envelope = GetAmplitudeEnvelope(distFromHead, bodySegments * 6.0f);
-      float waveVal = sinf(time * 16.0f - distFromHead * 0.018f + emitters[e].twistPhase) * (22.0f * envelope);
-      Vector2 drawPos = Vector2Add(purePos_i, Vector2Scale(purePerp, waveVal));
+      Vector2 drawPos = purePos_i;
 
       float normDist = (bodySegments > 1) ? ((float)i / (float)(bodySegments - 1)) : 0.0f;
       float taper = powf(1.0f - normDist, 0.5f);
 
-      float smokeRad = Math_Mix(12.0f, 30.0f, taper);
-      unsigned char smokeAlpha = (unsigned char)(255.0f * taper * 0.35f);
+      float smokeRad = Math_Mix(8.0f, 20.0f, taper);
+      unsigned char smokeAlpha = (unsigned char)(255.0f * taper * 0.18f);
       DrawCircleGradient((int)drawPos.x, (int)drawPos.y, smokeRad,
                          (Color){70, 30, 30, smokeAlpha}, BLANK);
     }
@@ -688,7 +677,7 @@ void DrawFireSkill(void) {
   EndBlendMode();
 
   // =======================================================
-  // 3. VẼ LÕI RỒNG, HELIX RIBBONS, VẢY RỒNG, ĐẦU VÀ MẮT (BLEND_ADDITIVE)
+  // 3. Vẽ một ribbon xương sống, đầu rồng và mắt (BLEND_ADDITIVE)
   // =======================================================
   for (int e = 0; e < MAX_EMITTERS; e++) {
     if (!emitters[e].active)
@@ -699,7 +688,6 @@ void DrawFireSkill(void) {
 
     BeginBlendMode(BLEND_ADDITIVE);
     Vector2 prevDrawPos = {0};
-    Vector2 prevH1 = {0};
     Vector2 headDrawPos = {0};
     Vector2 headPureTangent = {1, 0};
 
@@ -713,11 +701,8 @@ void DrawFireSkill(void) {
       else
         pureTangent = (Vector2){1, 0};
 
-      Vector2 purePerp = {-pureTangent.y, pureTangent.x};
-      float distFromHead = (float)i * 6.0f;
-      float envelope = GetAmplitudeEnvelope(distFromHead, bodySegments * 6.0f);
-      float waveVal = sinf(time * 16.0f - distFromHead * 0.018f + emitters[e].twistPhase) * (22.0f * envelope);
-      Vector2 drawPos = Vector2Add(purePos_i, Vector2Scale(purePerp, waveVal));
+      float distFromHead = (float)i * 8.0f;
+      Vector2 drawPos = purePos_i;
 
       if (i == 0) {
         headDrawPos = drawPos;
@@ -726,57 +711,53 @@ void DrawFireSkill(void) {
 
       float normDist = (bodySegments > 1) ? ((float)i / (float)(bodySegments - 1)) : 0.0f;
       float taper = powf(1.0f - normDist, 0.5f);
+      float headFade = Math_Mix(0.82f, 1.0f, SmoothStep01(Clamp((float)i / 8.0f, 0.0f, 1.0f)));
 
-      float coreRad = Math_Mix(2.0f, 10.0f, taper);
-      float auraRad = Math_Mix(8.0f, 26.0f, taper);
-      float brightness = taper * 0.06f;
+      float ribbonRad = Math_Mix(2.8f, 11.0f, taper);
+      float auraRad = Math_Mix(9.0f, 24.0f, taper);
+      float bodyPulse = 0.94f + 0.06f * sinf(time * 9.0f - distFromHead * 0.045f);
+      float brightness = taper * headFade * bodyPulse;
 
-      unsigned char coreV = (unsigned char)(255.0f * brightness * 3.0f);
-      unsigned char auraV = (unsigned char)(255.0f * brightness * 1.0f);
-      Color coreColor = {coreV, coreV, coreV, 255};
-      Color auraColor = {auraV, auraV, auraV, 255};
-
-      if (i > 0) {
-        DrawLineEx(prevDrawPos, drawPos, auraRad * 2.0f, auraColor);
-        DrawLineEx(prevDrawPos, drawPos, coreRad * 2.0f, coreColor);
-      }
-      DrawCircleGradient((int)drawPos.x, (int)drawPos.y, auraRad, auraColor, BLANK);
-      DrawCircleGradient((int)drawPos.x, (int)drawPos.y, coreRad, coreColor, BLANK);
-
-      // LỬA CUỘN (Helix): Giờ là làn khói lửa cuộn tròn mềm mại mờ ảo (1 sợi lụa)
-      float spiralPhase1 = time * 15.0f - distFromHead * 0.05f;
-      float coilRad = coreRad * 1.8f;
-
-      Vector2 h1 = {drawPos.x + purePerp.x * cosf(spiralPhase1) * coilRad,
-                    drawPos.y + purePerp.y * cosf(spiralPhase1) * coilRad};
-
-      unsigned char hV = (unsigned char)(255.0f * brightness * 1.6f);
-      Color hColor = {hV, hV, hV, 255};
+      Color outerColor = FireDensityColor(0.12f * brightness, 1.0f);
+      Color ribbonColor = FireDensityColor(0.42f * brightness, 1.0f);
+      Color hotColor = FireDensityColor(0.88f * brightness, 1.0f);
 
       if (i > 0) {
-        float ribbonThickness = coreRad * 1.8f; // Dải lụa dày dặn lả lướt
-        DrawLineEx(prevH1, h1, ribbonThickness, hColor);
+        DrawLineEx(prevDrawPos, drawPos, auraRad * 1.7f, outerColor);
+        DrawLineEx(prevDrawPos, drawPos, ribbonRad * 1.9f, ribbonColor);
+        DrawLineEx(prevDrawPos, drawPos, ribbonRad * 0.55f, hotColor);
       }
+      DrawCircleGradient((int)drawPos.x, (int)drawPos.y, auraRad, outerColor, BLANK);
+      DrawCircleGradient((int)drawPos.x, (int)drawPos.y, ribbonRad * 0.85f, hotColor, BLANK);
 
-      DrawCircleGradient((int)h1.x, (int)h1.y, coreRad * 2.0f, hColor, BLANK);
-
-      // VẢY RỒNG: Sắc nhọn và vươn dài ra ngoài (tăng độ sáng đáng kể để phát sáng rực rỡ)
-      if (i % 15 == 0 && i > 0 && i < bodySegments - 4) {
-        float sideSign = (i % 30 == 0) ? 1.0f : -1.0f;
-        Vector2 tip = {drawPos.x + purePerp.x * coreRad * 3.5f * sideSign,
-                       drawPos.y + purePerp.y * coreRad * 3.5f * sideSign};
-        Vector2 base1 = {drawPos.x - pureTangent.x * coreRad * 1.0f,
-                         drawPos.y - pureTangent.y * coreRad * 1.0f};
-        Vector2 base2 = {drawPos.x + pureTangent.x * coreRad * 1.0f,
-                         drawPos.y + pureTangent.y * coreRad * 1.0f};
-        unsigned char scaleV = (unsigned char)fminf(255.0f * brightness * 8.5f, 255.0f);
-        DrawTriangle(base1, base2, tip, (Color){scaleV, scaleV, scaleV, 255});
+      if (i % 8 == 0 && i > 4 && i < bodySegments - 5) {
+        Vector2 purePerp = {-pureTangent.y, pureTangent.x};
+        float sideSign = (i % 14 == 0) ? 1.0f : -1.0f;
+        float scaleLen = ribbonRad * Math_Mix(1.9f, 3.1f, taper);
+        float baseWidth = ribbonRad * Math_Mix(1.7f, 2.5f, taper);
+        Vector2 baseCenter = Vector2Add(drawPos, Vector2Scale(purePerp, sideSign * ribbonRad * 0.55f));
+        Vector2 tip = {
+            baseCenter.x + purePerp.x * sideSign * scaleLen - pureTangent.x * ribbonRad * 0.65f,
+            baseCenter.y + purePerp.y * sideSign * scaleLen - pureTangent.y * ribbonRad * 0.65f
+        };
+        Vector2 baseA = {
+            baseCenter.x - pureTangent.x * baseWidth,
+            baseCenter.y - pureTangent.y * baseWidth
+        };
+        Vector2 baseB = {
+            baseCenter.x + pureTangent.x * baseWidth,
+            baseCenter.y + pureTangent.y * baseWidth
+        };
+        Vector2 root = Vector2Add(drawPos, Vector2Scale(purePerp, -sideSign * ribbonRad * 0.12f));
+        DrawTriangle(baseA, baseB, tip, FireDensityColor(0.40f * brightness, 1.0f));
+        DrawTriangle(baseA, tip, root, FireDensityColor(0.58f * brightness, 1.0f));
+        DrawCircleGradient((int)tip.x, (int)tip.y, ribbonRad * 0.55f,
+                           FireDensityColor(0.42f * brightness, 1.0f), BLANK);
       }
       prevDrawPos = drawPos;
-      prevH1 = h1;
     }
 
-    // VẼ ĐUÔI RỒNG TRIDENT
+    // Đuôi chỉ là đoạn ribbon vuốt nhọn, tránh hình gai/gươm làm mất chất dải lụa.
     if (bodySegments > 5) {
       Vector2 tailPos = prevDrawPos;
       Vector2 tailTangent;
@@ -785,30 +766,11 @@ void DrawFireSkill(void) {
       } else {
         tailTangent = headPureTangent;
       }
-      Vector2 tailPerp = {-tailTangent.y, tailTangent.x};
-
-      float finLength = 40.0f;
-      float finWidth = 14.0f;
-
-      // Center tail fin tip
-      Vector2 centerTip = {tailPos.x - tailTangent.x * finLength,
-                           tailPos.y - tailTangent.y * finLength};
-      // Left tail fin tip
-      Vector2 leftTip = {tailPos.x - tailTangent.x * finLength * 0.8f + tailPerp.x * finWidth,
-                         tailPos.y - tailTangent.y * finLength * 0.8f + tailPerp.y * finWidth};
-      // Right tail fin tip
-      Vector2 rightTip = {tailPos.x - tailTangent.x * finLength * 0.8f - tailPerp.x * finWidth,
-                          tailPos.y - tailTangent.y * finLength * 0.8f - tailPerp.y * finWidth};
-
-      Vector2 base1 = {tailPos.x - tailPerp.x * 5.0f, tailPos.y - tailPerp.y * 5.0f};
-      Vector2 base2 = {tailPos.x + tailPerp.x * 5.0f, tailPos.y + tailPerp.y * 5.0f};
-
-      unsigned char tailV = (unsigned char)(255.0f * 0.06f * 4.0f);
-      Color tailCol = {tailV, tailV, tailV, 255};
-
-      DrawTriangle(base1, base2, centerTip, tailCol);
-      DrawTriangle(base1, base2, leftTip, tailCol);
-      DrawTriangle(base1, base2, rightTip, tailCol);
+      Vector2 tailTip = {tailPos.x - tailTangent.x * 32.0f,
+                         tailPos.y - tailTangent.y * 32.0f};
+      DrawLineEx(tailPos, tailTip, 4.0f, FireDensityColor(0.55f, 1.0f));
+      DrawCircleGradient((int)tailPos.x, (int)tailPos.y, 10.0f,
+                         FireDensityColor(0.18f, 1.0f), BLANK);
     }
 
     if (emitters[e].headProgress < FIRE_PROGRESS_MAX && bodySegments > 1) {
@@ -918,14 +880,6 @@ int GetFireSkillProjectiles(SkillProjectile* outProjectiles, int maxProjectiles)
   for (int i = 0; i < MAX_EMITTERS; i++) {
     if (emitters[i].active && count < maxProjectiles) {
       Vector2 headPos = (emitters[i].pathCount > 0) ? emitters[i].path[0] : emitters[i].startPos;
-      if (emitters[i].pathCount > 1) {
-        Vector2 tangent = GetDragonPathTangent(emitters[i].startPos, emitters[i].p1, emitters[i].p2,
-                                               emitters[i].targetPos, emitters[i].headProgress);
-        Vector2 perp = {-tangent.y, tangent.x};
-        float time = GetTime();
-        float headWaveVal = sinf(time * 16.0f + emitters[i].twistPhase) * (22.0f * 0.25f);
-        headPos = Vector2Add(headPos, Vector2Scale(perp, headWaveVal));
-      }
       outProjectiles[count].position = headPos;
       outProjectiles[count].radius = 35.0f; // Head / body collision radius
       outProjectiles[count].active = true;
@@ -942,14 +896,6 @@ void DeactivateFireProjectile(int index) {
       if (count == index) {
         emitters[i].active = false;
         Vector2 headPos = (emitters[i].pathCount > 0) ? emitters[i].path[0] : emitters[i].startPos;
-        if (emitters[i].pathCount > 1) {
-          Vector2 tangent = GetDragonPathTangent(emitters[i].startPos, emitters[i].p1, emitters[i].p2,
-                                                 emitters[i].targetPos, emitters[i].headProgress);
-          Vector2 perp = {-tangent.y, tangent.x};
-          float time = GetTime();
-          float headWaveVal = sinf(time * 16.0f + emitters[i].twistPhase) * (22.0f * 0.25f);
-          headPos = Vector2Add(headPos, Vector2Scale(perp, headWaveVal));
-        }
         TriggerFireImpact(headPos);
         break;
       }
